@@ -1,0 +1,2 @@
+sensing
+-DCATKIN_DEVEL_PREFIX=/home/lke/ACL_KUSV/devel -DCMAKE_INSTALL_PREFIX=/home/lke/ACL_KUSV/install -G Unix Makefiles
