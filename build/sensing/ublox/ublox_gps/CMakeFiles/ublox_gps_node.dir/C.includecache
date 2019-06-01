@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lke/ACL_KUSV/src/sensing/ublox/ublox_gps/include/ublox_gps/mkgmtime.h
+time.h
+-
+
+/home/lke/ACL_KUSV/src/sensing/ublox/ublox_gps/src/mkgmtime.c
+ublox_gps/mkgmtime.h
+/home/lke/ACL_KUSV/src/sensing/ublox/ublox_gps/src/ublox_gps/mkgmtime.h
+

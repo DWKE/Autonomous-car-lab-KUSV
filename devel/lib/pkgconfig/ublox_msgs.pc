@@ -1,0 +1,8 @@
+prefix=/home/lke/ACL_KUSV/devel
+
+Name: ublox_msgs
+Description: Description of ublox_msgs
+Version: 1.1.2
+Cflags: -I/home/lke/ACL_KUSV/devel/include -I/home/lke/ACL_KUSV/src/sensing/ublox/ublox_msgs/include
+Libs: -L/home/lke/ACL_KUSV/devel/lib -lublox_msgs
+Requires: message_runtime ublox_serialization std_msgs sensor_msgs

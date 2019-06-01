@@ -1,0 +1,17 @@
+(cl:defpackage kusv_msgs-msg
+  (:use )
+  (:export
+   "<CONTROLCMD>"
+   "CONTROLCMD"
+   "<DETECTEDOBJECT>"
+   "DETECTEDOBJECT"
+   "<POLYFITLANEDATA>"
+   "POLYFITLANEDATA"
+   "<POLYFITLANEDATAARRAY>"
+   "POLYFITLANEDATAARRAY"
+   "<WAYPOINT>"
+   "WAYPOINT"
+   "<WAYPOINTARRAY>"
+   "WAYPOINTARRAY"
+  ))
+

@@ -1,0 +1,2 @@
+set(kusv_msgs_MESSAGE_FILES "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg")
+set(kusv_msgs_SERVICE_FILES "")

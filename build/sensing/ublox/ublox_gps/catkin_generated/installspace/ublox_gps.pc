@@ -1,0 +1,8 @@
+prefix=/home/lke/ACL_KUSV/install
+
+Name: ublox_gps
+Description: Description of ublox_gps
+Version: 1.1.2
+Cflags: -I/home/lke/ACL_KUSV/install/include
+Libs: -L/home/lke/ACL_KUSV/install/lib -lublox_gps
+Requires: roscpp ublox_msgs ublox_serialization

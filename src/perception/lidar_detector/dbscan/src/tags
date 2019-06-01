@@ -1,0 +1,58 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BOX	euclidean_clustering.cpp	4;"	d	file:
+CONVEX_HULL	euclidean_clustering.cpp	5;"	d	file:
+Cluster	cluster.cpp	/^Cluster::Cluster()$/;"	f	class:Cluster
+Cluster	cluster.h	/^class Cluster$/;"	c
+GetCloud	cluster.cpp	/^pcl::PointCloud <pcl::PointXYZRGB>::Ptr Cluster::GetCloud()$/;"	f	class:Cluster
+PointCloudXYZO	euclidean_clustering.cpp	/^typedef pcl::PointCloud<pcl::PointXYZ> PointCloudXYZO;$/;"	t	file:
+PointCloudXYZO	euclidean_clustering.h	/^typedef pcl::PointCloud<pcl::PointXYZ> PointCloudXYZO;$/;"	t
+RGB	euclidean_clustering.h	/^typedef struct _rgb RGB;$/;"	t	typeref:struct:_rgb
+SetCloud	cluster.cpp	/^void Cluster::SetCloud(const pcl::PointCloud<pcl::PointXYZ>::Ptr pInputCloud,$/;"	f	class:Cluster
+__CLUSTER_H__	cluster.h	2;"	d
+__EUCLIDEAN_CLUSTERING__	euclidean_clustering.h	2;"	d
+_rgb	euclidean_clustering.h	/^	_rgb () $/;"	f	struct:_rgb
+_rgb	euclidean_clustering.h	/^	_rgb (uint8_t r, uint8_t g, uint8_t b)$/;"	f	struct:_rgb
+_rgb	euclidean_clustering.h	/^struct _rgb$/;"	s
+clusterPtr	cluster.h	/^typedef boost::shared_ptr<Cluster> clusterPtr;$/;"	t
+displayShape	euclidean_clustering.cpp	/^void displayShape (const std::vector<clusterPtr> pVecClusters)$/;"	f
+downsample	euclidean_clustering.cpp	/^void downsample (const PointCloudXYZO::ConstPtr& pInputCloud, PointCloudXYZO::Ptr pDownsampledCloud, float f_paramLeafSize_m)$/;"	f
+fLeafSize	euclidean_clustering.cpp	/^float fLeafSize = 0.1f;$/;"	v
+fMarkerDuration	euclidean_clustering.cpp	/^float fMarkerDuration = 0.1f;$/;"	v
+generateColor	euclidean_clustering.cpp	/^void generateColor(size_t indexNumber)$/;"	f
+globalRGB	euclidean_clustering.cpp	/^std::vector<RGB> globalRGB; \/\/ store object color$/;"	v
+iShape	euclidean_clustering.cpp	/^std::string iShape = BOX;$/;"	v
+m_average_point	cluster.h	/^	pcl::PointXYZ m_average_point;$/;"	m	class:Cluster
+m_b	cluster.h	/^	int m_r, m_g,m_b;$/;"	m	class:Cluster
+m_b	euclidean_clustering.h	/^	uint8_t m_b;$/;"	m	struct:_rgb
+m_boundingBoxDimensions	cluster.h	/^	geometry_msgs::Vector3 m_boundingBoxDimensions;$/;"	m	class:Cluster
+m_boundingBoxPose	cluster.h	/^	geometry_msgs::Pose m_boundingBoxPose;$/;"	m	class:Cluster
+m_centroid	cluster.h	/^	pcl::PointXYZ m_centroid;$/;"	m	class:Cluster
+m_eigen_values	cluster.h	/^	Eigen::Vector3f m_eigen_values;$/;"	m	class:Cluster
+m_eigen_vectors	cluster.h	/^	Eigen::Matrix3f m_eigen_vectors;$/;"	m	class:Cluster
+m_g	cluster.h	/^	int m_r, m_g,m_b;$/;"	m	class:Cluster
+m_g	euclidean_clustering.h	/^	uint8_t m_g;$/;"	m	struct:_rgb
+m_height	cluster.h	/^	float m_length, m_width, m_height;$/;"	m	class:Cluster
+m_id	cluster.h	/^	int m_id;$/;"	m	class:Cluster
+m_label	cluster.h	/^	std::string m_label;$/;"	m	class:Cluster
+m_length	cluster.h	/^	float m_length, m_width, m_height;$/;"	m	class:Cluster
+m_max_point	cluster.h	/^	pcl::PointXYZ m_max_point;$/;"	m	class:Cluster
+m_min_point	cluster.h	/^	pcl::PointXYZ m_min_point;$/;"	m	class:Cluster
+m_orientation_angle	cluster.h	/^	double m_orientation_angle;$/;"	m	class:Cluster
+m_pointCloud	cluster.h	/^	pcl::PointCloud <pcl::PointXYZRGB>::Ptr m_pointCloud;$/;"	m	class:Cluster
+m_polygon	cluster.h	/^	geometry_msgs::PolygonStamped m_polygon;$/;"	m	class:Cluster
+m_r	cluster.h	/^	int m_r, m_g,m_b;$/;"	m	class:Cluster
+m_r	euclidean_clustering.h	/^	uint8_t m_r;$/;"	m	struct:_rgb
+m_valid_cluster	cluster.h	/^	bool m_valid_cluster;$/;"	m	class:Cluster
+m_width	cluster.h	/^	float m_length, m_width, m_height;$/;"	m	class:Cluster
+main	euclidean_clustering.cpp	/^int main (int argc, char** argv)$/;"	f
+maxIndexNumber	euclidean_clustering.cpp	/^int maxIndexNumber = 0;$/;"	v
+pub	euclidean_clustering.cpp	/^ros::Publisher pub;	$/;"	v
+publishShape	euclidean_clustering.cpp	/^ros::Publisher publishShape;  $/;"	v
+velodyne_callback	euclidean_clustering.cpp	/^void velodyne_callback (const sensor_msgs::PointCloud2ConstPtr &pInput)$/;"	f
+velodyne_header	euclidean_clustering.cpp	/^std_msgs::Header velodyne_header;$/;"	v
+~Cluster	cluster.cpp	/^Cluster::~Cluster()$/;"	f	class:Cluster

@@ -1,0 +1,8 @@
+prefix=/home/lke/ACL_KUSV/install
+
+Name: waypoints_manager
+Description: Description of waypoints_manager
+Version: 0.1.0
+Cflags: 
+Libs: -L/home/lke/ACL_KUSV/install/lib 
+Requires: geometry_msgs roscpp std_msgs kusv_msgs

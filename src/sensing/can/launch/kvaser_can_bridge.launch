@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="can_hardware_id" default="10087" />
+  <arg name="can_circuit_id" default="0" />
+  <arg name="can_bit_rate" default="500000" />
+
+  <arg name="can_hardware_id2" default="10087" />
+  <arg name="can_circuit_id2" default="1" />
+  <arg name="can_bit_rate2" default="500000" />
+
+  <node pkg="ros_can" type="ros_can_kvaser_bridge" name="ros_can_kvaser_bridge">
+    <param name="can_hardware_id" value="$(arg can_hardware_id)" />
+    <param name="can_circuit_id" value="$(arg can_circuit_id)" />
+  <param name="can_bit_rate" value="$(arg can_bit_rate)" />
+
+  <param name="can_hardware_id2" value="$(arg can_hardware_id2)" />
+    <param name="can_circuit_id2" value="$(arg can_circuit_id2)" />
+    <param name="can_bit_rate2" value="$(arg can_bit_rate2)" />
+  </node>
+</launch>
