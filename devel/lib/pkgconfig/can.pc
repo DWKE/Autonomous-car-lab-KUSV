@@ -1,8 +1,0 @@
-prefix=/home/lke/ACL_KUSV/devel
-
-Name: can
-Description: Description of can
-Version: 0.1.0
-Cflags: -I/home/lke/ACL_KUSV/devel/include -I/home/lke/ACL_KUSV/src/sensing/can/include
-Libs: -L/home/lke/ACL_KUSV/devel/lib 
-Requires: can_msgs geometry_msgs message_generation roscpp std_msgs

@@ -1,8 +1,0 @@
-prefix=/home/lke/ACL_KUSV/install
-
-Name: ublox_serialization
-Description: Description of ublox_serialization
-Version: 1.1.2
-Cflags: -I/home/lke/ACL_KUSV/install/include
-Libs: -L/home/lke/ACL_KUSV/install/lib 
-Requires: roscpp roscpp_serialization

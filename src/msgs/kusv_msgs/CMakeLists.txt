@@ -59,6 +59,8 @@ find_package(catkin REQUIRED COMPONENTS
        PolyfitLaneDataArray.msg
        Waypoint.msg
        WaypointArray.msg
+       kusv_CanInfo.msg
+       LanePointData.msg
  )
 
 ## Generate services in the 'srv' folder

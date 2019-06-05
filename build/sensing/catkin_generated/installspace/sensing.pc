@@ -1,8 +1,0 @@
-prefix=/home/lke/ACL_KUSV/install
-
-Name: sensing
-Description: Description of sensing
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/lke/ACL_KUSV/install/lib 
-Requires: 

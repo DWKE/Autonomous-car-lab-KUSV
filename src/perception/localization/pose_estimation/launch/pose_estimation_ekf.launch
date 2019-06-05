@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<launch>
+ 
+    <!--<param name="use_sim_time" value="true" />-->
+
+    <!-- ### Pose estimation ################################################## -->
+    <arg name="p_strInputMotion" default="/kusv_CanInfo"/>
+    <arg name="p_strInputGnss" default="/auto/navpvt"/>
+    <arg name="p_strOutputGnss" default="/localization/ekf"/>
+    <arg name="p_bIsDebugPoseEstimation" default="true"/>
+    <arg name="p_ConfigPoseEstimationEkfFile" default="$(find pose_estimation)/ini/pose_estimation_ekf_map_matching.ini"/>
+    <arg name="p_EastOffset" default="0."/>
+    <arg name="p_NorthOffset" default="0."/>
+    <arg name="p_strInputGnss1" default="/auto/fix" />
+    <arg name="p_StopSpeed" default="1e-3" />
+    <arg name="p_CanMsgCnt"  default="400" />
+
+    <node pkg="pose_estimation" type="pose_estimation_ekf" name="pose_estimation_ekf" output="screen">
+        <param name="p_strInputMotion" value="$(arg p_strInputMotion)"/>
+        <param name="p_strInputGnss" value="$(arg p_strInputGnss)"/>
+        <param name="p_strOutputGnss" value="$(arg p_strOutputGnss)"/>
+        <param name="p_bIsDebugPoseEstimation" value="$(arg p_bIsDebugPoseEstimation)" type="bool"/>
+        <param name="p_ConfigPoseEstimationEkfFile" value="$(arg p_ConfigPoseEstimationEkfFile)"/>
+        <param name="p_EastOffset" value="$(arg p_EastOffset)"/>
+        <param name="p_NorthOffset" value="$(arg p_NorthOffset)"/>
+	<param name="p_strInputGnss1" value="$(arg p_strInputGnss1)" />
+	<param name="p_StopSpeed" value="$(arg p_StopSpeed)" />
+	<param name="p_CanMsgCnt" value="$(arg p_CanMsgCnt)" />
+    </node>
+</launch>

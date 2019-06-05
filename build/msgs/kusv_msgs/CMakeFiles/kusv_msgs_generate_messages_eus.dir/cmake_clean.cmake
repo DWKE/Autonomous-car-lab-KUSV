@@ -4,8 +4,10 @@ file(REMOVE_RECURSE
   "/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/Waypoint.l"
   "/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObject.l"
   "/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/PolyfitLaneData.l"
+  "/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/LanePointData.l"
   "/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/PolyfitLaneDataArray.l"
   "/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/WaypointArray.l"
+  "/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/kusv_CanInfo.l"
   "/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/manifest.l"
 )
 

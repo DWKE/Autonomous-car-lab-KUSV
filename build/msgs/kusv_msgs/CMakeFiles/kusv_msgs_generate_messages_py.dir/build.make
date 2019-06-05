@@ -57,8 +57,10 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/dev
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_Waypoint.py
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_PolyfitLaneData.py
+msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_LanePointData.py
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_PolyfitLaneDataArray.py
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_WaypointArray.py
+msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_kusv_CanInfo.py
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/__init__.py
 
 
@@ -95,10 +97,16 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/dev
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python from MSG kusv_msgs/PolyfitLaneData"
 	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg
 
+/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_LanePointData.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_LanePointData.py: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg
+/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_LanePointData.py: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Python from MSG kusv_msgs/LanePointData"
+	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg
+
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_PolyfitLaneDataArray.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_PolyfitLaneDataArray.py: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_PolyfitLaneDataArray.py: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Python from MSG kusv_msgs/PolyfitLaneDataArray"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Python from MSG kusv_msgs/PolyfitLaneDataArray"
 	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg
 
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_WaypointArray.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
@@ -109,17 +117,25 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/dev
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_WaypointArray.py: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_WaypointArray.py: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_WaypointArray.py: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Python from MSG kusv_msgs/WaypointArray"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Python from MSG kusv_msgs/WaypointArray"
 	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg
+
+/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_kusv_CanInfo.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_kusv_CanInfo.py: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg
+/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_kusv_CanInfo.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating Python from MSG kusv_msgs/kusv_CanInfo"
+	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg
 
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/__init__.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/__init__.py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_ControlCmd.py
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/__init__.py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_Waypoint.py
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/__init__.py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/__init__.py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_PolyfitLaneData.py
+/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/__init__.py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_LanePointData.py
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/__init__.py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_PolyfitLaneDataArray.py
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/__init__.py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_WaypointArray.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Python msg __init__.py for kusv_msgs"
+/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/__init__.py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_kusv_CanInfo.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating Python msg __init__.py for kusv_msgs"
 	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg --initpy
 
 kusv_msgs_generate_messages_py: msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py
@@ -127,8 +143,10 @@ kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-pack
 kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_Waypoint.py
 kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py
 kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_PolyfitLaneData.py
+kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_LanePointData.py
 kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_PolyfitLaneDataArray.py
 kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_WaypointArray.py
+kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_kusv_CanInfo.py
 kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/__init__.py
 kusv_msgs_generate_messages_py: msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py.dir/build.make
 

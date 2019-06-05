@@ -1,8 +1,0 @@
-prefix=/home/lke/ACL_KUSV/devel
-
-Name: practice5
-Description: Description of practice5
-Version: 0.1.0
-Cflags: -I/home/lke/ACL_KUSV/devel/include -I/home/lke/ACL_KUSV/src/perception/gnss_localizer/practice5/include
-Libs: -L/home/lke/ACL_KUSV/devel/lib -lpractice5
-Requires: geometry_msgs message_runtime message_generation roscpp std_msgs

@@ -4,8 +4,10 @@ file(REMOVE_RECURSE
   "/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/Waypoint.js"
   "/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/DetectedObject.js"
   "/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/PolyfitLaneData.js"
+  "/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/LanePointData.js"
   "/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/PolyfitLaneDataArray.js"
   "/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/WaypointArray.js"
+  "/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/kusv_CanInfo.js"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "kusv_msgs: 6 messages, 0 services")
+message(STATUS "kusv_msgs: 8 messages, 0 services")
 
 set(MSG_I_FLAGS "-Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg;-Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg;-Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg;-Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg;-Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg;-Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg")
 
@@ -37,6 +37,11 @@ add_custom_target(_kusv_msgs_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "kusv_msgs" "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg" ""
 )
 
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" NAME_WE)
+add_custom_target(_kusv_msgs_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "kusv_msgs" "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" "geometry_msgs/Point"
+)
+
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg" NAME_WE)
 add_custom_target(_kusv_msgs_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "kusv_msgs" "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg" "kusv_msgs/PolyfitLaneData"
@@ -45,6 +50,11 @@ add_custom_target(_kusv_msgs_generate_messages_check_deps_${_filename}
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg" NAME_WE)
 add_custom_target(_kusv_msgs_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "kusv_msgs" "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg" "geometry_msgs/PoseStamped:std_msgs/Header:geometry_msgs/Quaternion:geometry_msgs/Point:geometry_msgs/Pose:kusv_msgs/Waypoint"
+)
+
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg" NAME_WE)
+add_custom_target(_kusv_msgs_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "kusv_msgs" "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg" "std_msgs/Header"
 )
 
 #
@@ -78,6 +88,12 @@ _generate_msg_cpp(kusv_msgs
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/kusv_msgs
 )
 _generate_msg_cpp(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_cpp(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg"
   "${MSG_I_FLAGS}"
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg"
@@ -87,6 +103,12 @@ _generate_msg_cpp(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Pose.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_cpp(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/kusv_msgs
 )
 
@@ -112,9 +134,13 @@ get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Dete
 add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -151,6 +177,12 @@ _generate_msg_eus(kusv_msgs
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/kusv_msgs
 )
 _generate_msg_eus(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_eus(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg"
   "${MSG_I_FLAGS}"
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg"
@@ -160,6 +192,12 @@ _generate_msg_eus(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Pose.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_eus(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/kusv_msgs
 )
 
@@ -185,9 +223,13 @@ get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Dete
 add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -224,6 +266,12 @@ _generate_msg_lisp(kusv_msgs
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/kusv_msgs
 )
 _generate_msg_lisp(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_lisp(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg"
   "${MSG_I_FLAGS}"
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg"
@@ -233,6 +281,12 @@ _generate_msg_lisp(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Pose.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_lisp(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/kusv_msgs
 )
 
@@ -258,9 +312,13 @@ get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Dete
 add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -297,6 +355,12 @@ _generate_msg_nodejs(kusv_msgs
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/kusv_msgs
 )
 _generate_msg_nodejs(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_nodejs(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg"
   "${MSG_I_FLAGS}"
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg"
@@ -306,6 +370,12 @@ _generate_msg_nodejs(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Pose.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_nodejs(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/kusv_msgs
 )
 
@@ -331,9 +401,13 @@ get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Dete
 add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -370,6 +444,12 @@ _generate_msg_py(kusv_msgs
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/kusv_msgs
 )
 _generate_msg_py(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_py(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg"
   "${MSG_I_FLAGS}"
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg"
@@ -379,6 +459,12 @@ _generate_msg_py(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Pose.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_py(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/kusv_msgs
 )
 
@@ -404,9 +490,13 @@ get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Dete
 add_dependencies(kusv_msgs_generate_messages_py _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_py _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_py _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_py _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_py _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_py _kusv_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

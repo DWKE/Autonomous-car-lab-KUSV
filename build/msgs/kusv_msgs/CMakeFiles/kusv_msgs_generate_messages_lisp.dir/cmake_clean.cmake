@@ -4,8 +4,10 @@ file(REMOVE_RECURSE
   "/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/Waypoint.lisp"
   "/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/DetectedObject.lisp"
   "/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/PolyfitLaneData.lisp"
+  "/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/LanePointData.lisp"
   "/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/PolyfitLaneDataArray.lisp"
   "/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/WaypointArray.lisp"
+  "/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/kusv_CanInfo.lisp"
 )
 
 # Per-language clean rules from dependency scanning.
