@@ -1,5 +1,5 @@
-geometry_msgs/Pose              pose
-geometry_msgs/Twist             velocity
-geometry_msgs/Twist             acceleration
+uint32 id
+string label
 
-sensor_msgs/PointCloud2         pointcloud
+geometry_msgs/Pose pose
+geometry_msgs/Point[] convex_hull
