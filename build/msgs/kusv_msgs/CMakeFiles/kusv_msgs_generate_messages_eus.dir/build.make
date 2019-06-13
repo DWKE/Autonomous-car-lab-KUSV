@@ -57,10 +57,11 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/de
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/Waypoint.l
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObject.l
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/PolyfitLaneData.l
-msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/LanePointData.l
+msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/PolyfitLaneDataArray.l
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/WaypointArray.l
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/kusv_CanInfo.l
+msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/LanePointData.l
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/manifest.l
 
 
@@ -97,11 +98,19 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/de
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating EusLisp code from kusv_msgs/PolyfitLaneData.msg"
 	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg
 
-/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/LanePointData.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/LanePointData.l: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg
-/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/LanePointData.l: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating EusLisp code from kusv_msgs/LanePointData.msg"
-	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObjectArray.msg
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l: /opt/ros/kinetic/share/geometry_msgs/msg/Twist.msg
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l: /opt/ros/kinetic/share/sensor_msgs/msg/PointField.msg
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l: /opt/ros/kinetic/share/sensor_msgs/msg/PointCloud2.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating EusLisp code from kusv_msgs/DetectedObjectArray.msg"
+	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObjectArray.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg
 
 /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/PolyfitLaneDataArray.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
 /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/PolyfitLaneDataArray.l: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg
@@ -126,8 +135,14 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/de
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating EusLisp code from kusv_msgs/kusv_CanInfo.msg"
 	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg
 
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/LanePointData.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/LanePointData.l: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg
+/home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/LanePointData.l: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating EusLisp code from kusv_msgs/LanePointData.msg"
+	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg
+
 /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/manifest.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating EusLisp manifest code for kusv_msgs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating EusLisp manifest code for kusv_msgs"
 	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs kusv_msgs geometry_msgs sensor_msgs std_msgs jsk_recognition_msgs
 
 kusv_msgs_generate_messages_eus: msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus
@@ -135,10 +150,11 @@ kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_
 kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/Waypoint.l
 kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObject.l
 kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/PolyfitLaneData.l
-kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/LanePointData.l
+kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l
 kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/PolyfitLaneDataArray.l
 kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/WaypointArray.l
 kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/kusv_CanInfo.l
+kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/LanePointData.l
 kusv_msgs_generate_messages_eus: /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/manifest.l
 kusv_msgs_generate_messages_eus: msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus.dir/build.make
 

@@ -2,6 +2,7 @@
 cd3dc3d81b2273907a3f9978354aed57 /home/lke/ACL_KUSV/devel/include/gnss_localizer/StartDR.h
 1fae04a6ed0436374491c94c5877e0fe /home/lke/ACL_KUSV/devel/include/kusv_msgs/ControlCmd.h
 7ec6ddcb0d4b06885afcb758ed2a5958 /home/lke/ACL_KUSV/devel/include/kusv_msgs/DetectedObject.h
+8067464c0979d396b62c92eda913711b /home/lke/ACL_KUSV/devel/include/kusv_msgs/DetectedObjectArray.h
 4a5828c23f263f0da8ba1f24dd5f1f00 /home/lke/ACL_KUSV/devel/include/kusv_msgs/LanePointData.h
 2c8a937843e1fb61305473ba6c2c9d8a /home/lke/ACL_KUSV/devel/include/kusv_msgs/PolyfitLaneData.h
 a25d32dfbd6eb31922e603a43c5b0b65 /home/lke/ACL_KUSV/devel/include/kusv_msgs/PolyfitLaneDataArray.h
@@ -95,6 +96,7 @@ e0ab9004ea9b6814274f5b7b90fa9c34 /home/lke/ACL_KUSV/devel/include/velodyne_point
 fdfca9a1d239dd7e62f5cb0f8e8e5933 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/gnss_localizer/msg/__init__.py
 e70a318aafc1c6da130c48551b94dd03 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_ControlCmd.py
 f5e6b65c32dce8d69de90e937fc0d28f /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py
+7a912c83f115b0788b287f9f9358d852 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py
 6d9dfaeaea0b56a3545aea63e42ac22a /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_LanePointData.py
 31ff8fea2cbf012587aaf0658f516b89 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_PolyfitLaneData.py
 364a7bc385ae116b934c74a4114217e2 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_PolyfitLaneDataArray.py
@@ -187,6 +189,7 @@ f4707c8bd51aead7eaa24da165f46966 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-pac
 b8d0f4fa189e0495cab76366652ced2f /home/lke/ACL_KUSV/devel/share/common-lisp/ros/gnss_localizer/msg/StartDR.lisp
 524b257c91d8d75e8a8bddf488e395ef /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/ControlCmd.lisp
 6a0c99f7ffc8859e0439038ab2da46e1 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/DetectedObject.lisp
+f4cef992e5c08c5d77eaca389e7128ec /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/DetectedObjectArray.lisp
 026dd37bede74c4ace17a17a8317c9b4 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/LanePointData.lisp
 5c1f06a29de00cda29072ac0d9b5a4d8 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/PolyfitLaneData.lisp
 b266a906df6a0143b2b45652067e0201 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/PolyfitLaneDataArray.lisp
@@ -275,6 +278,7 @@ b7a2d1afab94676f1f5fc4d26d22a345 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/
 b0f646eba9764f537671ac3ea13a7507 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/gnss_localizer/msg/StartDR.js
 42a1577b6502944ea396ddd99e87255b /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/ControlCmd.js
 dcc850a94b78551993a1b00bbb3a4656 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/DetectedObject.js
+85156b9c37a217dac21d1c5f4ed84381 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/DetectedObjectArray.js
 8f477853d10e0013235be9eff4e1b9d5 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/LanePointData.js
 791ce5e54745c20b59e6f15239fab3d5 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/PolyfitLaneData.js
 d67017af1a506a38935c4de2a753cdf4 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/PolyfitLaneDataArray.js
@@ -365,6 +369,7 @@ ce640aeaee942977e5c64b6d681274de /home/lke/ACL_KUSV/devel/share/gennodejs/ros/ub
 3f07f661a13aa0bea301ba5919a3fd2a /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/manifest.l
 d2539c44760fcf36ea4fb93e8685e11f /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/ControlCmd.l
 135048cccac96ab33e18616190e598e4 /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObject.l
+173e3cf903b312f30c9fa5bf7f0c7451 /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l
 e82f48b75c5a7f802bbf37fe241d32cd /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/LanePointData.l
 bcc6e65b5182dd3b490c5b37ad89aff6 /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/PolyfitLaneData.l
 6317f1a075b54500e39c35fd6ac2566a /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/PolyfitLaneDataArray.l
@@ -456,6 +461,7 @@ e226b1453a8db051d619c94495685f39 /home/lke/ACL_KUSV/devel/share/roseus/ros/velod
 78723406eb99d84a89fd590132bd0675 CMakeFiles/clean_test_results
 752c9ee8fad43aa65187d482666ffe84 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_ControlCmd
 516d22244dadcdd8340cbe216ba1eb07 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_DetectedObject
+4705ab972246688aadcdd7a88254aa87 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_DetectedObjectArray
 512281c314de1da01f94a7cb36370b66 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_LanePointData
 b4c7550077431a9247f1d519abb55dd1 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_PolyfitLaneData
 21baf168d2f7cf07613e4b9f38e11883 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_PolyfitLaneDataArray

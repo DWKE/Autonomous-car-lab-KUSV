@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg"
+messages_str = "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObjectArray.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg;/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg"
 services_str = ""
 pkg_name = "kusv_msgs"
 dependencies_str = "geometry_msgs;sensor_msgs;std_msgs;jsk_recognition_msgs"

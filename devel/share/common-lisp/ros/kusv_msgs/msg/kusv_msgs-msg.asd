@@ -11,6 +11,8 @@
     (:file "_package_ControlCmd" :depends-on ("_package"))
     (:file "DetectedObject" :depends-on ("_package_DetectedObject"))
     (:file "_package_DetectedObject" :depends-on ("_package"))
+    (:file "DetectedObjectArray" :depends-on ("_package_DetectedObjectArray"))
+    (:file "_package_DetectedObjectArray" :depends-on ("_package"))
     (:file "LanePointData" :depends-on ("_package_LanePointData"))
     (:file "_package_LanePointData" :depends-on ("_package"))
     (:file "PolyfitLaneData" :depends-on ("_package_PolyfitLaneData"))
