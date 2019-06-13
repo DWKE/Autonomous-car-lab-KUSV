@@ -1,0 +1,24 @@
+#include "tracker.hpp"
+
+typedef pcl::PointCloud<pcl::PointXYZI> PointCloudXYZI;
+
+Tracker::Tracker()
+{
+	// define publisher
+	pub_result = nh.advertise<PointCloudXYZI> ("output", 1);
+
+	// define subsciber
+	sub_velodyne = nh.subscribe ("input", 1, &Tracker::velodyne_callback);
+}
+
+
+Tracker::mainLoop()
+{
+	ros::Rate loop_rate(50);
+
+	while(ros::ok())
+	{
+		spinOnce();
+		loop_rate.sleep();
+	}
+}
