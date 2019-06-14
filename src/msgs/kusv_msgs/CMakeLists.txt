@@ -55,6 +55,7 @@ find_package(catkin REQUIRED COMPONENTS
    FILES
        ControlCmd.msg
        DetectedObject.msg
+       DetectedObjectArray.msg
        PolyfitLaneData.msg
        PolyfitLaneDataArray.msg
        Waypoint.msg

@@ -21,5 +21,3 @@ float64 cluster_odometer
 float64 lon_acc_speed
 uint8 vehicle_speed_engine
 float64 yaw_rate 
-
-

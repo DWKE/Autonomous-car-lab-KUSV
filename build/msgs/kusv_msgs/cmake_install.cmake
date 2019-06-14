@@ -36,6 +36,7 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/kusv_msgs/msg" TYPE FILE FILES
     "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg"
     "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg"
+    "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObjectArray.msg"
     "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneData.msg"
     "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/PolyfitLaneDataArray.msg"
     "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg"

@@ -2,6 +2,7 @@
 "use strict";
 
 let ControlCmd = require('./ControlCmd.js');
+let DetectedObjectArray = require('./DetectedObjectArray.js');
 let PolyfitLaneDataArray = require('./PolyfitLaneDataArray.js');
 let WaypointArray = require('./WaypointArray.js');
 let LanePointData = require('./LanePointData.js');
@@ -12,6 +13,7 @@ let kusv_CanInfo = require('./kusv_CanInfo.js');
 
 module.exports = {
   ControlCmd: ControlCmd,
+  DetectedObjectArray: DetectedObjectArray,
   PolyfitLaneDataArray: PolyfitLaneDataArray,
   WaypointArray: WaypointArray,
   LanePointData: LanePointData,
