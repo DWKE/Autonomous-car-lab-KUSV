@@ -30,7 +30,7 @@ public:
 
     }
 
-    void waypoints_to_lane() {
+    void waypointsToLane() {
 
     }
 
@@ -41,7 +41,7 @@ public:
 
 int main(int argc, char** argv)
 {
-    ros::init(argc, argv, "local_planner");
+    ros::init(argc, argv, "LocalRouteFromMap");
 
     ros::Rate loop_rate(100);
 

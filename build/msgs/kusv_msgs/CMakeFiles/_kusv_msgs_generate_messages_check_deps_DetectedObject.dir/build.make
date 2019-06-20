@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/lke/ACL_KUSV/build
 include msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_DetectedObject.dir/progress.make
 
 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_DetectedObject:
-	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py kusv_msgs /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg geometry_msgs/Twist:std_msgs/Header:geometry_msgs/Quaternion:geometry_msgs/Point:geometry_msgs/Vector3:sensor_msgs/PointField:geometry_msgs/Pose:sensor_msgs/PointCloud2
+	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py kusv_msgs /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg geometry_msgs/Quaternion:geometry_msgs/Pose:geometry_msgs/Point
 
 _kusv_msgs_generate_messages_check_deps_DetectedObject: msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_DetectedObject
 _kusv_msgs_generate_messages_check_deps_DetectedObject: msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_DetectedObject.dir/build.make

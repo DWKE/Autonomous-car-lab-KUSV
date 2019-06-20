@@ -82,14 +82,9 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/dev
 
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg
-/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py: /opt/ros/kinetic/share/geometry_msgs/msg/Twist.msg
-/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
-/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py: /opt/ros/kinetic/share/sensor_msgs/msg/PointField.msg
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
-/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py: /opt/ros/kinetic/share/sensor_msgs/msg/PointCloud2.msg
+/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG kusv_msgs/DetectedObject"
 	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg
 
@@ -100,15 +95,10 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_py: /home/lke/ACL_KUSV/dev
 
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObjectArray.msg
-/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py: /opt/ros/kinetic/share/geometry_msgs/msg/Twist.msg
-/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
-/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py: /opt/ros/kinetic/share/sensor_msgs/msg/PointField.msg
-/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
-/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py: /opt/ros/kinetic/share/sensor_msgs/msg/PointCloud2.msg
+/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg
+/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Python from MSG kusv_msgs/DetectedObjectArray"
 	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObjectArray.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg
 

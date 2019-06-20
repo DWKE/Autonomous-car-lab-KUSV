@@ -1,5 +1,5 @@
 #include <ros/ros.h>
-#include <geometry_msgs/Pose.h>
+#include <geometry_msgs/PoseStamped.h>
 #include "kusv_msgs/PolyfitLaneData.h"
 #include "kusv_msgs/Waypoint.h"
 #include "nav_msgs/Odometry.h"
@@ -8,9 +8,9 @@
 #define LANE_KEEPING_MODE 0
 #define WAYPOINTS_FOLLOWING_MODE 1
 
-// input : camera_abcd, pose, waypoints_abcd
-// output : final_abcd
-// todo : range_cp tuning
+// input : camera_driving_way, pose, waypoints_driving_way
+// output : final_driving_way
+// todo : enu converting, range_cp tuning
 
 class WaypointsManager {
 private:
@@ -81,7 +81,7 @@ public:
 
 int main(int argc, char** argv)
 {
-    ros::init(argc, argv, "local_routes_manager");
+    ros::init(argc, argv, "LocalRoutesManager");
     ros::Time::init();
 
     ros::Rate loop_rate(100);

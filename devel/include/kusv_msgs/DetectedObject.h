@@ -16,9 +16,7 @@
 #include <ros/message_operations.h>
 
 #include <geometry_msgs/Pose.h>
-#include <geometry_msgs/Twist.h>
-#include <geometry_msgs/Twist.h>
-#include <sensor_msgs/PointCloud2.h>
+#include <geometry_msgs/Point.h>
 
 namespace kusv_msgs
 {
@@ -28,32 +26,32 @@ struct DetectedObject_
   typedef DetectedObject_<ContainerAllocator> Type;
 
   DetectedObject_()
-    : pose()
-    , velocity()
-    , acceleration()
-    , pointcloud()  {
+    : id(0)
+    , label()
+    , pose()
+    , convex_hull()  {
     }
   DetectedObject_(const ContainerAllocator& _alloc)
-    : pose(_alloc)
-    , velocity(_alloc)
-    , acceleration(_alloc)
-    , pointcloud(_alloc)  {
+    : id(0)
+    , label(_alloc)
+    , pose(_alloc)
+    , convex_hull(_alloc)  {
   (void)_alloc;
     }
 
 
 
+   typedef uint32_t _id_type;
+  _id_type id;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _label_type;
+  _label_type label;
+
    typedef  ::geometry_msgs::Pose_<ContainerAllocator>  _pose_type;
   _pose_type pose;
 
-   typedef  ::geometry_msgs::Twist_<ContainerAllocator>  _velocity_type;
-  _velocity_type velocity;
-
-   typedef  ::geometry_msgs::Twist_<ContainerAllocator>  _acceleration_type;
-  _acceleration_type acceleration;
-
-   typedef  ::sensor_msgs::PointCloud2_<ContainerAllocator>  _pointcloud_type;
-  _pointcloud_type pointcloud;
+   typedef std::vector< ::geometry_msgs::Point_<ContainerAllocator> , typename ContainerAllocator::template rebind< ::geometry_msgs::Point_<ContainerAllocator> >::other >  _convex_hull_type;
+  _convex_hull_type convex_hull;
 
 
 
@@ -133,12 +131,12 @@ struct MD5Sum< ::kusv_msgs::DetectedObject_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "779bf294e9f0ab0abf51917dfe071897";
+    return "cb70f119525e9d60b681d941cb0e2d32";
   }
 
   static const char* value(const ::kusv_msgs::DetectedObject_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x779bf294e9f0ab0aULL;
-  static const uint64_t static_value2 = 0xbf51917dfe071897ULL;
+  static const uint64_t static_value1 = 0xcb70f119525e9d60ULL;
+  static const uint64_t static_value2 = 0xb681d941cb0e2d32ULL;
 };
 
 template<class ContainerAllocator>
@@ -157,11 +155,11 @@ struct Definition< ::kusv_msgs::DetectedObject_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "geometry_msgs/Pose              pose\n\
-geometry_msgs/Twist             velocity\n\
-geometry_msgs/Twist             acceleration\n\
+    return "uint32 id\n\
+string label\n\
 \n\
-sensor_msgs/PointCloud2         pointcloud\n\
+geometry_msgs/Pose pose\n\
+geometry_msgs/Point[] convex_hull\n\
 \n\
 ================================================================================\n\
 MSG: geometry_msgs/Pose\n\
@@ -184,90 +182,6 @@ float64 x\n\
 float64 y\n\
 float64 z\n\
 float64 w\n\
-\n\
-================================================================================\n\
-MSG: geometry_msgs/Twist\n\
-# This expresses velocity in free space broken into its linear and angular parts.\n\
-Vector3  linear\n\
-Vector3  angular\n\
-\n\
-================================================================================\n\
-MSG: geometry_msgs/Vector3\n\
-# This represents a vector in free space. \n\
-# It is only meant to represent a direction. Therefore, it does not\n\
-# make sense to apply a translation to it (e.g., when applying a \n\
-# generic rigid transformation to a Vector3, tf2 will only apply the\n\
-# rotation). If you want your data to be translatable too, use the\n\
-# geometry_msgs/Point message instead.\n\
-\n\
-float64 x\n\
-float64 y\n\
-float64 z\n\
-================================================================================\n\
-MSG: sensor_msgs/PointCloud2\n\
-# This message holds a collection of N-dimensional points, which may\n\
-# contain additional information such as normals, intensity, etc. The\n\
-# point data is stored as a binary blob, its layout described by the\n\
-# contents of the \"fields\" array.\n\
-\n\
-# The point cloud data may be organized 2d (image-like) or 1d\n\
-# (unordered). Point clouds organized as 2d images may be produced by\n\
-# camera depth sensors such as stereo or time-of-flight.\n\
-\n\
-# Time of sensor data acquisition, and the coordinate frame ID (for 3d\n\
-# points).\n\
-Header header\n\
-\n\
-# 2D structure of the point cloud. If the cloud is unordered, height is\n\
-# 1 and width is the length of the point cloud.\n\
-uint32 height\n\
-uint32 width\n\
-\n\
-# Describes the channels and their layout in the binary data blob.\n\
-PointField[] fields\n\
-\n\
-bool    is_bigendian # Is this data bigendian?\n\
-uint32  point_step   # Length of a point in bytes\n\
-uint32  row_step     # Length of a row in bytes\n\
-uint8[] data         # Actual point data, size is (row_step*height)\n\
-\n\
-bool is_dense        # True if there are no invalid points\n\
-\n\
-================================================================================\n\
-MSG: std_msgs/Header\n\
-# Standard metadata for higher-level stamped data types.\n\
-# This is generally used to communicate timestamped data \n\
-# in a particular coordinate frame.\n\
-# \n\
-# sequence ID: consecutively increasing ID \n\
-uint32 seq\n\
-#Two-integer timestamp that is expressed as:\n\
-# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')\n\
-# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')\n\
-# time-handling sugar is provided by the client library\n\
-time stamp\n\
-#Frame this data is associated with\n\
-# 0: no frame\n\
-# 1: global frame\n\
-string frame_id\n\
-\n\
-================================================================================\n\
-MSG: sensor_msgs/PointField\n\
-# This message holds the description of one point entry in the\n\
-# PointCloud2 message format.\n\
-uint8 INT8    = 1\n\
-uint8 UINT8   = 2\n\
-uint8 INT16   = 3\n\
-uint8 UINT16  = 4\n\
-uint8 INT32   = 5\n\
-uint8 UINT32  = 6\n\
-uint8 FLOAT32 = 7\n\
-uint8 FLOAT64 = 8\n\
-\n\
-string name      # Name of field\n\
-uint32 offset    # Offset from start of point struct\n\
-uint8  datatype  # Datatype enumeration, see above\n\
-uint32 count     # How many elements in the field\n\
 ";
   }
 
@@ -286,10 +200,10 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
+      stream.next(m.id);
+      stream.next(m.label);
       stream.next(m.pose);
-      stream.next(m.velocity);
-      stream.next(m.acceleration);
-      stream.next(m.pointcloud);
+      stream.next(m.convex_hull);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -308,18 +222,21 @@ struct Printer< ::kusv_msgs::DetectedObject_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::kusv_msgs::DetectedObject_<ContainerAllocator>& v)
   {
+    s << indent << "id: ";
+    Printer<uint32_t>::stream(s, indent + "  ", v.id);
+    s << indent << "label: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.label);
     s << indent << "pose: ";
     s << std::endl;
     Printer< ::geometry_msgs::Pose_<ContainerAllocator> >::stream(s, indent + "  ", v.pose);
-    s << indent << "velocity: ";
-    s << std::endl;
-    Printer< ::geometry_msgs::Twist_<ContainerAllocator> >::stream(s, indent + "  ", v.velocity);
-    s << indent << "acceleration: ";
-    s << std::endl;
-    Printer< ::geometry_msgs::Twist_<ContainerAllocator> >::stream(s, indent + "  ", v.acceleration);
-    s << indent << "pointcloud: ";
-    s << std::endl;
-    Printer< ::sensor_msgs::PointCloud2_<ContainerAllocator> >::stream(s, indent + "  ", v.pointcloud);
+    s << indent << "convex_hull[]" << std::endl;
+    for (size_t i = 0; i < v.convex_hull.size(); ++i)
+    {
+      s << indent << "  convex_hull[" << i << "]: ";
+      s << std::endl;
+      s << indent;
+      Printer< ::geometry_msgs::Point_<ContainerAllocator> >::stream(s, indent + "    ", v.convex_hull[i]);
+    }
   }
 };
 

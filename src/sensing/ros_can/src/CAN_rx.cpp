@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <can_msgs/Frame.h>
-#include "ros_can/kusv_CanInfo.h"
+#include "kusv_msgs/kusv_CanInfo.h"
 #include <string>
 #include <math.h>
 #include <iostream>
@@ -241,7 +241,7 @@ void canmsg_Callback(const can_msgs::Frame::ConstPtr& L_msg)
 
 uint8_t CAN_Info_Publish(ros::NodeHandle n, ros::Publisher pub)
 {
-    ros_can::kusv_CanInfo msg_CAN_Signal;
+    kusv_msgs::kusv_CanInfo msg_CAN_Signal;
 
     msg_CAN_Signal.header.stamp = ros::Time::now();
     msg_CAN_Signal.speedfl = st_dFL;
@@ -287,7 +287,7 @@ int main(int argc, char** argv)
     ros::NodeHandle nh_pub;
     ros::NodeHandle nh_sub;
 
-    ros::Publisher can_pub = nh_pub.advertise<ros_can::kusv_CanInfo>("kusv_CanInfo", 100);
+    ros::Publisher can_pub = nh_pub.advertise<kusv_msgs::kusv_CanInfo>("kusv_CanInfo", 100);
     ros::Subscriber can_sub = nh_sub.subscribe("can_rx", 500, canmsg_Callback);                  // can Rx setting (In person side)
 
     ros::AsyncSpinner spinner(4);                                                                  // use 3 threads 1. can tx, 2. can rx, 3. Keyboard_Interface  // can rx2

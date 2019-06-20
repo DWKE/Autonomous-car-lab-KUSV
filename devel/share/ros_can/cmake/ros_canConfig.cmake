@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(ros_can_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/lke/ACL_KUSV/devel/include;/home/lke/ACL_KUSV/src/sensing/ros_can/include " STREQUAL " ")
+if(NOT "/home/lke/ACL_KUSV/src/sensing/ros_can/include " STREQUAL " ")
   set(ros_can_INCLUDE_DIRS "")
-  set(_include_dirs "/home/lke/ACL_KUSV/devel/include;/home/lke/ACL_KUSV/src/sensing/ros_can/include")
+  set(_include_dirs "/home/lke/ACL_KUSV/src/sensing/ros_can/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -152,7 +152,7 @@ foreach(library ${libraries})
   endif()
 endforeach()
 
-set(ros_can_EXPORTED_TARGETS "ros_can_generate_messages_cpp;ros_can_generate_messages_eus;ros_can_generate_messages_lisp;ros_can_generate_messages_nodejs;ros_can_generate_messages_py")
+set(ros_can_EXPORTED_TARGETS "")
 # create dummy targets for exported code generation targets to make life of users easier
 foreach(t ${ros_can_EXPORTED_TARGETS})
   if(NOT TARGET ${t})
@@ -160,7 +160,7 @@ foreach(t ${ros_can_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "can_msgs;geometry_msgs;message_generation;roscpp;std_msgs")
+set(depends "can_msgs;geometry_msgs;message_generation;roscpp;std_msgs;kusv_msgs")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls
@@ -189,7 +189,7 @@ foreach(depend ${depends})
   list(APPEND ros_can_EXPORTED_TARGETS ${${ros_can_dep}_EXPORTED_TARGETS})
 endforeach()
 
-set(pkg_cfg_extras "ros_can-msg-extras.cmake")
+set(pkg_cfg_extras "")
 foreach(extra ${pkg_cfg_extras})
   if(NOT IS_ABSOLUTE ${extra})
     set(extra ${ros_can_DIR}/${extra})

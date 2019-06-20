@@ -3,7 +3,7 @@
 #include "kusv_msgs/PolyfitLaneData.h"
 #include "kusv_msgs/DetectedObjectArray.h"
 
-// input : final_driving_way, object
+// input : final_driving_way, objects
 // output : control_cmd
 
 class LocalPlanner {
@@ -49,7 +49,7 @@ public:
 
 int main(int argc, char** argv)
 {
-    ros::init(argc, argv, "local_planner");
+    ros::init(argc, argv, "LocalPlanner");
 
     ros::Rate loop_rate(100);
 

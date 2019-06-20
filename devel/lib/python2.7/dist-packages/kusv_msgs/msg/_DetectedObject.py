@@ -5,19 +5,17 @@ python3 = True if sys.hexversion > 0x03000000 else False
 import genpy
 import struct
 
-import std_msgs.msg
 import geometry_msgs.msg
-import sensor_msgs.msg
 
 class DetectedObject(genpy.Message):
-  _md5sum = "779bf294e9f0ab0abf51917dfe071897"
+  _md5sum = "cb70f119525e9d60b681d941cb0e2d32"
   _type = "kusv_msgs/DetectedObject"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """geometry_msgs/Pose              pose
-geometry_msgs/Twist             velocity
-geometry_msgs/Twist             acceleration
+  _full_text = """uint32 id
+string label
 
-sensor_msgs/PointCloud2         pointcloud
+geometry_msgs/Pose pose
+geometry_msgs/Point[] convex_hull
 
 ================================================================================
 MSG: geometry_msgs/Pose
@@ -40,93 +38,9 @@ float64 x
 float64 y
 float64 z
 float64 w
-
-================================================================================
-MSG: geometry_msgs/Twist
-# This expresses velocity in free space broken into its linear and angular parts.
-Vector3  linear
-Vector3  angular
-
-================================================================================
-MSG: geometry_msgs/Vector3
-# This represents a vector in free space. 
-# It is only meant to represent a direction. Therefore, it does not
-# make sense to apply a translation to it (e.g., when applying a 
-# generic rigid transformation to a Vector3, tf2 will only apply the
-# rotation). If you want your data to be translatable too, use the
-# geometry_msgs/Point message instead.
-
-float64 x
-float64 y
-float64 z
-================================================================================
-MSG: sensor_msgs/PointCloud2
-# This message holds a collection of N-dimensional points, which may
-# contain additional information such as normals, intensity, etc. The
-# point data is stored as a binary blob, its layout described by the
-# contents of the "fields" array.
-
-# The point cloud data may be organized 2d (image-like) or 1d
-# (unordered). Point clouds organized as 2d images may be produced by
-# camera depth sensors such as stereo or time-of-flight.
-
-# Time of sensor data acquisition, and the coordinate frame ID (for 3d
-# points).
-Header header
-
-# 2D structure of the point cloud. If the cloud is unordered, height is
-# 1 and width is the length of the point cloud.
-uint32 height
-uint32 width
-
-# Describes the channels and their layout in the binary data blob.
-PointField[] fields
-
-bool    is_bigendian # Is this data bigendian?
-uint32  point_step   # Length of a point in bytes
-uint32  row_step     # Length of a row in bytes
-uint8[] data         # Actual point data, size is (row_step*height)
-
-bool is_dense        # True if there are no invalid points
-
-================================================================================
-MSG: std_msgs/Header
-# Standard metadata for higher-level stamped data types.
-# This is generally used to communicate timestamped data 
-# in a particular coordinate frame.
-# 
-# sequence ID: consecutively increasing ID 
-uint32 seq
-#Two-integer timestamp that is expressed as:
-# * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
-# * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
-# time-handling sugar is provided by the client library
-time stamp
-#Frame this data is associated with
-# 0: no frame
-# 1: global frame
-string frame_id
-
-================================================================================
-MSG: sensor_msgs/PointField
-# This message holds the description of one point entry in the
-# PointCloud2 message format.
-uint8 INT8    = 1
-uint8 UINT8   = 2
-uint8 INT16   = 3
-uint8 UINT16  = 4
-uint8 INT32   = 5
-uint8 UINT32  = 6
-uint8 FLOAT32 = 7
-uint8 FLOAT64 = 8
-
-string name      # Name of field
-uint32 offset    # Offset from start of point struct
-uint8  datatype  # Datatype enumeration, see above
-uint32 count     # How many elements in the field
 """
-  __slots__ = ['pose','velocity','acceleration','pointcloud']
-  _slot_types = ['geometry_msgs/Pose','geometry_msgs/Twist','geometry_msgs/Twist','sensor_msgs/PointCloud2']
+  __slots__ = ['id','label','pose','convex_hull']
+  _slot_types = ['uint32','string','geometry_msgs/Pose','geometry_msgs/Point[]']
 
   def __init__(self, *args, **kwds):
     """
@@ -136,7 +50,7 @@ uint32 count     # How many elements in the field
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       pose,velocity,acceleration,pointcloud
+       id,label,pose,convex_hull
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -145,19 +59,19 @@ uint32 count     # How many elements in the field
     if args or kwds:
       super(DetectedObject, self).__init__(*args, **kwds)
       #message fields cannot be None, assign default values for those that are
+      if self.id is None:
+        self.id = 0
+      if self.label is None:
+        self.label = ''
       if self.pose is None:
         self.pose = geometry_msgs.msg.Pose()
-      if self.velocity is None:
-        self.velocity = geometry_msgs.msg.Twist()
-      if self.acceleration is None:
-        self.acceleration = geometry_msgs.msg.Twist()
-      if self.pointcloud is None:
-        self.pointcloud = sensor_msgs.msg.PointCloud2()
+      if self.convex_hull is None:
+        self.convex_hull = []
     else:
+      self.id = 0
+      self.label = ''
       self.pose = geometry_msgs.msg.Pose()
-      self.velocity = geometry_msgs.msg.Twist()
-      self.acceleration = geometry_msgs.msg.Twist()
-      self.pointcloud = sensor_msgs.msg.PointCloud2()
+      self.convex_hull = []
 
   def _get_types(self):
     """
@@ -171,37 +85,20 @@ uint32 count     # How many elements in the field
     :param buff: buffer, ``StringIO``
     """
     try:
-      _x = self
-      buff.write(_get_struct_19d3I().pack(_x.pose.position.x, _x.pose.position.y, _x.pose.position.z, _x.pose.orientation.x, _x.pose.orientation.y, _x.pose.orientation.z, _x.pose.orientation.w, _x.velocity.linear.x, _x.velocity.linear.y, _x.velocity.linear.z, _x.velocity.angular.x, _x.velocity.angular.y, _x.velocity.angular.z, _x.acceleration.linear.x, _x.acceleration.linear.y, _x.acceleration.linear.z, _x.acceleration.angular.x, _x.acceleration.angular.y, _x.acceleration.angular.z, _x.pointcloud.header.seq, _x.pointcloud.header.stamp.secs, _x.pointcloud.header.stamp.nsecs))
-      _x = self.pointcloud.header.frame_id
+      buff.write(_get_struct_I().pack(self.id))
+      _x = self.label
       length = len(_x)
       if python3 or type(_x) == unicode:
         _x = _x.encode('utf-8')
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_get_struct_2I().pack(_x.pointcloud.height, _x.pointcloud.width))
-      length = len(self.pointcloud.fields)
+      buff.write(_get_struct_7d().pack(_x.pose.position.x, _x.pose.position.y, _x.pose.position.z, _x.pose.orientation.x, _x.pose.orientation.y, _x.pose.orientation.z, _x.pose.orientation.w))
+      length = len(self.convex_hull)
       buff.write(_struct_I.pack(length))
-      for val1 in self.pointcloud.fields:
-        _x = val1.name
-        length = len(_x)
-        if python3 or type(_x) == unicode:
-          _x = _x.encode('utf-8')
-          length = len(_x)
-        buff.write(struct.pack('<I%ss'%length, length, _x))
+      for val1 in self.convex_hull:
         _x = val1
-        buff.write(_get_struct_IBI().pack(_x.offset, _x.datatype, _x.count))
-      _x = self
-      buff.write(_get_struct_B2I().pack(_x.pointcloud.is_bigendian, _x.pointcloud.point_step, _x.pointcloud.row_step))
-      _x = self.pointcloud.data
-      length = len(_x)
-      # - if encoded as a list instead, serialize as bytes instead of string
-      if type(_x) in [list, tuple]:
-        buff.write(struct.pack('<I%sB'%length, length, *_x))
-      else:
-        buff.write(struct.pack('<I%ss'%length, length, _x))
-      buff.write(_get_struct_B().pack(self.pointcloud.is_dense))
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -213,65 +110,36 @@ uint32 count     # How many elements in the field
     try:
       if self.pose is None:
         self.pose = geometry_msgs.msg.Pose()
-      if self.velocity is None:
-        self.velocity = geometry_msgs.msg.Twist()
-      if self.acceleration is None:
-        self.acceleration = geometry_msgs.msg.Twist()
-      if self.pointcloud is None:
-        self.pointcloud = sensor_msgs.msg.PointCloud2()
+      if self.convex_hull is None:
+        self.convex_hull = None
       end = 0
-      _x = self
       start = end
-      end += 164
-      (_x.pose.position.x, _x.pose.position.y, _x.pose.position.z, _x.pose.orientation.x, _x.pose.orientation.y, _x.pose.orientation.z, _x.pose.orientation.w, _x.velocity.linear.x, _x.velocity.linear.y, _x.velocity.linear.z, _x.velocity.angular.x, _x.velocity.angular.y, _x.velocity.angular.z, _x.acceleration.linear.x, _x.acceleration.linear.y, _x.acceleration.linear.z, _x.acceleration.angular.x, _x.acceleration.angular.y, _x.acceleration.angular.z, _x.pointcloud.header.seq, _x.pointcloud.header.stamp.secs, _x.pointcloud.header.stamp.nsecs,) = _get_struct_19d3I().unpack(str[start:end])
+      end += 4
+      (self.id,) = _get_struct_I().unpack(str[start:end])
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
       start = end
       end += length
       if python3:
-        self.pointcloud.header.frame_id = str[start:end].decode('utf-8')
+        self.label = str[start:end].decode('utf-8')
       else:
-        self.pointcloud.header.frame_id = str[start:end]
+        self.label = str[start:end]
       _x = self
       start = end
-      end += 8
-      (_x.pointcloud.height, _x.pointcloud.width,) = _get_struct_2I().unpack(str[start:end])
+      end += 56
+      (_x.pose.position.x, _x.pose.position.y, _x.pose.position.z, _x.pose.orientation.x, _x.pose.orientation.y, _x.pose.orientation.z, _x.pose.orientation.w,) = _get_struct_7d().unpack(str[start:end])
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
-      self.pointcloud.fields = []
+      self.convex_hull = []
       for i in range(0, length):
-        val1 = sensor_msgs.msg.PointField()
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        if python3:
-          val1.name = str[start:end].decode('utf-8')
-        else:
-          val1.name = str[start:end]
+        val1 = geometry_msgs.msg.Point()
         _x = val1
         start = end
-        end += 9
-        (_x.offset, _x.datatype, _x.count,) = _get_struct_IBI().unpack(str[start:end])
-        self.pointcloud.fields.append(val1)
-      _x = self
-      start = end
-      end += 9
-      (_x.pointcloud.is_bigendian, _x.pointcloud.point_step, _x.pointcloud.row_step,) = _get_struct_B2I().unpack(str[start:end])
-      self.pointcloud.is_bigendian = bool(self.pointcloud.is_bigendian)
-      start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      start = end
-      end += length
-      self.pointcloud.data = str[start:end]
-      start = end
-      end += 1
-      (self.pointcloud.is_dense,) = _get_struct_B().unpack(str[start:end])
-      self.pointcloud.is_dense = bool(self.pointcloud.is_dense)
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        self.convex_hull.append(val1)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -284,37 +152,20 @@ uint32 count     # How many elements in the field
     :param numpy: numpy python module
     """
     try:
-      _x = self
-      buff.write(_get_struct_19d3I().pack(_x.pose.position.x, _x.pose.position.y, _x.pose.position.z, _x.pose.orientation.x, _x.pose.orientation.y, _x.pose.orientation.z, _x.pose.orientation.w, _x.velocity.linear.x, _x.velocity.linear.y, _x.velocity.linear.z, _x.velocity.angular.x, _x.velocity.angular.y, _x.velocity.angular.z, _x.acceleration.linear.x, _x.acceleration.linear.y, _x.acceleration.linear.z, _x.acceleration.angular.x, _x.acceleration.angular.y, _x.acceleration.angular.z, _x.pointcloud.header.seq, _x.pointcloud.header.stamp.secs, _x.pointcloud.header.stamp.nsecs))
-      _x = self.pointcloud.header.frame_id
+      buff.write(_get_struct_I().pack(self.id))
+      _x = self.label
       length = len(_x)
       if python3 or type(_x) == unicode:
         _x = _x.encode('utf-8')
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self
-      buff.write(_get_struct_2I().pack(_x.pointcloud.height, _x.pointcloud.width))
-      length = len(self.pointcloud.fields)
+      buff.write(_get_struct_7d().pack(_x.pose.position.x, _x.pose.position.y, _x.pose.position.z, _x.pose.orientation.x, _x.pose.orientation.y, _x.pose.orientation.z, _x.pose.orientation.w))
+      length = len(self.convex_hull)
       buff.write(_struct_I.pack(length))
-      for val1 in self.pointcloud.fields:
-        _x = val1.name
-        length = len(_x)
-        if python3 or type(_x) == unicode:
-          _x = _x.encode('utf-8')
-          length = len(_x)
-        buff.write(struct.pack('<I%ss'%length, length, _x))
+      for val1 in self.convex_hull:
         _x = val1
-        buff.write(_get_struct_IBI().pack(_x.offset, _x.datatype, _x.count))
-      _x = self
-      buff.write(_get_struct_B2I().pack(_x.pointcloud.is_bigendian, _x.pointcloud.point_step, _x.pointcloud.row_step))
-      _x = self.pointcloud.data
-      length = len(_x)
-      # - if encoded as a list instead, serialize as bytes instead of string
-      if type(_x) in [list, tuple]:
-        buff.write(struct.pack('<I%sB'%length, length, *_x))
-      else:
-        buff.write(struct.pack('<I%ss'%length, length, _x))
-      buff.write(_get_struct_B().pack(self.pointcloud.is_dense))
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -327,65 +178,36 @@ uint32 count     # How many elements in the field
     try:
       if self.pose is None:
         self.pose = geometry_msgs.msg.Pose()
-      if self.velocity is None:
-        self.velocity = geometry_msgs.msg.Twist()
-      if self.acceleration is None:
-        self.acceleration = geometry_msgs.msg.Twist()
-      if self.pointcloud is None:
-        self.pointcloud = sensor_msgs.msg.PointCloud2()
+      if self.convex_hull is None:
+        self.convex_hull = None
       end = 0
-      _x = self
       start = end
-      end += 164
-      (_x.pose.position.x, _x.pose.position.y, _x.pose.position.z, _x.pose.orientation.x, _x.pose.orientation.y, _x.pose.orientation.z, _x.pose.orientation.w, _x.velocity.linear.x, _x.velocity.linear.y, _x.velocity.linear.z, _x.velocity.angular.x, _x.velocity.angular.y, _x.velocity.angular.z, _x.acceleration.linear.x, _x.acceleration.linear.y, _x.acceleration.linear.z, _x.acceleration.angular.x, _x.acceleration.angular.y, _x.acceleration.angular.z, _x.pointcloud.header.seq, _x.pointcloud.header.stamp.secs, _x.pointcloud.header.stamp.nsecs,) = _get_struct_19d3I().unpack(str[start:end])
+      end += 4
+      (self.id,) = _get_struct_I().unpack(str[start:end])
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
       start = end
       end += length
       if python3:
-        self.pointcloud.header.frame_id = str[start:end].decode('utf-8')
+        self.label = str[start:end].decode('utf-8')
       else:
-        self.pointcloud.header.frame_id = str[start:end]
+        self.label = str[start:end]
       _x = self
       start = end
-      end += 8
-      (_x.pointcloud.height, _x.pointcloud.width,) = _get_struct_2I().unpack(str[start:end])
+      end += 56
+      (_x.pose.position.x, _x.pose.position.y, _x.pose.position.z, _x.pose.orientation.x, _x.pose.orientation.y, _x.pose.orientation.z, _x.pose.orientation.w,) = _get_struct_7d().unpack(str[start:end])
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
-      self.pointcloud.fields = []
+      self.convex_hull = []
       for i in range(0, length):
-        val1 = sensor_msgs.msg.PointField()
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        if python3:
-          val1.name = str[start:end].decode('utf-8')
-        else:
-          val1.name = str[start:end]
+        val1 = geometry_msgs.msg.Point()
         _x = val1
         start = end
-        end += 9
-        (_x.offset, _x.datatype, _x.count,) = _get_struct_IBI().unpack(str[start:end])
-        self.pointcloud.fields.append(val1)
-      _x = self
-      start = end
-      end += 9
-      (_x.pointcloud.is_bigendian, _x.pointcloud.point_step, _x.pointcloud.row_step,) = _get_struct_B2I().unpack(str[start:end])
-      self.pointcloud.is_bigendian = bool(self.pointcloud.is_bigendian)
-      start = end
-      end += 4
-      (length,) = _struct_I.unpack(str[start:end])
-      start = end
-      end += length
-      self.pointcloud.data = str[start:end]
-      start = end
-      end += 1
-      (self.pointcloud.is_dense,) = _get_struct_B().unpack(str[start:end])
-      self.pointcloud.is_dense = bool(self.pointcloud.is_dense)
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        self.convex_hull.append(val1)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -394,33 +216,15 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_IBI = None
-def _get_struct_IBI():
-    global _struct_IBI
-    if _struct_IBI is None:
-        _struct_IBI = struct.Struct("<IBI")
-    return _struct_IBI
-_struct_B = None
-def _get_struct_B():
-    global _struct_B
-    if _struct_B is None:
-        _struct_B = struct.Struct("<B")
-    return _struct_B
-_struct_19d3I = None
-def _get_struct_19d3I():
-    global _struct_19d3I
-    if _struct_19d3I is None:
-        _struct_19d3I = struct.Struct("<19d3I")
-    return _struct_19d3I
-_struct_2I = None
-def _get_struct_2I():
-    global _struct_2I
-    if _struct_2I is None:
-        _struct_2I = struct.Struct("<2I")
-    return _struct_2I
-_struct_B2I = None
-def _get_struct_B2I():
-    global _struct_B2I
-    if _struct_B2I is None:
-        _struct_B2I = struct.Struct("<B2I")
-    return _struct_B2I
+_struct_7d = None
+def _get_struct_7d():
+    global _struct_7d
+    if _struct_7d is None:
+        _struct_7d = struct.Struct("<7d")
+    return _struct_7d
+_struct_3d = None
+def _get_struct_3d():
+    global _struct_3d
+    if _struct_3d is None:
+        _struct_3d = struct.Struct("<3d")
+    return _struct_3d

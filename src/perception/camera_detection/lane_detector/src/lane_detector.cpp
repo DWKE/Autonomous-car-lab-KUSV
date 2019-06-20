@@ -13,6 +13,9 @@
 #include <eigen3/Eigen/Eigen>
 #include <geometry_msgs/Point.h>
 
+// input : image
+// output : driving_way
+
 static std::string OPENCV_WINDOW = "result_video";
 
 class LaneDetector
