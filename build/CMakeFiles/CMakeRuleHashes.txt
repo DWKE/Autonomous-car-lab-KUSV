@@ -1,5 +1,4 @@
 # Hashes of file build rules.
-1fae04a6ed0436374491c94c5877e0fe /home/lke/ACL_KUSV/devel/include/kusv_msgs/ControlCmd.h
 7ec6ddcb0d4b06885afcb758ed2a5958 /home/lke/ACL_KUSV/devel/include/kusv_msgs/DetectedObject.h
 8067464c0979d396b62c92eda913711b /home/lke/ACL_KUSV/devel/include/kusv_msgs/DetectedObjectArray.h
 4a5828c23f263f0da8ba1f24dd5f1f00 /home/lke/ACL_KUSV/devel/include/kusv_msgs/LanePointData.h
@@ -8,7 +7,10 @@ a25d32dfbd6eb31922e603a43c5b0b65 /home/lke/ACL_KUSV/devel/include/kusv_msgs/Poly
 ee604b94bb91d5d3f926baf7a93eff0b /home/lke/ACL_KUSV/devel/include/kusv_msgs/Waypoint.h
 3caa512e70de1c1431cf405c300836d3 /home/lke/ACL_KUSV/devel/include/kusv_msgs/WaypointArray.h
 9cff8bf54f401b27d2d37a923e23ab0d /home/lke/ACL_KUSV/devel/include/kusv_msgs/kusv_CanInfo.h
-b89c50081aea18c9baad7f0107ac05ad /home/lke/ACL_KUSV/devel/include/ros_can/kusv_CanInfo.h
+de61a1e5d62e4caf901b4f5749a724a0 /home/lke/ACL_KUSV/devel/include/kusv_msgs/kusv_GlobalPose.h
+d14efec6e9985f04ac9e0c6cf9cbcccf /home/lke/ACL_KUSV/devel/include/local_planning/Keyboard_Interface.h
+404515a27ee45ab681200844b178a982 /home/lke/ACL_KUSV/devel/include/local_planning/kusv_ControlCmd.h
+1f7860f05d1a37fe75bf8ab5c3fda9ab /home/lke/ACL_KUSV/devel/include/local_planning/kusv_Control_CanInfo.h
 b7842ab9e6cb713cf6f6a15488aa6f30 /home/lke/ACL_KUSV/devel/include/ublox_msgs/Ack.h
 321abafc91ee2c0dd8d62c42221c57a8 /home/lke/ACL_KUSV/devel/include/ublox_msgs/AidALM.h
 80b83963271bc77ced28fea7cb6e8a9e /home/lke/ACL_KUSV/devel/include/ublox_msgs/AidEPH.h
@@ -91,7 +93,6 @@ a3e6e0608d7e4d3fb0f162659f746590 /home/lke/ACL_KUSV/devel/include/ublox_msgs/Upd
 a2675b6500835f96e0601b2467b8d9cc /home/lke/ACL_KUSV/devel/include/velodyne_msgs/VelodyneScan.h
 e0ab9004ea9b6814274f5b7b90fa9c34 /home/lke/ACL_KUSV/devel/include/velodyne_pointcloud/CloudNodeConfig.h
 37e774858120d56a049459de4ffaf4f8 /home/lke/ACL_KUSV/devel/include/velodyne_pointcloud/TransformNodeConfig.h
-e70a318aafc1c6da130c48551b94dd03 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_ControlCmd.py
 f5e6b65c32dce8d69de90e937fc0d28f /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py
 7a912c83f115b0788b287f9f9358d852 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py
 6d9dfaeaea0b56a3545aea63e42ac22a /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_LanePointData.py
@@ -101,8 +102,11 @@ b4019be1f18dc9b31b52ba32e620f7ee /home/lke/ACL_KUSV/devel/lib/python2.7/dist-pac
 30ecc54e516adaf638afdaa28f9ae3b7 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_WaypointArray.py
 030642e49c2c1156e4b221de0460be17 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/__init__.py
 cf018ad20bc3dc3a4611e500bec866fb /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_kusv_CanInfo.py
-e994a54c34967bba260e490109cfd89e /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/ros_can/msg/__init__.py
-31160346e0ddc82d731e19f4dcd7a4db /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/ros_can/msg/_kusv_CanInfo.py
+81b7329044277ab3e45589d0c53fc84f /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_kusv_GlobalPose.py
+240f68ce5ff2d542168cb2e8d7a63d64 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/local_planning/msg/_Keyboard_Interface.py
+02cd08b0cef08ccd3518ed10d76cdf60 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/local_planning/msg/__init__.py
+09cc53e1cad6452e72c5383ccd94d06e /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/local_planning/msg/_kusv_ControlCmd.py
+40c57d16c1eb0272a9384493a56a4f75 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/local_planning/msg/_kusv_Control_CanInfo.py
 19cf79e11a48a5603e393d8405464115 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/ublox_msgs/msg/_Ack.py
 a2f9227c15d18fe15be10e7edb172949 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/ublox_msgs/msg/_AidALM.py
 7fd8069ae7a4929a80d79ff05a107162 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/ublox_msgs/msg/_AidEPH.py
@@ -183,7 +187,6 @@ f4707c8bd51aead7eaa24da165f46966 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-pac
 5aa1de2db3eb0b9b75a5147cfdf17924 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/velodyne_msgs/msg/_VelodynePacket.py
 72838f1054e2808d4de845191592617f /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/velodyne_msgs/msg/_VelodyneScan.py
 011c65fcb45ab9061aee3aab55a98a29 /home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/velodyne_msgs/msg/__init__.py
-524b257c91d8d75e8a8bddf488e395ef /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/ControlCmd.lisp
 6a0c99f7ffc8859e0439038ab2da46e1 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/DetectedObject.lisp
 f4cef992e5c08c5d77eaca389e7128ec /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/DetectedObjectArray.lisp
 026dd37bede74c4ace17a17a8317c9b4 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/LanePointData.lisp
@@ -192,7 +195,10 @@ b266a906df6a0143b2b45652067e0201 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/
 64db561f2ef283cb9d9ac782fcdfa358 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/Waypoint.lisp
 8b8e9ddf6191ca586373f8cb7f3c08c7 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/WaypointArray.lisp
 53ca0007760eeb39fedebd9949cd96ab /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/kusv_CanInfo.lisp
-686054675ae60e3fd08a03de0fe8a899 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/ros_can/msg/kusv_CanInfo.lisp
+e9a784ce2aa7537847c3225f70e1b40c /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/kusv_GlobalPose.lisp
+d10e072284f30b6f3a7fe7f72f622300 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/local_planning/msg/Keyboard_Interface.lisp
+41a1e674d62ff6879b524bd72762fed0 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/local_planning/msg/kusv_ControlCmd.lisp
+0730c0c31f13a7d01e1640bda2eee686 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/local_planning/msg/kusv_Control_CanInfo.lisp
 f534020dfdf896268e3f37f8a5fb049c /home/lke/ACL_KUSV/devel/share/common-lisp/ros/ublox_msgs/msg/Ack.lisp
 d4ddfd03a96c693b647aee437b431722 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/ublox_msgs/msg/AidALM.lisp
 3ea80fecf3bafa83fee40b002b9fb3cc /home/lke/ACL_KUSV/devel/share/common-lisp/ros/ublox_msgs/msg/AidEPH.lisp
@@ -271,7 +277,6 @@ d3b894b657ac09e98b6937c7719ff35e /home/lke/ACL_KUSV/devel/share/common-lisp/ros/
 1928511f8784c952118a9b7ef081c9b1 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/ublox_msgs/msg/UpdSOS_Ack.lisp
 b7a2d1afab94676f1f5fc4d26d22a345 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/velodyne_msgs/msg/VelodynePacket.lisp
 1486b4aeee1185200d1c53284aae07b0 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/velodyne_msgs/msg/VelodyneScan.lisp
-42a1577b6502944ea396ddd99e87255b /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/ControlCmd.js
 dcc850a94b78551993a1b00bbb3a4656 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/DetectedObject.js
 85156b9c37a217dac21d1c5f4ed84381 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/DetectedObjectArray.js
 8f477853d10e0013235be9eff4e1b9d5 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/LanePointData.js
@@ -280,7 +285,10 @@ d67017af1a506a38935c4de2a753cdf4 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/ku
 cc42e1d59f00d7080e277b6a1e460410 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/Waypoint.js
 e95ac348fdb796c3c35e843935e74460 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/WaypointArray.js
 056be2a564ee137be4d220c7c1b31a20 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/kusv_CanInfo.js
-75f7ece0b728b9829fce5809176b62fc /home/lke/ACL_KUSV/devel/share/gennodejs/ros/ros_can/msg/kusv_CanInfo.js
+9b8eec75326cc1fd33f6f9eaef87ad8b /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/kusv_GlobalPose.js
+1c34bef2753bdc32141db4e95bc9968f /home/lke/ACL_KUSV/devel/share/gennodejs/ros/local_planning/msg/Keyboard_Interface.js
+5f047d7959e1b760b5cbf4e45952af47 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/local_planning/msg/kusv_ControlCmd.js
+cf955f491e1470a00a77e73935141be8 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/local_planning/msg/kusv_Control_CanInfo.js
 35622da64ea83cdaa03090dfbb2fb2cd /home/lke/ACL_KUSV/devel/share/gennodejs/ros/ublox_msgs/msg/Ack.js
 f7f609bbf220b2e514fc700ec675657a /home/lke/ACL_KUSV/devel/share/gennodejs/ros/ublox_msgs/msg/AidALM.js
 d39195ff8f7ecb908abe8791b0b6108f /home/lke/ACL_KUSV/devel/share/gennodejs/ros/ublox_msgs/msg/AidEPH.js
@@ -360,7 +368,6 @@ ce640aeaee942977e5c64b6d681274de /home/lke/ACL_KUSV/devel/share/gennodejs/ros/ub
 4d869e67c0c0d737c24e7f24f1345c7a /home/lke/ACL_KUSV/devel/share/gennodejs/ros/velodyne_msgs/msg/VelodynePacket.js
 513beca209b7da5d691a60a7bee253bb /home/lke/ACL_KUSV/devel/share/gennodejs/ros/velodyne_msgs/msg/VelodyneScan.js
 3f07f661a13aa0bea301ba5919a3fd2a /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/manifest.l
-d2539c44760fcf36ea4fb93e8685e11f /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/ControlCmd.l
 135048cccac96ab33e18616190e598e4 /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObject.l
 173e3cf903b312f30c9fa5bf7f0c7451 /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/DetectedObjectArray.l
 e82f48b75c5a7f802bbf37fe241d32cd /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/LanePointData.l
@@ -369,8 +376,11 @@ bcc6e65b5182dd3b490c5b37ad89aff6 /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_
 3be09ec93bfb4ea9f0d44e8347e4a00e /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/Waypoint.l
 b0ca0a7b519c3cc86c1a125ceeaa9fdd /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/WaypointArray.l
 39696f2d342c6c502e3aad098b61e019 /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/kusv_CanInfo.l
-b98c5cef61c3df69e499318471183364 /home/lke/ACL_KUSV/devel/share/roseus/ros/ros_can/manifest.l
-c98c101009ac0e0e6ffbd5a5261599d2 /home/lke/ACL_KUSV/devel/share/roseus/ros/ros_can/msg/kusv_CanInfo.l
+7a076173e22b521b334bf17ec11f478e /home/lke/ACL_KUSV/devel/share/roseus/ros/kusv_msgs/msg/kusv_GlobalPose.l
+073a63dbd25f8620ae1f74290849f976 /home/lke/ACL_KUSV/devel/share/roseus/ros/local_planning/manifest.l
+d893ac78b9fba43b6c6fb6b434b50adc /home/lke/ACL_KUSV/devel/share/roseus/ros/local_planning/msg/Keyboard_Interface.l
+c5e9cd2262819c12ffeee3a6c26da069 /home/lke/ACL_KUSV/devel/share/roseus/ros/local_planning/msg/kusv_ControlCmd.l
+b9bf59019ecd0417c7a743bf9cf6183f /home/lke/ACL_KUSV/devel/share/roseus/ros/local_planning/msg/kusv_Control_CanInfo.l
 2ba981cab8449fb2d1421cd05afc3d28 /home/lke/ACL_KUSV/devel/share/roseus/ros/ublox_msgs/manifest.l
 be5b36fe16bcc85a1bc6d9400f39a638 /home/lke/ACL_KUSV/devel/share/roseus/ros/ublox_msgs/msg/Ack.l
 7f21091f1d518f6d6baa1a1ece354ffa /home/lke/ACL_KUSV/devel/share/roseus/ros/ublox_msgs/msg/AidALM.l
@@ -452,7 +462,14 @@ e226b1453a8db051d619c94495685f39 /home/lke/ACL_KUSV/devel/share/roseus/ros/velod
 82f6634fb6b4ff97eaa86fe47cfba00f /home/lke/ACL_KUSV/devel/share/roseus/ros/velodyne_msgs/msg/VelodynePacket.l
 5f266abbaa87f29994073f00df8d0b0b /home/lke/ACL_KUSV/devel/share/roseus/ros/velodyne_msgs/msg/VelodyneScan.l
 78723406eb99d84a89fd590132bd0675 CMakeFiles/clean_test_results
-752c9ee8fad43aa65187d482666ffe84 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_ControlCmd
+3f88ec4d2763d5a1e266331715b3a028 computing/planning/local_planning/CMakeFiles/_local_planning_generate_messages_check_deps_Keyboard_Interface
+d708a229597164aee8e2623e508e96ff computing/planning/local_planning/CMakeFiles/_local_planning_generate_messages_check_deps_kusv_ControlCmd
+a9c501c71599cc75bd573af887083d73 computing/planning/local_planning/CMakeFiles/_local_planning_generate_messages_check_deps_kusv_Control_CanInfo
+5dcb543d8b84adb73782a44cd7e80368 computing/planning/local_planning/CMakeFiles/local_planning_generate_messages_cpp
+5dcb543d8b84adb73782a44cd7e80368 computing/planning/local_planning/CMakeFiles/local_planning_generate_messages_eus
+5dcb543d8b84adb73782a44cd7e80368 computing/planning/local_planning/CMakeFiles/local_planning_generate_messages_lisp
+5dcb543d8b84adb73782a44cd7e80368 computing/planning/local_planning/CMakeFiles/local_planning_generate_messages_nodejs
+5dcb543d8b84adb73782a44cd7e80368 computing/planning/local_planning/CMakeFiles/local_planning_generate_messages_py
 6950e7a563a1afcbc56ff65c0c481274 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_DetectedObject
 7c36eb5b190121b545b02a15402c6083 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_DetectedObjectArray
 512281c314de1da01f94a7cb36370b66 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_LanePointData
@@ -461,6 +478,7 @@ b4c7550077431a9247f1d519abb55dd1 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_m
 942ccc1edf570748d4c74765f92a3df4 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_Waypoint
 97087baea3127f01e17b9b9b6b8efed5 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_WaypointArray
 c2c86995e39ea9c844a4e0125b82cb57 msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_kusv_CanInfo
+1cb3d67e13b77d988eacc6ede7c7c82b msgs/kusv_msgs/CMakeFiles/_kusv_msgs_generate_messages_check_deps_kusv_GlobalPose
 25f7755b4d651a017d89a37fc40435fe msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_cpp
 25f7755b4d651a017d89a37fc40435fe msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_eus
 25f7755b4d651a017d89a37fc40435fe msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_lisp

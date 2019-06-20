@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/kusv_msgs_generate_messages_cpp"
-  "/home/lke/ACL_KUSV/devel/include/kusv_msgs/ControlCmd.h"
   "/home/lke/ACL_KUSV/devel/include/kusv_msgs/Waypoint.h"
+  "/home/lke/ACL_KUSV/devel/include/kusv_msgs/kusv_GlobalPose.h"
   "/home/lke/ACL_KUSV/devel/include/kusv_msgs/DetectedObject.h"
   "/home/lke/ACL_KUSV/devel/include/kusv_msgs/PolyfitLaneData.h"
   "/home/lke/ACL_KUSV/devel/include/kusv_msgs/DetectedObjectArray.h"

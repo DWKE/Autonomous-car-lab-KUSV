@@ -53,8 +53,8 @@ CMAKE_BINARY_DIR = /home/lke/ACL_KUSV/build
 # Include the progress variables for this target.
 include msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_nodejs.dir/progress.make
 
-msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/ControlCmd.js
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/Waypoint.js
+msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/kusv_GlobalPose.js
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/DetectedObject.js
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/PolyfitLaneData.js
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/DetectedObjectArray.js
@@ -64,11 +64,6 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/LanePointData.js
 
 
-/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/ControlCmd.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
-/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/ControlCmd.js: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from kusv_msgs/ControlCmd.msg"
-	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg
-
 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/Waypoint.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/Waypoint.js: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg
 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
@@ -76,8 +71,14 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV
 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/Waypoint.js: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from kusv_msgs/Waypoint.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from kusv_msgs/Waypoint.msg"
 	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg
+
+/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/kusv_GlobalPose.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/kusv_GlobalPose.js: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg
+/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/kusv_GlobalPose.js: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from kusv_msgs/kusv_GlobalPose.msg"
+	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg
 
 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/DetectedObject.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/DetectedObject.js: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg
@@ -131,8 +132,8 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV
 	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg
 
 kusv_msgs_generate_messages_nodejs: msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_nodejs
-kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/ControlCmd.js
 kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/Waypoint.js
+kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/kusv_GlobalPose.js
 kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/DetectedObject.js
 kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/PolyfitLaneData.js
 kusv_msgs_generate_messages_nodejs: /home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/DetectedObjectArray.js

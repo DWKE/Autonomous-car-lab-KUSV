@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/kusv_msgs_generate_messages_py"
-  "/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_ControlCmd.py"
   "/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_Waypoint.py"
+  "/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_kusv_GlobalPose.py"
   "/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObject.py"
   "/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_PolyfitLaneData.py"
   "/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_DetectedObjectArray.py"

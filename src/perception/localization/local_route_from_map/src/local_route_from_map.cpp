@@ -22,7 +22,7 @@ public:
 
     }
 
-    void poseCallback(geometry_msgs::PoseStampedConstPtr pose) {
+    void poseCallback(const geometry_msgs::PoseStamped::ConstPtr& pose) {
         curr_pose=*pose;
     }
 

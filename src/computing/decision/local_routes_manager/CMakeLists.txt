@@ -20,7 +20,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 ## System dependencies are found with CMake's conventions
- find_package(Boost REQUIRED COMPONENTS system)
+# find_package(Boost REQUIRED COMPONENTS system)
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -128,9 +128,9 @@ include_directories(
 )
 
 add_executable(local_routes_manager src/local_routes_manager.cpp)
+add_dependencies(local_routes_manager ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(local_routes_manager ${catkin_LIBRARIES})
-add_dependencies(local_routes_manager
-        ${catkin_EXPORTED_TARGETS})
+
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}

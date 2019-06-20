@@ -1,7 +1,7 @@
 #include <ros/ros.h>
-#include "kusv_msgs/ControlCmd.h"
 #include "kusv_msgs/PolyfitLaneData.h"
 #include "kusv_msgs/DetectedObjectArray.h"
+#include "local_planning/kusv_Control_CanInfo.h"
 
 // input : final_driving_way, objects
 // output : control_cmd
@@ -15,22 +15,22 @@ private:
 
     kusv_msgs::PolyfitLaneData driving_way;
     kusv_msgs::DetectedObjectArray detected_objects;
-    kusv_msgs::ControlCmd control_cmd;
+    local_planning::kusv_Control_CanInfo control_cmd;
 
 public:
     LocalPlanner()
         :driving_way_sub(nh.subscribe("/final_driving_way", 1000, &LocalPlanner::drivingWayCallback, this)),
           object_sub(nh.subscribe("/objects", 1000, &LocalPlanner::objectCallback, this)),
-          control_pub(nh.advertise<kusv_msgs::ControlCmd>("/control_cmd", 1000))
+          control_pub(nh.advertise<local_planning::kusv_Control_CanInfo>("/control_cmd", 1000))
     {
 
     }
 
-    void drivingWayCallback(kusv_msgs::PolyfitLaneDataConstPtr lane) {
+    void drivingWayCallback(const kusv_msgs::PolyfitLaneData::ConstPtr& lane) {
         driving_way=*lane;
     }
 
-    void objectCallback(kusv_msgs::DetectedObjectArray objects) {
+    void objectCallback(const kusv_msgs::DetectedObjectArray::ConstPtr& objects) {
         detected_objects=*objects;
     }
 

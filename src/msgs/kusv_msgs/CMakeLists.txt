@@ -53,7 +53,6 @@ find_package(catkin REQUIRED COMPONENTS
  add_message_files(
    DIRECTORY msg
    FILES
-       ControlCmd.msg
        DetectedObject.msg
        DetectedObjectArray.msg
        PolyfitLaneData.msg
@@ -62,6 +61,7 @@ find_package(catkin REQUIRED COMPONENTS
        WaypointArray.msg
        kusv_CanInfo.msg
        LanePointData.msg
+       kusv_GlobalPose.msg
  )
 
 ## Generate services in the 'srv' folder

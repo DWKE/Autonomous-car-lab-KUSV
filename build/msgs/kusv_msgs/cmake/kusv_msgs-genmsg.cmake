@@ -17,14 +17,14 @@ add_custom_target(kusv_msgs_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg" NAME_WE)
-add_custom_target(_kusv_msgs_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "kusv_msgs" "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg" ""
-)
-
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg" NAME_WE)
 add_custom_target(_kusv_msgs_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "kusv_msgs" "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg" "geometry_msgs/Quaternion:geometry_msgs/PoseStamped:geometry_msgs/Pose:std_msgs/Header:geometry_msgs/Point"
+)
+
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg" NAME_WE)
+add_custom_target(_kusv_msgs_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "kusv_msgs" "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg" "std_msgs/Header"
 )
 
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg" NAME_WE)
@@ -69,15 +69,15 @@ add_custom_target(_kusv_msgs_generate_messages_check_deps_${_filename}
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(kusv_msgs
-  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/kusv_msgs
-)
-_generate_msg_cpp(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_cpp(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/kusv_msgs
 )
 _generate_msg_cpp(kusv_msgs
@@ -137,9 +137,9 @@ add_custom_target(kusv_msgs_generate_messages_cpp
 add_dependencies(kusv_msgs_generate_messages kusv_msgs_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg" NAME_WE)
-add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_check_deps_${_filename})
@@ -166,15 +166,15 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS kusv_msgs_generate_messages_cpp)
 ### Section generating for lang: geneus
 ### Generating Messages
 _generate_msg_eus(kusv_msgs
-  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/kusv_msgs
-)
-_generate_msg_eus(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_eus(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/kusv_msgs
 )
 _generate_msg_eus(kusv_msgs
@@ -234,9 +234,9 @@ add_custom_target(kusv_msgs_generate_messages_eus
 add_dependencies(kusv_msgs_generate_messages kusv_msgs_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg" NAME_WE)
-add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_check_deps_${_filename})
@@ -263,15 +263,15 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS kusv_msgs_generate_messages_eus)
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(kusv_msgs
-  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/kusv_msgs
-)
-_generate_msg_lisp(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_lisp(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/kusv_msgs
 )
 _generate_msg_lisp(kusv_msgs
@@ -331,9 +331,9 @@ add_custom_target(kusv_msgs_generate_messages_lisp
 add_dependencies(kusv_msgs_generate_messages kusv_msgs_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg" NAME_WE)
-add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_check_deps_${_filename})
@@ -360,15 +360,15 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS kusv_msgs_generate_messages_lisp)
 ### Section generating for lang: gennodejs
 ### Generating Messages
 _generate_msg_nodejs(kusv_msgs
-  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/kusv_msgs
-)
-_generate_msg_nodejs(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_nodejs(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/kusv_msgs
 )
 _generate_msg_nodejs(kusv_msgs
@@ -428,9 +428,9 @@ add_custom_target(kusv_msgs_generate_messages_nodejs
 add_dependencies(kusv_msgs_generate_messages kusv_msgs_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg" NAME_WE)
-add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages_check_deps_${_filename})
@@ -457,15 +457,15 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS kusv_msgs_generate_messages_nodejs)
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(kusv_msgs
-  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg"
-  "${MSG_I_FLAGS}"
-  ""
-  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/kusv_msgs
-)
-_generate_msg_py(kusv_msgs
   "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg"
   "${MSG_I_FLAGS}"
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Quaternion.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/PoseStamped.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Pose.msg;/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/kusv_msgs
+)
+_generate_msg_py(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/kinetic/share/std_msgs/cmake/../msg/Header.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/kusv_msgs
 )
 _generate_msg_py(kusv_msgs
@@ -525,9 +525,9 @@ add_custom_target(kusv_msgs_generate_messages_py
 add_dependencies(kusv_msgs_generate_messages kusv_msgs_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg" NAME_WE)
-add_dependencies(kusv_msgs_generate_messages_py _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_py _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_py _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_py _kusv_msgs_generate_messages_check_deps_${_filename})

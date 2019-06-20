@@ -53,8 +53,8 @@ CMAKE_BINARY_DIR = /home/lke/ACL_KUSV/build
 # Include the progress variables for this target.
 include msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_lisp.dir/progress.make
 
-msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/ControlCmd.lisp
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/Waypoint.lisp
+msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/kusv_GlobalPose.lisp
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/DetectedObject.lisp
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/PolyfitLaneData.lisp
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/DetectedObjectArray.lisp
@@ -64,11 +64,6 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/d
 msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/LanePointData.lisp
 
 
-/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/ControlCmd.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
-/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/ControlCmd.lisp: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from kusv_msgs/ControlCmd.msg"
-	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/ControlCmd.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg
-
 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/Waypoint.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/Waypoint.lisp: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg
 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/Waypoint.lisp: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
@@ -76,8 +71,14 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/d
 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/Waypoint.lisp: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/Waypoint.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/Waypoint.lisp: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from kusv_msgs/Waypoint.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from kusv_msgs/Waypoint.msg"
 	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/Waypoint.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg
+
+/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/kusv_GlobalPose.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
+/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/kusv_GlobalPose.lisp: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg
+/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/kusv_GlobalPose.lisp: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lke/ACL_KUSV/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from kusv_msgs/kusv_GlobalPose.msg"
+	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg
 
 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/DetectedObject.lisp: /opt/ros/kinetic/lib/genlisp/gen_lisp.py
 /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/DetectedObject.lisp: /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/DetectedObject.msg
@@ -131,8 +132,8 @@ msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/d
 	cd /home/lke/ACL_KUSV/build/msgs/kusv_msgs && ../../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg -Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg -Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg -Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg -p kusv_msgs -o /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg
 
 kusv_msgs_generate_messages_lisp: msgs/kusv_msgs/CMakeFiles/kusv_msgs_generate_messages_lisp
-kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/ControlCmd.lisp
 kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/Waypoint.lisp
+kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/kusv_GlobalPose.lisp
 kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/DetectedObject.lisp
 kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/PolyfitLaneData.lisp
 kusv_msgs_generate_messages_lisp: /home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/DetectedObjectArray.lisp

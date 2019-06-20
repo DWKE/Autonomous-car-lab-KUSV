@@ -1,8 +1,6 @@
 (cl:defpackage kusv_msgs-msg
   (:use )
   (:export
-   "<CONTROLCMD>"
-   "CONTROLCMD"
    "<DETECTEDOBJECT>"
    "DETECTEDOBJECT"
    "<DETECTEDOBJECTARRAY>"
@@ -19,5 +17,7 @@
    "WAYPOINTARRAY"
    "<KUSV_CANINFO>"
    "KUSV_CANINFO"
+   "<KUSV_GLOBALPOSE>"
+   "KUSV_GLOBALPOSE"
   ))
 

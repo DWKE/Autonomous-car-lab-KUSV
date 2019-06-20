@@ -6,8 +6,6 @@
                :std_msgs-msg
 )
   :components ((:file "_package")
-    (:file "ControlCmd" :depends-on ("_package_ControlCmd"))
-    (:file "_package_ControlCmd" :depends-on ("_package"))
     (:file "DetectedObject" :depends-on ("_package_DetectedObject"))
     (:file "_package_DetectedObject" :depends-on ("_package"))
     (:file "DetectedObjectArray" :depends-on ("_package_DetectedObjectArray"))
@@ -24,4 +22,6 @@
     (:file "_package_WaypointArray" :depends-on ("_package"))
     (:file "kusv_CanInfo" :depends-on ("_package_kusv_CanInfo"))
     (:file "_package_kusv_CanInfo" :depends-on ("_package"))
+    (:file "kusv_GlobalPose" :depends-on ("_package_kusv_GlobalPose"))
+    (:file "_package_kusv_GlobalPose" :depends-on ("_package"))
   ))
