@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(obstacle_detector)
+project(perception)
+add_compile_options (-std=c++11)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -7,11 +8,18 @@ project(obstacle_detector)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
+find_package(kusv_msgs REQUIRED)
 find_package(catkin REQUIRED COMPONENTS
-  geometry_msgs
-  roscpp
-  std_msgs
-)
+	geometry_msgs
+	pcl_conversions
+	pcl_ros
+	roscpp
+	sensor_msgs
+	cv_bridge
+	kusv_msgs
+	)
+
+find_package(OpenCV REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -70,7 +78,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   geometry_msgs#   std_msgs
+#   geometry_msgs#   sensors_msgs
 # )
 
 ################################################
@@ -103,11 +111,15 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES obstacle_detector
-  CATKIN_DEPENDS geometry_msgs roscpp std_msgs
-#  DEPENDS system_lib
-)
+	CATKIN_DEPENDS 
+	roscpp 
+	kusv_msgs
+	geometry_msgs 
+	pcl_conversions 
+	pcl_ros 
+	sensor_msgs 
+	cv_bridge
+	)
 
 ###########
 ## Build ##
@@ -116,19 +128,15 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
-)
-
-add_executable(obstacle_detector src/obstacle_detector.cpp)
-add_dependencies(obstacle_detector ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(obstacle_detector
-  ${catkin_LIBRARIES}
-)
+	${catkin_INCLUDE_DIRS}
+	${kusv_msgs_INCLUDE_DIRS}
+	${OpenCV_INCLUDE_DIRS}
+	include
+	)
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/obstacle_detector.cpp
+#   src/${PROJECT_NAME}/perception.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -139,7 +147,7 @@ target_link_libraries(obstacle_detector
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/obstacle_detector_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/perception_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -196,10 +204,23 @@ target_link_libraries(obstacle_detector
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_obstacle_detector.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_perception.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(perception
+	src/main.cpp
+	src/tracker.cpp
+	src/obstacle_tracking.cpp
+	src/cluster.cpp
+	src/ray_ground_filter.cpp
+	)
+target_link_libraries(perception
+	${catkin_LIBRARIES} 
+	${OpenCV_INCLUDE_DIRS}
+	)
+add_dependencies(perception ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

@@ -29,34 +29,35 @@ void ObstacleTracking::matchWithDistanceOnly()
 		int iClosest_track = -1;
 		int iClosest_obj = -1;
 		double dClosest = m_MAX_ASSOCIATION_DISTANCE;
-		double size_diff = 0;
-		//std::cout << std::endl;
+		//double size_diff = 0;
 
-		//for(unsigned int jj = 0; jj < m_DetectedObjects.size(); jj++)
-		// foreach detected object pointer
+		// foreach the detected objects 
 		unsigned int objectNum = 0;
 		for (const auto& pDetectedObject : m_DetectedObjects)
 		{
-			double object_size = sqrt (pow(pDetectedObject->m_width, 2.0) + pow(pDetectedObject->m_length, 2.0) + pow(pDetectedObject->m_height, 2.0));
+//			double object_size = sqrt (pow(pDetectedObject->m_width, 2.0) + 
+//					pow(pDetectedObject->m_length, 2.0) + pow(pDetectedObject->m_height, 2.0));
 
-			//for(unsigned int i = 0; i < m_TrackSimply.size(); i++)
+
+			// foreach the tracking objects
 			unsigned int trackNum = 0;
 			for (const auto& pTrackingObject : m_TrackingObjects)
 			{
-				double old_size = sqrt (pow(pTrackingObject->m_width, 2.0) + pow(pTrackingObject->m_height, 2.0) + pow(pTrackingObject->m_length, 2.0));
+//				double old_size = sqrt (pow(pTrackingObject->m_width, 2.0) + 
+//						pow(pTrackingObject->m_height, 2.0) + pow(pTrackingObject->m_length, 2.0));
 
 				d_y = pDetectedObject->m_center.position.y - pTrackingObject->m_center.position.y;
 				d_x = pDetectedObject->m_center.position.x - pTrackingObject->m_center.position.x;
-//				d_y = m_DetectedObjects.at(jj).center.pos.y-m_TrackSimply.at(i).obj.center.pos.y;
-//				d_x = m_DetectedObjects.at(jj).center.pos.x-m_TrackSimply.at(i).obj.center.pos.x;
+				// calculate distance
 				d = hypot(d_y, d_x);
 
+				// find the detected object closest to the tracking object
 				if(d < dClosest)
 				{
 					dClosest = d;
 					iClosest_obj = objectNum;
 					iClosest_track = trackNum;
-					size_diff = fabs(old_size - object_size);
+					//size_diff = fabs(old_size - object_size);
 				}
 				trackNum++;
 			}
@@ -65,8 +66,6 @@ void ObstacleTracking::matchWithDistanceOnly()
 
 		if(iClosest_obj != -1 && iClosest_track != -1 && dClosest < m_MAX_ASSOCIATION_DISTANCE)
 		{
-			//std::cout << "MatchObj: " << m_TrackingObjects.at(iClosest_track)->m_id << ", MinD: " << dClosest << ", SizeDiff: (" << size_diff <<  ")" << ", ObjI " << iClosest_obj <<", TrackI: " << iClosest_track << std::endl;
-
 			m_DetectedObjects.at(iClosest_obj)->m_id = m_TrackingObjects.at(iClosest_track)->m_id;
 			MergeObjectAndTrack(m_TrackingObjects.at(iClosest_track), m_DetectedObjects.at(iClosest_obj));
 

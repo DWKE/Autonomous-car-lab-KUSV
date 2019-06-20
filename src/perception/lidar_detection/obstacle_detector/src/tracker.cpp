@@ -10,20 +10,20 @@ Tracker::Tracker()
 	// define publisher
 	pub_result = nh.advertise<PointCloudXYZI> ("output", 1);
 	pub_shape = nh.advertise<visualization_msgs::MarkerArray>("Shape", 1);
-	pub_detectedObject = nh.advertise<lidar_track_msgs::DetectedObjectArray>("DetectedObject", 1000);
+        pub_detectedObject = nh.advertise<kusv_msgs::DetectedObjectArray>("DetectedObject", 1000);
 
 	// define subsciber
 	sub_velodyne = nh.subscribe ("input", 1, &Tracker::velodyne_callback, this);
 
 
-	m_fMarkerDuration = 0.1f;
-	m_fLeafSize = 0.3f;
-	m_dRange_m = 10.0;
-
 	// set parameter
-	nh.setParam ("Marker_duration", m_fMarkerDuration);
-	nh.setParam ("Voxel_leafsize", m_fLeafSize);
-	nh.setParam ("threshold_range", m_dRange_m);
+	setParameter ();
+
+	// Coordinate
+	double abs = sqrt(pow(m_tf_x, 2.0) + pow(m_tf_y, 2.0) + pow(m_tf_z, 2.0));
+	m_tf_x /= abs;
+	m_tf_y /= abs;
+	m_tf_z /= abs;
 }
 
 Tracker::~Tracker() { }
@@ -34,12 +34,11 @@ void Tracker::mainLoop()
 
 	while(ros::ok())
 	{
-		getParameter();
-
 		ros::spinOnce();
 		loop_rate.sleep();
 	}
 }
+
 
 void Tracker::velodyne_callback (const sensor_msgs::PointCloud2ConstPtr &pInput)
 {
@@ -63,41 +62,29 @@ void Tracker::velodyne_callback (const sensor_msgs::PointCloud2ConstPtr &pInput)
 	// dbscan
 	std::vector<pcl::PointIndices> vecClusterIndices;
 	dbscan(pRemovedGroundCloud, vecClusterIndices);
-	//dbscan(pDownsampledCloud, vecClusterIndices);
 
 	// Set cluster pointcloud from clusterIndices and coloring
-	//setCluster (vecClusterIndices, m_OriginalClusters, pDownsampledCloud);
 	setCluster (vecClusterIndices, m_OriginalClusters, pRemovedGroundCloud);
 
 	// Associate and kalman filter tracking
 	m_ObstacleTracking.associate(m_OriginalClusters);
 
 	// Display shape
-	//displayShape (m_OriginalClusters);
 	displayShape (m_ObstacleTracking.m_TrackingObjects);
 
-	// Accumulate all cluster to pAccumulationCloud
-	pcl::PointCloud<pcl::PointXYZRGB>::Ptr pAccumulationCloud (new pcl::PointCloud<pcl::PointXYZRGB>);
-	pAccumulationCloud->header = pInputCloud->header;
-
-	// accumulation for publish
-	for (const auto& pCluster : m_OriginalClusters)
-		*pAccumulationCloud += *(pCluster->GetCloud());
-
 	// publish
-	pub_result.publish (*pAccumulationCloud);
-	pub_shape.publish (m_arrShapes);
-	pub_detectedObject.publish (m_arrObjects);
-
+	publish();
 }
 
-void Tracker::getParameter()
+
+void Tracker::setParameter()
 {
 	// set parameter
-	nh.getParam ("Marker_duration", m_fMarkerDuration);
-	nh.getParam ("Voxel_leafsize", m_fLeafSize);
-	nh.getParam ("threshold_range", m_dRange_m);
+	nh.param ("Marker_duration", m_fMarkerDuration, 0.1);
+	nh.param ("Voxel_leafsize", m_fLeafSize, 0.3);
+	nh.param ("threshold_range", m_dRange_m, 10.0);
 }
+
 
 void Tracker::thresholding (const PointCloudXYZI::ConstPtr& pInputCloud, PointCloudXYZI::Ptr& pCloudThresholded)
 {
@@ -115,6 +102,7 @@ void Tracker::thresholding (const PointCloudXYZI::ConstPtr& pInputCloud, PointCl
 			pCloudThresholded->push_back (p);
 	}
 }
+
 
 void Tracker::downsample (const PointCloudXYZI::ConstPtr& pInputCloud, PointCloudXYZI::Ptr& pDownsampledCloud, float f_paramLeafSize_m)
 {
@@ -151,6 +139,7 @@ void Tracker::dbscan(const PointCloudXYZI::ConstPtr& pInputCloud, std::vector<pc
 	euclideanCluster.extract (vecClusterIndices);
 }
 
+
 void Tracker::setCluster (const std::vector<pcl::PointIndices> vecClusterIndices, std::vector<clusterPtr>& pOriginalClusters, const PointCloudXYZI::Ptr pInputCloud)
 {
 	pOriginalClusters.clear();
@@ -169,17 +158,12 @@ void Tracker::setCluster (const std::vector<pcl::PointIndices> vecClusterIndices
 		clusterPtr pCluster (new Cluster());
 
 		// Cloring and calculate the cluster center point and quaternion
-		pCluster->SetCloud(pInputCloud, clusterIndice.indices, getHeader(), objectNumber, m_globalRGB[objectNumber].m_r, m_globalRGB[objectNumber].m_g, m_globalRGB[objectNumber].m_b, label, true);
+		pCluster->SetCloud(pInputCloud, clusterIndice.indices, m_velodyne_header, objectNumber, m_globalRGB[objectNumber].m_r, m_globalRGB[objectNumber].m_g, m_globalRGB[objectNumber].m_b, label, true);
 
 		pOriginalClusters.push_back(pCluster);
 
 		objectNumber++;
 	}
-}
-
-std_msgs::Header Tracker::getHeader()
-{
-	return m_velodyne_header;
 }
 
 
@@ -216,16 +200,17 @@ void Tracker::displayShape (const std::vector<clusterPtr> pVecClusters)
 		if (isClusterValid)
 		{
 			visualization_msgs::Marker shape;
-			lidar_track_msgs::DetectedObject object;
+                        kusv_msgs::DetectedObject object;
 
 			shape.lifetime = ros::Duration(m_fMarkerDuration);
-			shape.header.frame_id = "velodyne";
+			shape.header.frame_id = m_velodyne_header.frame_id;
 			shape.id = objectNumber;
 
 
-			shape.color.r = (float)pCluster->m_r/255.0f;
-			shape.color.g = (float)pCluster->m_g/255.0f;
-			shape.color.b = (float)pCluster->m_b/255.0f;
+			//shape.color.b = (float)(*cluster_it)->m_b/255.0f;
+			shape.color.r = 0.0;
+			shape.color.g = 1.0; 
+			shape.color.b = 0.0;
 			shape.color.a = 0.5;
 
 			shape.type = visualization_msgs::Marker::LINE_STRIP;
@@ -246,22 +231,26 @@ void Tracker::displayShape (const std::vector<clusterPtr> pVecClusters)
 
 			m_arrShapes.markers.push_back(shape);
 
+//			shape.type = visualization_msgs::Marker::CUBE;
+//			shape.ns = "/BoundingBox";
+//			shape.points.clear();
+//			shape.pose.position = pCluster->m_center.position;
+//			shape.pose.orientation = pCluster->m_center.orientation;
+//			object.pose = shape.pose;
+//
+//			m_arrShapes.markers.push_back(shape);
 
-			shape.type = visualization_msgs::Marker::CUBE;
-			shape.ns = "/BoundingBox";
 			shape.scale = pCluster->m_dimensions;
 			shape.points.clear();
 			shape.pose.position = pCluster->m_center.position;
 			shape.pose.orientation = pCluster->m_center.orientation;
-			object.pose = shape.pose;
-
-			m_arrShapes.markers.push_back(shape);
-
 			shape.color.r = shape.color.g = shape.color.b = 1.0;
 			shape.color.a = 1.0;
 			shape.type = visualization_msgs::Marker::TEXT_VIEW_FACING;
 			shape.ns = "/Text";
 			shape.text = std::to_string(pCluster->m_id);
+
+			object.pose = shape.pose;
 			object.id = pCluster->m_id;
 			object.label = shape.text;
 
@@ -270,4 +259,32 @@ void Tracker::displayShape (const std::vector<clusterPtr> pVecClusters)
 		}
 		objectNumber++;
 	}
+}
+
+
+void Tracker::publish ()
+{
+	// Accumulate all cluster to pAccumulationCloud
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr pAccumulationCloud (new pcl::PointCloud<pcl::PointXYZRGB>);
+	pAccumulationCloud->header.frame_id = m_velodyne_header.frame_id;
+
+	// accumulation for publish
+	for (const auto& pCluster : m_OriginalClusters)
+		*pAccumulationCloud += *(pCluster->GetCloud());
+
+	// broadcast tf
+	static tf::TransformBroadcaster br;
+	tf::Transform transform;
+
+	transform.setOrigin( tf::Vector3(m_tf_x, m_tf_y, m_tf_z) );
+	tf::Quaternion q;
+	q.setRPY(0.0, 0.0, 0.0);
+	transform.setRotation(q);
+
+	br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "car", "velodyne"));
+
+	// publish
+	pub_result.publish (*pAccumulationCloud);
+	pub_shape.publish (m_arrShapes);
+	pub_detectedObject.publish (m_arrObjects);
 }

@@ -527,6 +527,12 @@ pcl_msgs_DIR:PATH=/opt/ros/kinetic/share/pcl_msgs/cmake
 //The directory containing a CMake configuration file for pcl_ros.
 pcl_ros_DIR:PATH=/opt/ros/kinetic/share/pcl_ros/cmake
 
+//Value Computed by CMake
+perception_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/perception/lidar_detection/obstacle_detector
+
+//Value Computed by CMake
+perception_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/perception/lidar_detection/obstacle_detector
+
 //The directory containing a CMake configuration file for pluginlib.
 pluginlib_DIR:PATH=/opt/ros/kinetic/share/pluginlib/cmake
 
@@ -871,7 +877,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=28
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=26
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

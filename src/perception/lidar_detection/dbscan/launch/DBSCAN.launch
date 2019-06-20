@@ -1,3 +1,0 @@
-<launch>
-	<node pkg="dbscan" type="dbscan" name="dbscan" args="input:=/velodyne_points output:=/clusters"/>
-</launch>
