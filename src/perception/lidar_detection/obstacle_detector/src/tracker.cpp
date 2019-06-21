@@ -11,6 +11,7 @@ Tracker::Tracker()
 	pub_result = nh.advertise<PointCloudXYZI> ("output", 1);
 	pub_shape = nh.advertise<visualization_msgs::MarkerArray>("Shape", 1);
 	pub_detectedObject = nh.advertise<lidar_track_msgs::DetectedObjectArray>("DetectedObject", 1000);
+	pub_Origin = nh.advertise<visualization_msgs::Marker> ("Origin", 1);
 
 	// define subsciber
 	sub_velodyne = nh.subscribe ("input", 1, &Tracker::velodyne_callback, this);
@@ -188,6 +189,37 @@ void Tracker::generateColor(size_t indexNumber)
 
 void Tracker::displayShape (const std::vector<clusterPtr> pVecClusters)
 {
+	// origin
+	m_Origin.header.frame_id = m_velodyne_header.frame_id;
+	m_Origin.header.stamp = ros::Time::now();
+
+	m_Origin.ns = "/origin";
+	m_Origin.id = 0;
+	
+	m_Origin.type = visualization_msgs::Marker::SPHERE;
+
+	m_Origin.action = visualization_msgs::Marker::ADD;
+
+	m_Origin.pose.position.x = 0;
+	m_Origin.pose.position.y = 0;
+	m_Origin.pose.position.z = 0;
+	m_Origin.pose.orientation.x = 0.0;
+	m_Origin.pose.orientation.y = 0.0;
+	m_Origin.pose.orientation.z = 0.0;
+	m_Origin.pose.orientation.w = 1.0;
+
+	m_Origin.scale.x = 0.5;
+	m_Origin.scale.y = 0.5;
+	m_Origin.scale.z = 0.5;
+
+	m_Origin.color.r = 0.0f;
+	m_Origin.color.g = 1.0f;
+	m_Origin.color.b = 0.0f;
+	m_Origin.color.a = 1.0;
+
+	m_Origin.lifetime = ros::Duration();
+
+	// tracking objects
 	m_arrShapes.markers.clear();
 	m_arrObjects.objects.clear();
 
@@ -285,6 +317,7 @@ void Tracker::publish ()
 
 	// publish
 	pub_result.publish (*pAccumulationCloud);
-	pub_shape.publish (m_arrShapes);
+	//pub_shape.publish (m_arrShapes);
 	pub_detectedObject.publish (m_arrObjects);
+	pub_Origin.publish(m_Origin);
 }
