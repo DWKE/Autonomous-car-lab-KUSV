@@ -94,7 +94,7 @@ public:
 
 
                 if(i_point+1 == sample_size) {
-                    for(int i = m_minIndx-2; i < m_minIndx+20; i++) {
+                    for(int i = m_minIndx-2; i < m_minIndx+50; i++) {
                         geometry_msgs::PointStamped sample_world;
                         sample_world.header.frame_id = "/world";
                         sample_world.header.stamp = ros::Time(0);

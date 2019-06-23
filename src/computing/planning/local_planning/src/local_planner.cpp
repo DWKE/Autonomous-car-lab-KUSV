@@ -6,6 +6,8 @@
 #include "local_planning/kusv_ControlCmd.h"
 
 #define PI 3.14159265359
+#define MAX_SPEED 20
+#define MIN_SPEED 5
 
 //#include "local_planning/kusv_Control_CanInfo.h"
 // input : final_driving_way, objects, vehicle_states
@@ -43,6 +45,7 @@ private:
     double lookAhead = 5;
     double wheelbase = 3;
     double steering = 0;
+    double gain = 0.0015; // gain lower -> speed upper
 
 //    void canrxCallback(const kusv_msgs::kusv_CanInfo &rx);
 //    void drivingWayCallback(const kusv_msgs::PolyfitLaneData::ConstPtr& lane);
@@ -102,7 +105,7 @@ public:
 //        double alpha = atan2(lookahead_error, lookahead_distance);
 
 //        steering = atan2(2 * wheelbase * sin(alpha), lookahead_distance);
-        l_xd = 5;
+        l_xd = 6;
         g_x = l_xd;
         g_y = a3 * l_xd * l_xd * l_xd + a2 * l_xd * l_xd + a1 * l_xd + a0;
         l_d = sqrt(g_x * g_x + g_y * g_y);
@@ -112,18 +115,30 @@ public:
         // steering = atan(2 * wheelbase * sin(alpha) / l_d);
         // steering = atan(2 * wheelbase * (a0 * l_d * l_d * l_d + a1 * l_d * l_d + a2 * l_d + a3)/(a0 * l_d * l_d * l_d + (a1 + 1)* l_d * l_d + a2 * l_d + a3));
         steering = atan(2 * wheelbase * g_y / (g_x * g_x + g_y * g_y));
-        control_cmd.kusv_angular_z = steering * 12 * 180 / PI;
 
-        if(((steering * 12 * 180 / PI) > 15) ||((steering * 12 * 180 / PI) < -15)){
-            target_Speed -= 0.05;
-            if(target_Speed <= 5)
-                target_Speed = 5;
-        }
-        else{
-            target_Speed += 0.02;
-                if(target_Speed >= 10)
-                    target_Speed = 10;
-        }
+        double steering_wheel_angle = steering * 12 * 180 / PI;
+        if(steering_wheel_angle > 480)
+            steering_wheel_angle = 480;
+        else if(steering_wheel_angle < -490)
+            steering_wheel_angle = -490;
+
+        control_cmd.kusv_angular_z = steering_wheel_angle;
+
+//        if(((steering * 12 * 180 / PI) > 75) ||((steering * 12 * 180 / PI) < -75)){
+//            target_Speed -= 0.05;
+//            if(target_Speed <= 10)
+//                target_Speed = 10;
+//        }
+//        else{
+//            target_Speed += 0.02;
+//                if(target_Speed >= 20)
+//                    target_Speed = 20;
+//        }
+        target_Speed = MAX_SPEED - pow(abs(steering_wheel_angle),2)*gain;
+
+        if(target_Speed<MIN_SPEED) target_Speed=MIN_SPEED;
+
+
         control_cmd.kusv_linear_x = target_Speed;
     }
 

@@ -1,7 +1,7 @@
 #include "KusvLane.hpp"
-#include "autonomous_msg/LanePointData.h"
-#include "autonomous_msg/LanePointDataArray.h"
-//#include "autonomous_msg/PolyfitLaneDataArray.h"
+#include "kusv_msgs/LanePointData.h"
+#include "kusv_msgs/LanePointDataArray.h"
+//#include "kusv_msgs/PolyfitLaneDataArray.h"
 #include "geometry_msgs/Point.h"
 #include "geometry_msgs/PointStamped.h"
 #include "geometry_msgs/PoseStamped.h"
@@ -32,13 +32,13 @@ public:
     
     // publisher 
     m_rosPubCsvLanes =
-        m_rosNodeHandler.advertise<autonomous_msg::LanePointDataArray>("csv_lanes", 10);
+        m_rosNodeHandler.advertise<kusv_msgs::LanePointDataArray>("csv_lanes", 10);
 
     m_rosPubCsvLocalLanes =
-        m_rosNodeHandler.advertise<autonomous_msg::LanePointDataArray>("csv_local_map", 10);    
+        m_rosNodeHandler.advertise<kusv_msgs::LanePointDataArray>("csv_local_map", 10);
 
     m_rosPubROILanes =
-        m_rosNodeHandler.advertise<autonomous_msg::LanePointDataArray>("ROI_lanes", 10);
+        m_rosNodeHandler.advertise<kusv_msgs::LanePointDataArray>("ROI_lanes", 10);
 
     m_rosPubLocalPose = 
         m_rosNodeHandler.advertise<geometry_msgs::PoseStamped>("local_pose", 10);
@@ -56,7 +56,7 @@ public:
 
 
     // m_rosPubPolyLanes =
-    //     m_rosNodeHandler.advertise<autonomous_msg::PolyfitLaneDataArray>(
+    //     m_rosNodeHandler.advertise<kusv_msgs::PolyfitLaneDataArray>(
     //         "polyfit_lanes", 10);
 
     m_rosNodeHandler.param("local_route_from_map/ns", m_vehicle_namespace_param,
@@ -105,13 +105,13 @@ protected:
   tf::TransformBroadcaster m_rosTfBroadcaster;
 
   std::string m_path_param;
-  autonomous_msg::LanePointDataArray m_csvLanes;
-  autonomous_msg::LanePointDataArray m_csvLocalLanes;
-  autonomous_msg::LanePointDataArray m_ROILanes;
-  //autonomous_msg::PolyfitLaneDataArray m_polyLanes;
+  kusv_msgs::LanePointDataArray m_csvLanes;
+  kusv_msgs::LanePointDataArray m_csvLocalLanes;
+  kusv_msgs::LanePointDataArray m_ROILanes;
+  //kusv_msgs::PolyfitLaneDataArray m_polyLanes;
 
-  autonomous_msg::LanePointData m_rightLane;
-  //autonomous_msg::PolyfitLaneData m_rightPoly;
+  kusv_msgs::LanePointData m_rightLane;
+  //kusv_msgs::PolyfitLaneData m_rightPoly;
 
 public:
   void loadLaneData() {
@@ -121,7 +121,7 @@ public:
     m_csvLanes.lane.clear();
     for (auto i_lane = 0; i_lane < csvLaneImport.m_vecKusvLanes.size(); i_lane++) 
     {
-      autonomous_msg::LanePointData lane;
+      kusv_msgs::LanePointData lane;
       lane.frame_id = "world";
       lane.id = std::to_string(csvLaneImport.m_vecKusvLanes[i_lane].m_nLaneID);
       for (auto i_point = 0; i_point < csvLaneImport.m_vecKusvLanes[i_lane].m_vecKusvLanePoint.size(); i_point++) 
@@ -148,7 +148,7 @@ public:
 
     for (auto i_lane = 0; i_lane < m_csvLanes.lane.size(); i_lane++) 
     {
-      autonomous_msg::LanePointData local_lane;
+      kusv_msgs::LanePointData local_lane;
       local_lane.frame_id = m_csvLanes.lane[i_lane].frame_id;
       local_lane.id       = m_csvLanes.lane[i_lane].id;
       for (auto i_point = 0; i_point < m_csvLanes.lane[i_lane].point.size(); i_point++) 

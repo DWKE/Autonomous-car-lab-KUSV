@@ -17,6 +17,7 @@
 #include <ros/ros.h>
 #include <can_msgs/Frame.h>
 #include "local_planning/Keyboard_Interface.h"
+#include "kusv_msgs/DR_data.h"
 #include "local_planning/kusv_Control_CanInfo.h"
 #include "local_planning/kusv_ControlCmd.h"
 #include "local_planning/kusv_ObjectCmd.h"
@@ -316,6 +317,8 @@ can_msgs::Frame msg;
 kusv_msgs::kusv_CanInfo msg_CAN;
 local_planning::kusv_Control_CanInfo rpt_CCAN_msg;
 kusv_msgs::kusv_GlobalPose gps_msg;
+kusv_msgs::DR_data msg_DR_data;
+
 
 // Control
 double Acc_value = -3;
@@ -379,6 +382,7 @@ void inputcmdCallback(const local_planning::kusv_ControlCmd::ConstPtr& cmdmsg);
 void objectcmdCallback(const local_planning::kusv_ObjectCmd::ConstPtr& cmdmsg);
 uint8_t CAN_TX_Publish(ros::NodeHandle n, ros::Publisher pub, uint16_t id, uint8_t dlc, uint8_t* data);
 uint8_t CAN_Info_Publish(ros::NodeHandle n, ros::Publisher pub);
+uint8_t DR_data_Publish(ros::NodeHandle n, ros::Publisher pub);
 void Print_for_Test(void);
 void Speed_Control_PID(void);
 void Speed_Control_Distance();
@@ -391,6 +395,9 @@ int main(int argc, char** argv)
         ros::NodeHandle nh2;
         ros::NodeHandle nn;
         ros::NodeHandle nn2;
+        ros::NodeHandle nh3;
+        ros::Publisher ros_can_pub = nh3.advertise<kusv_msgs::DR_data>("/localization/ros_can/DR_data", 500);    // can Tx setting (In person side)
+
         ros::Publisher aggm_pub = nh.advertise<can_msgs::Frame>("can_rx", 500);		// can Tx setting
         ros::Subscriber aggm_sub = nn.subscribe("can_tx",500, canmsgCallback);		// can Rx setting
         ros::Subscriber aggm_sub2 = nn.subscribe("can_tx2",500, canmsg2Callback);		// can Rx setting
@@ -428,6 +435,7 @@ int main(int argc, char** argv)
                     Speed_Control_Distance();
                 Print_for_Test();
                 mo_val.Str.Accel_Dec_Cmd = (uint16_t)((PID_speed + 10.23) * 100);
+                DR_data_Publish(nh3, ros_can_pub); // Publish Dead Reckoning data
 
                 mo_conf.Str.Mo_AlvCnt++;
                 CAN_TX_Publish(nh, aggm_pub, CAN_ID_MO_CONF, 8, mo_conf.CAN_MO_CONF_Data);
@@ -806,4 +814,13 @@ void inputcmdCallback(const local_planning::kusv_ControlCmd::ConstPtr& cmdmsg){
 void objectcmdCallback(const local_planning::kusv_ObjectCmd::ConstPtr& cmdmsg){
     objectDistance = cmdmsg->distance;
     obstacle = cmdmsg->isObstacle;
+}
+
+uint8_t DR_data_Publish(ros::NodeHandle n, ros::Publisher pub)
+{
+        msg_DR_data.header.stamp   = ros::Time::now();
+        msg_DR_data.speed_avr_rear = (RL + RR)/2;
+        msg_DR_data.yaw_rate       = Yaw_rate;
+
+        pub.publish(msg_DR_data);
 }
