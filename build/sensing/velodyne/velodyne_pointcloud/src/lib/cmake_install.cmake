@@ -1,8 +1,8 @@
-# Install script for directory: /home/lke/ACL_KUSV/src/sensing/velodyne/velodyne_pointcloud/src/lib
+# Install script for directory: /home/user/ws_KUSV/Autonomous-car-lab-KUSV/src/sensing/velodyne/velodyne_pointcloud/src/lib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/lke/ACL_KUSV/install")
+  set(CMAKE_INSTALL_PREFIX "/home/user/ws_KUSV/Autonomous-car-lab-KUSV/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,12 +39,12 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libvelodyne_rawdata.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/lke/ACL_KUSV/devel/lib/libvelodyne_rawdata.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/lib/libvelodyne_rawdata.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libvelodyne_rawdata.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libvelodyne_rawdata.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libvelodyne_rawdata.so"
-         OLD_RPATH "/home/lke/ACL_KUSV/devel/lib:/opt/ros/kinetic/lib:"
+         OLD_RPATH "/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/lib:/opt/ros/kinetic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libvelodyne_rawdata.so")

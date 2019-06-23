@@ -2,8 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ublox_gps_node.dir/src/node.cpp.o"
   "CMakeFiles/ublox_gps_node.dir/src/mkgmtime.c.o"
   "CMakeFiles/ublox_gps_node.dir/src/raw_data_pa.cpp.o"
-  "/home/lke/ACL_KUSV/devel/lib/ublox_gps/ublox_gps.pdb"
-  "/home/lke/ACL_KUSV/devel/lib/ublox_gps/ublox_gps"
+  "/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/lib/ublox_gps/ublox_gps.pdb"
+  "/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/lib/ublox_gps/ublox_gps"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -67,14 +67,14 @@ set(ublox_serialization_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(ublox_serialization_SOURCE_PREFIX /home/lke/ACL_KUSV/src/sensing/ublox/ublox_serialization)
-  set(ublox_serialization_DEVEL_PREFIX /home/lke/ACL_KUSV/devel)
+  set(ublox_serialization_SOURCE_PREFIX /home/user/ws_KUSV/Autonomous-car-lab-KUSV/src/sensing/ublox/ublox_serialization)
+  set(ublox_serialization_DEVEL_PREFIX /home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel)
   set(ublox_serialization_INSTALL_PREFIX "")
   set(ublox_serialization_PREFIX ${ublox_serialization_DEVEL_PREFIX})
 else()
   set(ublox_serialization_SOURCE_PREFIX "")
   set(ublox_serialization_DEVEL_PREFIX "")
-  set(ublox_serialization_INSTALL_PREFIX /home/lke/ACL_KUSV/install)
+  set(ublox_serialization_INSTALL_PREFIX /home/user/ws_KUSV/Autonomous-car-lab-KUSV/install)
   set(ublox_serialization_PREFIX ${ublox_serialization_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(ublox_serialization_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/lke/ACL_KUSV/src/sensing/ublox/ublox_serialization/include " STREQUAL " ")
+if(NOT "/home/user/ws_KUSV/Autonomous-car-lab-KUSV/src/sensing/ublox/ublox_serialization/include " STREQUAL " ")
   set(ublox_serialization_INCLUDE_DIRS "")
-  set(_include_dirs "/home/lke/ACL_KUSV/src/sensing/ublox/ublox_serialization/include")
+  set(_include_dirs "/home/user/ws_KUSV/Autonomous-car-lab-KUSV/src/sensing/ublox/ublox_serialization/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT "http://ros.org/wiki/ublox " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/lke/ACL_KUSV/src/sensing/ublox/ublox_serialization/include " STREQ
         message(FATAL_ERROR "Project 'ublox_serialization' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'ublox_serialization' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/lke/ACL_KUSV/src/sensing/ublox/ublox_serialization/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'ublox_serialization' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/user/ws_KUSV/Autonomous-car-lab-KUSV/src/sensing/ublox/ublox_serialization/${idir}'.  ${_report}")
     endif()
     _list_append_unique(ublox_serialization_INCLUDE_DIRS ${include})
   endforeach()
@@ -129,7 +129,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/lke/ACL_KUSV/devel/lib;/home/lke/catkin_ws/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/lib;/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/lib;/home/user/ws_final_lane_detection/devel/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

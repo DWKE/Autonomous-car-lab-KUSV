@@ -3,8 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/transform_nodelet.dir/transform.cc.o"
   "CMakeFiles/transform_nodelet.dir/pointcloudXYZIR.cc.o"
   "CMakeFiles/transform_nodelet.dir/organized_cloudXYZIR.cc.o"
-  "/home/lke/ACL_KUSV/devel/lib/libtransform_nodelet.pdb"
-  "/home/lke/ACL_KUSV/devel/lib/libtransform_nodelet.so"
+  "/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/lib/libtransform_nodelet.pdb"
+  "/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/lib/libtransform_nodelet.so"
 )
 
 # Per-language clean rules from dependency scanning.

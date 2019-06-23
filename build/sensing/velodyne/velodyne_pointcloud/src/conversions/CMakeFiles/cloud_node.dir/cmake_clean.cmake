@@ -3,8 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/cloud_node.dir/convert.cc.o"
   "CMakeFiles/cloud_node.dir/pointcloudXYZIR.cc.o"
   "CMakeFiles/cloud_node.dir/organized_cloudXYZIR.cc.o"
-  "/home/lke/ACL_KUSV/devel/lib/velodyne_pointcloud/cloud_node.pdb"
-  "/home/lke/ACL_KUSV/devel/lib/velodyne_pointcloud/cloud_node"
+  "/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/lib/velodyne_pointcloud/cloud_node.pdb"
+  "/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/lib/velodyne_pointcloud/cloud_node"
 )
 
 # Per-language clean rules from dependency scanning.
