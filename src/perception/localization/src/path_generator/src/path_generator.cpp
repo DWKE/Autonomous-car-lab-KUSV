@@ -2,10 +2,10 @@
 #include "geometry_msgs/Point.h"
 #include "geometry_msgs/PointStamped.h"
 #include "tf/transform_listener.h"
-#include "path_generator/LanePointData.h"
-#include "path_generator/LanePointDataArray.h"
-#include "path_generator/PolyfitLaneData.h"
-#include "path_generator/PolyfitLaneDataArray.h"
+#include "kusv_msgs/LanePointData.h"
+#include "kusv_msgs/LanePointDataArray.h"
+#include "kusv_msgs/PolyfitLaneData.h"
+#include "kusv_msgs/PolyfitLaneDataArray.h"
 
 #include <math.h>
 #include <eigen3/Eigen/Dense>
@@ -17,8 +17,8 @@ class calc_path {
 public:
     calc_path() {
         m_rosPubPolyLanes =
-                m_rosNodeHandler.advertise<path_generator::PolyfitLaneDataArray>(
-                    "waypoint_lane", 1000);
+                m_rosNodeHandler.advertise<kusv_msgs::PolyfitLaneDataArray>(
+                    "waypoint_polylanearr", 1000);
 
         m_rosSubCsvFile = m_rosNodeHandler.subscribe(
                     "localization/csv_local_map", 1000, &calc_path::csvCallback, this);
@@ -43,12 +43,12 @@ protected:
 
     tf::TransformListener m_rosTfListenr;
 
-    path_generator::LanePointDataArray m_csvLanes;
-    path_generator::LanePointDataArray m_ROILanes;
-    path_generator::PolyfitLaneDataArray m_polyLanes;
+    kusv_msgs::LanePointDataArray m_csvLanes;
+    kusv_msgs::LanePointDataArray m_ROILanes;
+    kusv_msgs::PolyfitLaneDataArray m_polyLanes;
 
 public:
-    void csvCallback(const path_generator::LanePointDataArray::ConstPtr &msg) {
+    void csvCallback(const kusv_msgs::LanePointDataArray::ConstPtr &msg) {
         m_csvLanes = *msg;
     }
 
@@ -58,7 +58,7 @@ public:
         m_ROILanes.lane.clear();
 
         for (auto i_lane = 0; i_lane < m_csvLanes.lane.size(); i_lane++) {
-            path_generator::LanePointData lane;
+            kusv_msgs::LanePointData lane;
             lane.frame_id = "/body";
             lane.id = m_csvLanes.lane[i_lane].id;
             int sample_size =
@@ -112,28 +112,8 @@ public:
                         }
                     }
                 }
-
-
-
-
-//                try {
-//                    m_rosTfListenr.transformPoint("/body",
-//                                                  lanePoint_world, lanePoint_body);
-//                    if ((lanePoint_body.point.x <= m_ROIFront_param) &&
-//                            (lanePoint_body.point.x >= -1 * m_ROIRear_param) &&
-//                            (lanePoint_body.point.y <= m_ROILeft_param) &&
-//                            (lanePoint_body.point.y >= -1 * m_ROIRight_param)) {
-//                        lane.point.push_back(lanePoint_body.point);
-//                    }
-
-//                } catch (tf::TransformException &ex) {
-//                    // ROS_ERROR(ex.what());
-//                }
             }
             m_ROILanes.lane.push_back(lane);
-//            if (lane.point.size() >= 2) {
-//                m_ROILanes.lane.push_back(lane);
-//            }
         }
     }
 
@@ -164,14 +144,14 @@ public:
                     ((X_Matrix.transpose() * X_Matrix).inverse() * X_Matrix.transpose()) *
                     y_Vector;
 
-            path_generator::PolyfitLaneData polyLane;
+            kusv_msgs::PolyfitLaneData polyLane;
             polyLane.frame_id = "/body";
             polyLane.id = m_ROILanes.lane[i_lane].id;
 
-            polyLane.a0 = a_Vector(0);
-            polyLane.a1 = a_Vector(1);
-            polyLane.a2 = a_Vector(2);
-            polyLane.a3 = a_Vector(3);
+            polyLane.d = a_Vector(0);
+            polyLane.c = a_Vector(1);
+            polyLane.b = a_Vector(2);
+            polyLane.a = a_Vector(3);
 
             m_polyLanes.polyfitLanes.push_back(polyLane);
         }
