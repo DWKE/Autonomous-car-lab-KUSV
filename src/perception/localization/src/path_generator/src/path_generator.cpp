@@ -27,14 +27,6 @@ public:
 //        m_rosNodeHandler.param("lane_detection/ROIRear", m_ROIRear_param, 10.0);
 //        m_rosNodeHandler.param("lane_detection/ROILeft", m_ROILeft_param, 3.0);
 //        m_rosNodeHandler.param("lane_detection/ROIRight", m_ROIRight_param, 3.0);
-
-//        m_rosNodeHandler.param("lane_detection/ns", m_vehicle_namespace_param,
-//                               std::string(""));
-//        m_rosNodeHandler.param("lane_detection/path", m_path_param,
-//                               std::string(""));
-//        if (m_path_param == std::string("")) {
-//            ROS_ERROR_STREAM("Empty path!!");
-//        }
     }
 
     ~calc_path() {}
@@ -43,98 +35,110 @@ protected:
     ros::NodeHandle m_rosNodeHandler;
     ros::Subscriber m_rosSubCsvFile;
     ros::Publisher m_rosPubPolyLanes;
-    std::string m_vehicle_namespace_param;
 
-    double m_ROIFront_param = 10.0;
+    double m_ROIFront_param = 15.0;
     double m_ROIRear_param = 3.0;
     double m_ROILeft_param = 1.0;
     double m_ROIRight_param = 1.0;
 
     tf::TransformListener m_rosTfListenr;
 
-    std::string m_path_param;
     path_generator::LanePointDataArray m_csvLanes;
     path_generator::LanePointDataArray m_ROILanes;
     path_generator::PolyfitLaneDataArray m_polyLanes;
-
-    path_generator::LanePointData m_rightLane;
-    path_generator::PolyfitLaneData m_rightPoly;
 
 public:
     void csvCallback(const path_generator::LanePointDataArray::ConstPtr &msg) {
         m_csvLanes = *msg;
     }
-    /*
-  void loadLaneData() {
-    std::vector<SKusvLane> csvLaneImport;
-    csvLaneImport.ImportKusvLaneCsvFile(m_path_param);
-    m_csvLanes.frame_id = "/world";
-    m_csvLanes.lane.clear();
-    for (auto i_lane = 0; i_lane < csvLaneImport.m_vecKusvLanes.size();
-         i_lane++) {
-      path_generator::LanePointData lane;
-      lane.frame_id = "world";
-      lane.id = std::to_string(csvLaneImport.m_vecKusvLanes[i_lane].m_nLaneID);
-      for (auto i_point = 0;
-           i_point <
-           csvLaneImport.m_vecKusvLanes[i_lane].m_vecKusvLanePoint.size();
-           i_point++) {
-        geometry_msgs::Point point;
-        point.x = csvLaneImport.m_vecKusvLanes[i_lane]
-                      .m_vecKusvLanePoint[i_point]
-                      .m_dPtX_m;
-        point.y = csvLaneImport.m_vecKusvLanes[i_lane]
-                      .m_vecKusvLanePoint[i_point]
-                      .m_dPtY_m;
-        lane.point.push_back(point);
-      }
-      m_csvLanes.lane.push_back(lane);
-    }
-  }
-  */
 
     void extractRegionOfInterest() {
-        m_ROILanes.frame_id = m_vehicle_namespace_param + "/body";
+        m_ROILanes.frame_id = "/body";
         m_ROILanes.id = m_csvLanes.id;
         m_ROILanes.lane.clear();
 
         for (auto i_lane = 0; i_lane < m_csvLanes.lane.size(); i_lane++) {
             path_generator::LanePointData lane;
-            lane.frame_id = m_vehicle_namespace_param + "/body";
+            lane.frame_id = "/body";
             lane.id = m_csvLanes.lane[i_lane].id;
-            int down_size =
-                    (m_csvLanes.lane[i_lane].point.size() + 3) / 4;  // down sample x4
+            int sample_size =
+                    (m_csvLanes.lane[i_lane].point.size());  // down sample x4
+            double m_dminDist = 10;
+            int m_minIndx = 0;
 
-            for (int i_point = 0; i_point < down_size; i_point++) {
+            for (int i_point = 0; i_point < sample_size; i_point++) {
                 geometry_msgs::PointStamped lanePoint_world;
                 lanePoint_world.header.frame_id = "/world";
                 lanePoint_world.header.stamp = ros::Time(0);
-                lanePoint_world.point.x = m_csvLanes.lane[i_lane].point[i_point * 4].x;
-                lanePoint_world.point.y = m_csvLanes.lane[i_lane].point[i_point * 4].y;
+                lanePoint_world.point.x = m_csvLanes.lane[i_lane].point[i_point].x;
+                lanePoint_world.point.y = m_csvLanes.lane[i_lane].point[i_point].y;
                 geometry_msgs::PointStamped lanePoint_body;
 
                 try {
-                    m_rosTfListenr.transformPoint(m_vehicle_namespace_param + "/body",
+                    m_rosTfListenr.transformPoint("/body",
                                                   lanePoint_world, lanePoint_body);
                     if ((lanePoint_body.point.x <= m_ROIFront_param) &&
                             (lanePoint_body.point.x >= -1 * m_ROIRear_param) &&
                             (lanePoint_body.point.y <= m_ROILeft_param) &&
                             (lanePoint_body.point.y >= -1 * m_ROIRight_param)) {
-                        lane.point.push_back(lanePoint_body.point);
+                        double m_dDist = sqrt(pow(lanePoint_body.point.x, 2) + pow(lanePoint_body.point.y, 2));
+                        if (m_dDist < m_dminDist) {
+                            m_dminDist = m_dDist;
+                            m_minIndx = i_point;
+                        }
                     }
 
                 } catch (tf::TransformException &ex) {
                     // ROS_ERROR(ex.what());
                 }
+
+
+                if(i_point+1 == sample_size) {
+                    for(int i = m_minIndx-2; i < m_minIndx+20; i++) {
+                        geometry_msgs::PointStamped sample_world;
+                        sample_world.header.frame_id = "/world";
+                        sample_world.header.stamp = ros::Time(0);
+                        sample_world.point.x = m_csvLanes.lane[i_lane].point[i].x;
+                        sample_world.point.y = m_csvLanes.lane[i_lane].point[i].y;
+                        geometry_msgs::PointStamped sample_body;
+
+                        try {
+                            m_rosTfListenr.transformPoint("/body",
+                                                          sample_world, sample_body);
+                            lane.point.push_back(sample_body.point);
+
+                        } catch (tf::TransformException &ex) {
+                            // ROS_ERROR(ex.what());
+                        }
+                    }
+                }
+
+
+
+
+//                try {
+//                    m_rosTfListenr.transformPoint("/body",
+//                                                  lanePoint_world, lanePoint_body);
+//                    if ((lanePoint_body.point.x <= m_ROIFront_param) &&
+//                            (lanePoint_body.point.x >= -1 * m_ROIRear_param) &&
+//                            (lanePoint_body.point.y <= m_ROILeft_param) &&
+//                            (lanePoint_body.point.y >= -1 * m_ROIRight_param)) {
+//                        lane.point.push_back(lanePoint_body.point);
+//                    }
+
+//                } catch (tf::TransformException &ex) {
+//                    // ROS_ERROR(ex.what());
+//                }
             }
-            if (lane.point.size() >= 2) {
-                m_ROILanes.lane.push_back(lane);
-            }
+            m_ROILanes.lane.push_back(lane);
+//            if (lane.point.size() >= 2) {
+//                m_ROILanes.lane.push_back(lane);
+//            }
         }
     }
 
     void polyfitLane() {
-        m_polyLanes.frame_id = m_vehicle_namespace_param + "/body";
+        m_polyLanes.frame_id = "/body";
         m_polyLanes.polyfitLanes.clear();
 
         for (auto i_lane = 0; i_lane < m_ROILanes.lane.size(); i_lane++) {
@@ -161,7 +165,7 @@ public:
                     y_Vector;
 
             path_generator::PolyfitLaneData polyLane;
-            polyLane.frame_id = m_vehicle_namespace_param + "/body";
+            polyLane.frame_id = "/body";
             polyLane.id = m_ROILanes.lane[i_lane].id;
 
             polyLane.a0 = a_Vector(0);

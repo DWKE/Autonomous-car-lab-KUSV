@@ -56,12 +56,15 @@ Boost_REGEX_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_regex.so
 //Boost regex library (release)
 Boost_REGEX_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_regex.so
 
+<<<<<<< HEAD
 //Boost signals library (debug)
 Boost_SIGNALS_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_signals.so
 
 //Boost signals library (release)
 Boost_SIGNALS_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_signals.so
 
+=======
+>>>>>>> skkim
 //Boost system library (debug)
 Boost_SYSTEM_LIBRARY_DEBUG:FILEPATH=/usr/lib/x86_64-linux-gnu/libboost_system.so
 
@@ -382,9 +385,12 @@ diagnostic_msgs_DIR:PATH=/opt/ros/kinetic/share/diagnostic_msgs/cmake
 //The directory containing a CMake configuration file for diagnostic_updater.
 diagnostic_updater_DIR:PATH=/opt/ros/kinetic/share/diagnostic_updater/cmake
 
+<<<<<<< HEAD
 //Dependencies for the target
 driver_nodelet_LIB_DEPENDS:STATIC=general;velodyne_input;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/kinetic/lib/libnodeletlib.so;general;/usr/lib/x86_64-linux-gnu/libuuid.so;general;/opt/ros/kinetic/lib/libbondcpp.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;-lpcap;
 
+=======
+>>>>>>> skkim
 //The directory containing a CMake configuration file for dynamic_reconfigure.
 dynamic_reconfigure_DIR:PATH=/opt/ros/kinetic/share/dynamic_reconfigure/cmake
 
@@ -471,7 +477,11 @@ lane_detector_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/perception/camera_detec
 lane_detector_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/perception/camera_detection/lane_detector
 
 //Path to a library.
+<<<<<<< HEAD
 lib:FILEPATH=/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so
+=======
+lib:FILEPATH=/opt/ros/kinetic/lib/libcv_bridge.so
+>>>>>>> skkim
 
 //Value Computed by CMake
 local_planning_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/computing/planning/src/local_planning
@@ -641,6 +651,7 @@ tf_conversions_DIR:PATH=/opt/ros/kinetic/share/tf_conversions/cmake
 //The directory containing a CMake configuration file for topic_tools.
 topic_tools_DIR:PATH=/opt/ros/kinetic/share/topic_tools/cmake
 
+<<<<<<< HEAD
 //Dependencies for the target
 transform_nodelet_LIB_DEPENDS:STATIC=general;velodyne_rawdata;general;velodyne_input;general;/opt/ros/kinetic/lib/libnodeletlib.so;general;/usr/lib/x86_64-linux-gnu/libuuid.so;general;/opt/ros/kinetic/lib/libbondcpp.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;yaml-cpp;
 
@@ -655,11 +666,25 @@ ublox_gps_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/ublox/ublox_gps
 
 //The directory containing a CMake configuration file for ublox_gps.
 ublox_gps_DIR:PATH=/home/lke/ACL_KUSV/devel/share/ublox_gps/cmake
+=======
+//Value Computed by CMake
+ublox_BINARY_DIR:STATIC=/home/skros/Autonomous-car-lab-KUSV/build/perception/localization/src/ublox/ublox
+
+//Value Computed by CMake
+ublox_SOURCE_DIR:STATIC=/home/skros/Autonomous-car-lab-KUSV/src/perception/localization/src/ublox/ublox
+
+//Value Computed by CMake
+ublox_gps_BINARY_DIR:STATIC=/home/skros/Autonomous-car-lab-KUSV/build/perception/localization/src/ublox/ublox_gps
+
+//The directory containing a CMake configuration file for ublox_gps.
+ublox_gps_DIR:PATH=/home/skros/Autonomous-car-lab-KUSV/devel/share/ublox_gps/cmake
+>>>>>>> skkim
 
 //Dependencies for the target
 ublox_gps_LIB_DEPENDS:STATIC=general;boost_system;general;boost_regex;general;boost_thread;general;ublox_msgs;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
 
 //Value Computed by CMake
+<<<<<<< HEAD
 ublox_gps_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/ublox/ublox_gps
 
 //Value Computed by CMake
@@ -667,11 +692,21 @@ ublox_msgs_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/ublox/ublox_msgs
 
 //The directory containing a CMake configuration file for ublox_msgs.
 ublox_msgs_DIR:PATH=/home/lke/ACL_KUSV/devel/share/ublox_msgs/cmake
+=======
+ublox_gps_SOURCE_DIR:STATIC=/home/skros/Autonomous-car-lab-KUSV/src/perception/localization/src/ublox/ublox_gps
+
+//Value Computed by CMake
+ublox_msgs_BINARY_DIR:STATIC=/home/skros/Autonomous-car-lab-KUSV/build/perception/localization/src/ublox/ublox_msgs
+
+//The directory containing a CMake configuration file for ublox_msgs.
+ublox_msgs_DIR:PATH=/home/skros/Autonomous-car-lab-KUSV/devel/share/ublox_msgs/cmake
+>>>>>>> skkim
 
 //Dependencies for the target
 ublox_msgs_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
 
 //Value Computed by CMake
+<<<<<<< HEAD
 ublox_msgs_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/ublox/ublox_msgs
 
 //Value Computed by CMake
@@ -727,6 +762,18 @@ velodyne_pointcloud_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/velodyne/ve
 
 //Dependencies for the target
 velodyne_rawdata_LIB_DEPENDS:STATIC=general;velodyne_input;general;/opt/ros/kinetic/lib/libnodeletlib.so;general;/usr/lib/x86_64-linux-gnu/libuuid.so;general;/opt/ros/kinetic/lib/libbondcpp.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;yaml-cpp;
+=======
+ublox_msgs_SOURCE_DIR:STATIC=/home/skros/Autonomous-car-lab-KUSV/src/perception/localization/src/ublox/ublox_msgs
+
+//Value Computed by CMake
+ublox_serialization_BINARY_DIR:STATIC=/home/skros/Autonomous-car-lab-KUSV/build/perception/localization/src/ublox/ublox_serialization
+
+//The directory containing a CMake configuration file for ublox_serialization.
+ublox_serialization_DIR:PATH=/home/skros/Autonomous-car-lab-KUSV/devel/share/ublox_serialization/cmake
+
+//Value Computed by CMake
+ublox_serialization_SOURCE_DIR:STATIC=/home/skros/Autonomous-car-lab-KUSV/src/perception/localization/src/ublox/ublox_serialization
+>>>>>>> skkim
 
 //The directory containing a CMake configuration file for visualization_msgs.
 visualization_msgs_DIR:PATH=/opt/ros/kinetic/share/visualization_msgs/cmake
@@ -763,10 +810,13 @@ Boost_LIBRARY_DIR_RELEASE-ADVANCED:INTERNAL=1
 Boost_REGEX_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_REGEX_LIBRARY_RELEASE
 Boost_REGEX_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+<<<<<<< HEAD
 //ADVANCED property for variable: Boost_SIGNALS_LIBRARY_DEBUG
 Boost_SIGNALS_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_SIGNALS_LIBRARY_RELEASE
 Boost_SIGNALS_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+=======
+>>>>>>> skkim
 //ADVANCED property for variable: Boost_SYSTEM_LIBRARY_DEBUG
 Boost_SYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_SYSTEM_LIBRARY_RELEASE
@@ -872,7 +922,11 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
+<<<<<<< HEAD
 CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=30
+=======
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=18
+>>>>>>> skkim
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -982,7 +1036,11 @@ YAML_CPP_yaml-cpp_LIBDIR:INTERNAL=
 YAML_CPP_yaml-cpp_PREFIX:INTERNAL=
 YAML_CPP_yaml-cpp_VERSION:INTERNAL=
 //Components requested for this build tree.
+<<<<<<< HEAD
 _Boost_COMPONENTS_SEARCHED:INTERNAL=atomic;chrono;date_time;regex;signals;system;thread
+=======
+_Boost_COMPONENTS_SEARCHED:INTERNAL=atomic;chrono;date_time;regex;system;thread
+>>>>>>> skkim
 //Last used Boost_INCLUDE_DIR value.
 _Boost_INCLUDE_DIR_LAST:INTERNAL=/usr/include
 //Last used Boost_LIBRARY_DIR_DEBUG value.

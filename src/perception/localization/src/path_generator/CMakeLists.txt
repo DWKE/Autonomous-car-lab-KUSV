@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   geometry_msgs
+  visualization_msgs
   tf
 )
 
@@ -76,6 +77,7 @@ add_message_files(
    DEPENDENCIES
    std_msgs
    geometry_msgs
+   visualization_msgs
  )
 
 ################################################
@@ -108,9 +110,9 @@ add_message_files(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
   LIBRARIES path_generator
-  CATKIN_DEPENDS roscpp std_msgs geometry_msgs message_runtime
+  CATKIN_DEPENDS roscpp std_msgs geometry_msgs message_runtime visualization_msgs
   DEPENDS system_lib
 )
 
@@ -132,6 +134,14 @@ include_directories(
 add_executable(path_generator src/path_generator.cpp)
 add_dependencies(path_generator  ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(path_generator ${catkin_LIBRARIES})
+
+add_executable(display_marker src/display_marker.cpp)
+add_dependencies(display_marker  ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(display_marker ${catkin_LIBRARIES})
+
+add_executable(find_drivingway src/find_drivingway.cpp)
+add_dependencies(find_drivingway  ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(find_drivingway ${catkin_LIBRARIES})
 
 
 ## Add cmake target dependencies of the library

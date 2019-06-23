@@ -116,6 +116,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+<<<<<<< HEAD
   include("/home/lke/ACL_KUSV/build/gtest/cmake_install.cmake")
   include("/home/lke/ACL_KUSV/build/perception/localization/src/autonomous_msg/cmake_install.cmake")
   include("/home/lke/ACL_KUSV/build/sensing/ublox/ublox/cmake_install.cmake")
@@ -138,6 +139,24 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/lke/ACL_KUSV/build/sensing/velodyne/velodyne_driver/cmake_install.cmake")
   include("/home/lke/ACL_KUSV/build/sensing/velodyne/velodyne_laserscan/cmake_install.cmake")
   include("/home/lke/ACL_KUSV/build/sensing/velodyne/velodyne_pointcloud/cmake_install.cmake")
+=======
+  include("/home/skros/Autonomous-car-lab-KUSV/build/gtest/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/perception/localization/src/autonomous_msg/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/perception/localization/src/ublox/ublox/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/msgs/kusv_msgs/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/perception/camera_detection/lane_detector/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/sensing/ros_can/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/computing/planning/src/local_planning/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/computing/decision/local_routes_manager/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/perception/localization/src/path_generator/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/computing/planning/src/pathplan/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/perception/lidar_detection/obstacle_detector/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/perception/localization/src/ublox/ublox_serialization/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/perception/localization/src/ublox/ublox_msgs/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/perception/localization/src/ublox/ublox_gps/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/perception/localization/src/local_route_from_map/cmake_install.cmake")
+  include("/home/skros/Autonomous-car-lab-KUSV/build/perception/localization/src/pose_estimation/cmake_install.cmake")
+>>>>>>> skkim
 
 endif()
 
