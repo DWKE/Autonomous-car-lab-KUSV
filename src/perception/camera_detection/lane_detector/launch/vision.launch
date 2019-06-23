@@ -2,7 +2,7 @@
 
   <arg name="calibration_file" default="$(find lane_detector)/test_materials/calibration.yaml" />
 
-  <arg name="input_stream_topic" default="/image_raw" />
+  <arg name="input_stream_topic" default="/videofile/image_raw" />
   <arg name="h_low" default="13" />
   <arg name="h_high" default="28"/>
   <arg name="l_low" default="53"/>

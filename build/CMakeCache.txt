@@ -320,7 +320,7 @@ YAML_CPP_INCLUDE_DIR:PATH=YAML_CPP_INCLUDE_DIR-NOTFOUND
 YAML_CPP_LIBRARY:FILEPATH=YAML_CPP_LIBRARY-NOTFOUND
 
 //Path to a file.
-_file_name:FILEPATH=/home/lke/ACL_KUSV/src/sensing/velodyne/velodyne_pointcloud/tests/two_nodelet_managers.test
+_file_name:FILEPATH=/home/lke/ACL_KUSV/src/sensing/velodyne-master/velodyne_pointcloud/tests/two_nodelet_managers.test
 
 //Path to a file.
 _gmock_INCLUDES:FILEPATH=/usr/include/gmock/gmock.h
@@ -645,13 +645,13 @@ topic_tools_DIR:PATH=/opt/ros/kinetic/share/topic_tools/cmake
 transform_nodelet_LIB_DEPENDS:STATIC=general;velodyne_rawdata;general;velodyne_input;general;/opt/ros/kinetic/lib/libnodeletlib.so;general;/usr/lib/x86_64-linux-gnu/libuuid.so;general;/opt/ros/kinetic/lib/libbondcpp.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;yaml-cpp;
 
 //Value Computed by CMake
-ublox_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/ublox/ublox
+ublox_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/ublox-master/ublox
 
 //Value Computed by CMake
-ublox_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/ublox/ublox
+ublox_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/ublox-master/ublox
 
 //Value Computed by CMake
-ublox_gps_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/ublox/ublox_gps
+ublox_gps_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/ublox-master/ublox_gps
 
 //The directory containing a CMake configuration file for ublox_gps.
 ublox_gps_DIR:PATH=/home/lke/ACL_KUSV/devel/share/ublox_gps/cmake
@@ -660,10 +660,10 @@ ublox_gps_DIR:PATH=/home/lke/ACL_KUSV/devel/share/ublox_gps/cmake
 ublox_gps_LIB_DEPENDS:STATIC=general;boost_system;general;boost_regex;general;boost_thread;general;ublox_msgs;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
 
 //Value Computed by CMake
-ublox_gps_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/ublox/ublox_gps
+ublox_gps_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/ublox-master/ublox_gps
 
 //Value Computed by CMake
-ublox_msgs_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/ublox/ublox_msgs
+ublox_msgs_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/ublox-master/ublox_msgs
 
 //The directory containing a CMake configuration file for ublox_msgs.
 ublox_msgs_DIR:PATH=/home/lke/ACL_KUSV/devel/share/ublox_msgs/cmake
@@ -672,58 +672,58 @@ ublox_msgs_DIR:PATH=/home/lke/ACL_KUSV/devel/share/ublox_msgs/cmake
 ublox_msgs_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
 
 //Value Computed by CMake
-ublox_msgs_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/ublox/ublox_msgs
+ublox_msgs_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/ublox-master/ublox_msgs
 
 //Value Computed by CMake
-ublox_serialization_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/ublox/ublox_serialization
+ublox_serialization_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/ublox-master/ublox_serialization
 
 //The directory containing a CMake configuration file for ublox_serialization.
 ublox_serialization_DIR:PATH=/home/lke/ACL_KUSV/devel/share/ublox_serialization/cmake
 
 //Value Computed by CMake
-ublox_serialization_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/ublox/ublox_serialization
+ublox_serialization_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/ublox-master/ublox_serialization
 
 //Value Computed by CMake
-velodyne_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/velodyne/velodyne
+velodyne_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/velodyne-master/velodyne
 
 //Value Computed by CMake
-velodyne_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/velodyne/velodyne
+velodyne_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/velodyne-master/velodyne
 
 //Value Computed by CMake
-velodyne_driver_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/velodyne/velodyne_driver
+velodyne_driver_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/velodyne-master/velodyne_driver
 
 //The directory containing a CMake configuration file for velodyne_driver.
 velodyne_driver_DIR:PATH=/home/lke/ACL_KUSV/devel/share/velodyne_driver/cmake
 
 //Value Computed by CMake
-velodyne_driver_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/velodyne/velodyne_driver
+velodyne_driver_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/velodyne-master/velodyne_driver
 
 //Dependencies for the target
 velodyne_input_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/kinetic/lib/libnodeletlib.so;general;/usr/lib/x86_64-linux-gnu/libuuid.so;general;/opt/ros/kinetic/lib/libbondcpp.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;-lpcap;
 
 //Value Computed by CMake
-velodyne_laserscan_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/velodyne/velodyne_laserscan
+velodyne_laserscan_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/velodyne-master/velodyne_laserscan
 
 //Dependencies for the target
 velodyne_laserscan_LIB_DEPENDS:STATIC=general;/opt/ros/kinetic/lib/libnodeletlib.so;general;/usr/lib/x86_64-linux-gnu/libuuid.so;general;/opt/ros/kinetic/lib/libbondcpp.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;
 
 //Value Computed by CMake
-velodyne_laserscan_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/velodyne/velodyne_laserscan
+velodyne_laserscan_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/velodyne-master/velodyne_laserscan
 
 //Value Computed by CMake
-velodyne_msgs_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/velodyne/velodyne_msgs
+velodyne_msgs_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/velodyne-master/velodyne_msgs
 
 //The directory containing a CMake configuration file for velodyne_msgs.
 velodyne_msgs_DIR:PATH=/home/lke/ACL_KUSV/devel/share/velodyne_msgs/cmake
 
 //Value Computed by CMake
-velodyne_msgs_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/velodyne/velodyne_msgs
+velodyne_msgs_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/velodyne-master/velodyne_msgs
 
 //Value Computed by CMake
-velodyne_pointcloud_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/velodyne/velodyne_pointcloud
+velodyne_pointcloud_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/sensing/velodyne-master/velodyne_pointcloud
 
 //Value Computed by CMake
-velodyne_pointcloud_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/velodyne/velodyne_pointcloud
+velodyne_pointcloud_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/sensing/velodyne-master/velodyne_pointcloud
 
 //Dependencies for the target
 velodyne_rawdata_LIB_DEPENDS:STATIC=general;velodyne_input;general;/opt/ros/kinetic/lib/libnodeletlib.so;general;/usr/lib/x86_64-linux-gnu/libuuid.so;general;/opt/ros/kinetic/lib/libbondcpp.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml2.so;general;/opt/ros/kinetic/lib/libclass_loader.so;general;/usr/lib/libPocoFoundation.so;general;/usr/lib/x86_64-linux-gnu/libdl.so;general;/opt/ros/kinetic/lib/libroslib.so;general;/opt/ros/kinetic/lib/librospack.so;general;/usr/lib/x86_64-linux-gnu/libpython2.7.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;general;/usr/lib/x86_64-linux-gnu/libtinyxml.so;general;/opt/ros/kinetic/lib/libtf.so;general;/opt/ros/kinetic/lib/libtf2_ros.so;general;/opt/ros/kinetic/lib/libactionlib.so;general;/opt/ros/kinetic/lib/libmessage_filters.so;general;/opt/ros/kinetic/lib/libtf2.so;general;/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/kinetic/lib/libroscpp.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_signals.so;general;/opt/ros/kinetic/lib/librosconsole.so;general;/opt/ros/kinetic/lib/librosconsole_log4cxx.so;general;/opt/ros/kinetic/lib/librosconsole_backend_interface.so;general;/usr/lib/x86_64-linux-gnu/liblog4cxx.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/opt/ros/kinetic/lib/libxmlrpcpp.so;general;/opt/ros/kinetic/lib/libroscpp_serialization.so;general;/opt/ros/kinetic/lib/librostime.so;general;/opt/ros/kinetic/lib/libcpp_common.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_thread.so;general;/usr/lib/x86_64-linux-gnu/libboost_chrono.so;general;/usr/lib/x86_64-linux-gnu/libboost_date_time.so;general;/usr/lib/x86_64-linux-gnu/libboost_atomic.so;general;/usr/lib/x86_64-linux-gnu/libpthread.so;general;/usr/lib/x86_64-linux-gnu/libconsole_bridge.so;general;yaml-cpp;

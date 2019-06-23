@@ -11,7 +11,7 @@ terminator -e " cd ~/ros/rosbag " &
 terminator -e " rosbag play ros_CAN_RX.bag" &
 
 # vision
-terminator -e " roslaunch final_lane_detector vision.launch " &
+terminator -e " roslaunch lane_detector vision.launch " &
 sleep 1
 
 # planning

@@ -144,7 +144,7 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
  add_executable(${PROJECT_NAME}_kvaser_bridge src/kvaser_can_bridge.cpp)
- add_executable(${PROJECT_NAME}_rx src/CAN_rx.cpp)
+ add_executable(${PROJECT_NAME}_rx src/CAN2TopicConverter.cpp)
 # add_executable(${PROJECT_NAME}_keyboard src/Keyboard_interface.cpp)
 
 ## Rename C++ executable without prefix
