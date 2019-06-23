@@ -99,6 +99,8 @@ private:
     double param_b_thresh;
     double param_c_thresh;
     double param_d_thresh;
+    double param_abcd_average;
+
 private:
     int param_color_merge;
     int param_abcd_selection;
@@ -149,6 +151,7 @@ public:
         m_nh.param("lane_detector/d_thresh", param_d_thresh, 1.0);
         m_nh.param("lane_detector/color_merge", param_color_merge, 1);
         m_nh.param("lane_detector/abcd_selection", param_abcd_selection, 1);
+        m_nh.param("lane_detector/abcd_average", param_abcd_average, 15.0);
 
         for (uint32_t i = 0; i < BUFFER; i++)
             m_dBuffer[i] = 0.0;
@@ -695,22 +698,22 @@ public:
         std::vector<double> middle(4);
 
 
-        if(std::isnan(left_line[0])){
+        if (std::isnan(left_line[0])) {
             l_lane_exist = false;
         }
-        else{
+        else {
             l_lane_exist = true;
         }
 
-        if(std::isnan(right_line[0])){
+        if (std::isnan(right_line[0])) {
             r_lane_exist = false;
         }
-        else{
+        else {
             r_lane_exist = true;
         }
 
 
-        if(l_lane_exist && r_lane_exist){
+        if (l_lane_exist && r_lane_exist) {
             middle[0] = (left_line[0] + right_line[0])/2; //d
             middle[1] = (left_line[1] + right_line[1])/2; //c
             middle[2] = (left_line[2] + right_line[2])/2; //b
@@ -723,7 +726,7 @@ public:
             ROS_INFO_STREAM("BOTH");
         }
 
-        if(l_lane_exist && !r_lane_exist){
+        if (l_lane_exist && !r_lane_exist) {
             middle[0] = left_line[0] - (ROAD_WIDTH/2); //d
             middle[1] = left_line[1]; //c
             middle[2] = left_line[2]; //b
@@ -736,7 +739,7 @@ public:
             ROS_INFO_STREAM("ONLY LEFT");
         }
 
-        if(!l_lane_exist && r_lane_exist){
+        if (!l_lane_exist && r_lane_exist) {
             middle[0] = right_line[0] + (ROAD_WIDTH/2); //d
             middle[1] = right_line[1]; //c
             middle[2] = right_line[2]; //b
@@ -749,7 +752,7 @@ public:
             ROS_INFO_STREAM("ONLY RIGHT");
         }
 
-        if(!l_lane_exist && !r_lane_exist){
+        if (!l_lane_exist && !r_lane_exist) {
             middle[0] = prev_d;
             middle[1] = prev_c;
             middle[2] = prev_b;
@@ -769,9 +772,25 @@ public:
             break;
 
         case 1:
-            break;
+            double amplified = 10 * middle[1];
 
-        case 2:
+            static unsigned int COUNT = 0;
+            if (COUNT < BUFFER) {
+                average(amplified);
+                COUNT++;
+            }
+            else {
+                average(amplified);
+                ROS_WARN_STREAM(m_dMovingAverage);
+                if ((m_dMovingAverage > param_abcd_average) || (m_dMovingAverage < (-1 * param_abcd_average))) {
+                    middle[0] = prev_d;
+                    middle[1] = prev_c;
+                    middle[2] = prev_b;
+                    middle[3] = prev_a;
+                    ROS_INFO_STREAM("!!!!!LANE IS WRONG!!!!!");
+                    ROS_INFO_STREAM("(noise: " << m_dMovingAverage << ")");
+                }
+            }
             break;
         }
 
