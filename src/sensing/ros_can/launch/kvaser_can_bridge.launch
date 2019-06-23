@@ -19,7 +19,7 @@
       <param name="can_bit_rate2" value="$(arg can_bit_rate2)" />
     </node>
 
-    <node pkg="ros_can" type="CAN2TopicConverter" name="CAN2TopicConverter">
+    <node pkg="local_planning" type="CAN_Tx" name="CAN_Tx">
 
     </node>
   </group>
