@@ -28,7 +28,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: Image
+    SyncSource: ""
 Visualization Manager:
   Class: ""
   Displays:
@@ -82,7 +82,7 @@ Visualization Manager:
       Marker Topic: /driving_way_marker
       Name: VisionLane
       Namespaces:
-        vision_lane: true
+        "": true
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -90,7 +90,7 @@ Visualization Manager:
       Marker Topic: /lanePoints_marker
       Name: lanePoints
       Namespaces:
-        "": true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -180,5 +180,5 @@ Window Geometry:
   Views:
     collapsed: true
   Width: 900
-  X: 1020
-  Y: 591
+  X: 65
+  Y: 569
