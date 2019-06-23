@@ -474,10 +474,10 @@ kusv_msgs_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/msgs/kusv_msgs
 lib:FILEPATH=/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so
 
 //Value Computed by CMake
-local_planning_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/computing/planning/local_planning
+local_planning_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/computing/planning/src/local_planning
 
 //Value Computed by CMake
-local_planning_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/computing/planning/local_planning
+local_planning_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/computing/planning/src/local_planning
 
 //Value Computed by CMake
 local_route_from_map_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/perception/localization/src/local_route_from_map
@@ -516,10 +516,10 @@ path_generator_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/perception/localizatio
 path_generator_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/perception/localization/src/path_generator
 
 //Value Computed by CMake
-pathplan_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/computing/planning/pathplan
+pathplan_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/computing/planning/src/pathplan
 
 //Value Computed by CMake
-pathplan_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/computing/planning/pathplan
+pathplan_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/computing/planning/src/pathplan
 
 //The directory containing a CMake configuration file for pcl_conversions.
 pcl_conversions_DIR:PATH=/opt/ros/kinetic/share/pcl_conversions/cmake
