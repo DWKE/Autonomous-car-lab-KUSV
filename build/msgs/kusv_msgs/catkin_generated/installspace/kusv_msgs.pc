@@ -1,8 +1,0 @@
-prefix=/home/lke/ACL_KUSV/install
-
-Name: kusv_msgs
-Description: Description of kusv_msgs
-Version: 0.1.0
-Cflags: -I/home/lke/ACL_KUSV/install/include
-Libs: -L/home/lke/ACL_KUSV/install/lib 
-Requires: message_runtime std_msgs geometry_msgs sensor_msgs
