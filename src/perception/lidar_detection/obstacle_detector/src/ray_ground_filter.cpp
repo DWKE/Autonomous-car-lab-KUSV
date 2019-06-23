@@ -20,13 +20,14 @@ void RayGroundRemove::groundRemove(const PointCloudXYZI::ConstPtr& pInputCloud, 
 	PointCloudXYZI::Ptr pFilteredCloud (new PointCloudXYZI);
 	rorfilter.setInputCloud (pInputCloud);
 	rorfilter.setRadiusSearch (0.1);
-	rorfilter.setMinNeighborsInRadius (5);
+        rorfilter.setMinNeighborsInRadius (10);
 	rorfilter.setNegative (true);
 	rorfilter.filter (*pFilteredCloud);
 
 
 	//PointCloudXYZI::Ptr pClipCloud (new PointCloudXYZI);
 	ClipCloud(pFilteredCloud, clipping_height_, pFilteredCloud);
+        RemovePointsUpTo(pFilteredCloud, min_point_distance_,pFilteredCloud);
 
 	PointCloudXYZRTColor organized_points;
 	std::vector<pcl::PointIndices> radial_division_indices;
@@ -186,7 +187,6 @@ void RayGroundRemove::ExtractPointsIndices(const PointCloudXYZI::Ptr in_cloud_pt
 	extract_ground.filter(*out_removed_indices_cloud_ptr);
 }
 
-
 void RayGroundRemove::ClipCloud(const PointCloudXYZI::Ptr in_cloud_ptr, 
 		double in_clip_height, 
 		PointCloudXYZI::Ptr out_clipped_cloud_ptr)
@@ -205,4 +205,27 @@ void RayGroundRemove::ClipCloud(const PointCloudXYZI::Ptr in_cloud_ptr,
 	extractor.setIndices(boost::make_shared<pcl::PointIndices>(indices));
 	extractor.setNegative(true);
 	extractor.filter(*out_clipped_cloud_ptr);
+}
+
+void RayGroundRemove::RemovePointsUpTo(const pcl::PointCloud<pcl::PointXYZI>::Ptr in_cloud_ptr,
+    double in_min_distance,
+    pcl::PointCloud<pcl::PointXYZI>::Ptr out_filtered_cloud_ptr)
+{
+  pcl::ExtractIndices<pcl::PointXYZI> extractor;
+  extractor.setInputCloud (in_cloud_ptr);
+  pcl::PointIndices indices;
+
+#pragma omp for
+  for (size_t i=0; i< in_cloud_ptr->points.size(); i++)
+  {
+    if (sqrt(in_cloud_ptr->points[i].x*in_cloud_ptr->points[i].x +
+          in_cloud_ptr->points[i].y*in_cloud_ptr->points[i].y)
+        < in_min_distance)
+    {
+      indices.indices.push_back(i);
+    }
+  }
+  extractor.setIndices(boost::make_shared<pcl::PointIndices>(indices));
+  extractor.setNegative(true);//true removes the indices, false leaves only the indices
+  extractor.filter(*out_filtered_cloud_ptr);
 }
