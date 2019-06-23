@@ -160,7 +160,7 @@ foreach(t ${kusv_msgs_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "message_runtime;std_msgs;geometry_msgs;sensor_msgs;jsk_recognition_msgs")
+set(depends "message_runtime;std_msgs;geometry_msgs;sensor_msgs")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls

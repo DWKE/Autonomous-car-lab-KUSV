@@ -8,20 +8,22 @@ import struct
 import kusv_msgs.msg
 
 class PolyfitLaneDataArray(genpy.Message):
-  _md5sum = "f73b0014879f8495deb3d40eb300c75a"
+  _md5sum = "e6657e1a3517283001699177de2585d0"
   _type = "kusv_msgs/PolyfitLaneDataArray"
   _has_header = False #flag to mark the presence of a Header object
-  _full_text = """PolyfitLaneData[] polyfitLanes
+  _full_text = """string id
+PolyfitLaneData[] polyfitLanes
 
 ================================================================================
 MSG: kusv_msgs/PolyfitLaneData
+string id
 float64 a
 float64 b
 float64 c
 float64 d
 """
-  __slots__ = ['polyfitLanes']
-  _slot_types = ['kusv_msgs/PolyfitLaneData[]']
+  __slots__ = ['id','polyfitLanes']
+  _slot_types = ['string','kusv_msgs/PolyfitLaneData[]']
 
   def __init__(self, *args, **kwds):
     """
@@ -31,7 +33,7 @@ float64 d
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       polyfitLanes
+       id,polyfitLanes
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -40,9 +42,12 @@ float64 d
     if args or kwds:
       super(PolyfitLaneDataArray, self).__init__(*args, **kwds)
       #message fields cannot be None, assign default values for those that are
+      if self.id is None:
+        self.id = ''
       if self.polyfitLanes is None:
         self.polyfitLanes = []
     else:
+      self.id = ''
       self.polyfitLanes = []
 
   def _get_types(self):
@@ -57,9 +62,21 @@ float64 d
     :param buff: buffer, ``StringIO``
     """
     try:
+      _x = self.id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
       length = len(self.polyfitLanes)
       buff.write(_struct_I.pack(length))
       for val1 in self.polyfitLanes:
+        _x = val1.id
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.pack('<I%ss'%length, length, _x))
         _x = val1
         buff.write(_get_struct_4d().pack(_x.a, _x.b, _x.c, _x.d))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
@@ -77,9 +94,27 @@ float64 d
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.id = str[start:end].decode('utf-8')
+      else:
+        self.id = str[start:end]
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
       self.polyfitLanes = []
       for i in range(0, length):
         val1 = kusv_msgs.msg.PolyfitLaneData()
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          val1.id = str[start:end].decode('utf-8')
+        else:
+          val1.id = str[start:end]
         _x = val1
         start = end
         end += 32
@@ -97,9 +132,21 @@ float64 d
     :param numpy: numpy python module
     """
     try:
+      _x = self.id
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
       length = len(self.polyfitLanes)
       buff.write(_struct_I.pack(length))
       for val1 in self.polyfitLanes:
+        _x = val1.id
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.pack('<I%ss'%length, length, _x))
         _x = val1
         buff.write(_get_struct_4d().pack(_x.a, _x.b, _x.c, _x.d))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
@@ -118,9 +165,27 @@ float64 d
       start = end
       end += 4
       (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.id = str[start:end].decode('utf-8')
+      else:
+        self.id = str[start:end]
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
       self.polyfitLanes = []
       for i in range(0, length):
         val1 = kusv_msgs.msg.PolyfitLaneData()
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          val1.id = str[start:end].decode('utf-8')
+        else:
+          val1.id = str[start:end]
         _x = val1
         start = end
         end += 32

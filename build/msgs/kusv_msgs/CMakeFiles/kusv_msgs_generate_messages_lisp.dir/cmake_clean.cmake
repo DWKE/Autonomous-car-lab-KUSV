@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/WaypointArray.lisp"
   "/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/kusv_CanInfo.lisp"
   "/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/LanePointData.lisp"
+  "/home/lke/ACL_KUSV/devel/share/common-lisp/ros/kusv_msgs/msg/LanePointDataArray.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -17,10 +17,12 @@
 #include <ros/ros.h>
 #include <can_msgs/Frame.h>
 #include "local_planning/Keyboard_Interface.h"
-#include "kusv_msgs/kusv_CanInfo.h"
 #include "local_planning/kusv_Control_CanInfo.h"
 #include "local_planning/kusv_ControlCmd.h"
+#include "local_planning/kusv_ObjectCmd.h"
+#include "kusv_msgs/kusv_CanInfo.h"
 #include "kusv_msgs/kusv_GlobalPose.h"
+
 #include <string>
 #include <arpa/inet.h>
 #include <math.h>
@@ -350,6 +352,13 @@ float Dest_Speed = 0;
 float PID_speed = 0;
 float f_Vspeed = 0;
 
+// Speed control Distance
+float Gain_P_Distance = 0.09;
+float distanceError;
+float goalDistance;
+float objectDistance = 20;
+bool obstacle;
+
 // Message about Jo Ki Chun
 double msgLatitude = 0;
 double msgLongitude = 0;
@@ -366,67 +375,74 @@ uint8_t CAN_Message_1[8]= {0x11, 0x22, 0x33, 0x55, 0x88, 0x99, 0xAA, 0xCC};
 void canmsgCallback(const can_msgs::Frame::ConstPtr& Lmsg);
 void canmsg2Callback(const can_msgs::Frame::ConstPtr& L2msg);
 void KBCallback(const local_planning::Keyboard_Interface::ConstPtr& msg);
-void kusvcmdCallback(const local_planning::kusv_ControlCmd::ConstPtr& cmdmsg);
+void inputcmdCallback(const local_planning::kusv_ControlCmd::ConstPtr& cmdmsg);
+void objectcmdCallback(const local_planning::kusv_ObjectCmd::ConstPtr& cmdmsg);
 uint8_t CAN_TX_Publish(ros::NodeHandle n, ros::Publisher pub, uint16_t id, uint8_t dlc, uint8_t* data);
 uint8_t CAN_Info_Publish(ros::NodeHandle n, ros::Publisher pub);
 void Print_for_Test(void);
 void Speed_Control_PID(void);
+void Speed_Control_Distance();
 uint8_t CAN_Control_report_Publish(ros::NodeHandle n, ros::Publisher pub);
 
 int main(int argc, char** argv)
 {
-	ros::init(argc, argv, "CAN_Tx_Test");
-	ros::NodeHandle nh;
-	ros::NodeHandle nh2;
-	ros::NodeHandle nn;
-	ros::NodeHandle nn2;
-	ros::Publisher aggm_pub = nh.advertise<can_msgs::Frame>("can_rx", 500);		// can Tx setting
-	ros::Subscriber aggm_sub = nn.subscribe("can_tx",500, canmsgCallback);		// can Rx setting 
-	ros::Subscriber aggm_sub2 = nn.subscribe("can_tx2",500, canmsg2Callback);		// can Rx setting 
-	ros::Subscriber aggm_kb_sub = nn2.subscribe("KBIF_msg", 100, KBCallback);	// Keyboard_Interface setting
+        ros::init(argc, argv, "CAN_Tx_Test");
+        ros::NodeHandle nh;
+        ros::NodeHandle nh2;
+        ros::NodeHandle nn;
+        ros::NodeHandle nn2;
+        ros::Publisher aggm_pub = nh.advertise<can_msgs::Frame>("can_rx", 500);		// can Tx setting
+        ros::Subscriber aggm_sub = nn.subscribe("can_tx",500, canmsgCallback);		// can Rx setting
+        ros::Subscriber aggm_sub2 = nn.subscribe("can_tx2",500, canmsg2Callback);		// can Rx setting
+        ros::Subscriber aggm_kb_sub = nn2.subscribe("KBIF_msg", 100, KBCallback);	// Keyboard_Interface setting
         ros::Publisher aggm_pub4 = nh2.advertise<kusv_msgs::kusv_CanInfo>("kusv_CanInfo",100);
         ros::Publisher aggm_CCAN_pub = nh.advertise<local_planning::kusv_Control_CanInfo>("CCAN_Info",200);
         ros::Publisher aggm_pub5 = nh.advertise<kusv_msgs::kusv_GlobalPose>("msgPOSE_kichun", 500);
 
-        ros::Subscriber kusv_cmd_sub = nn2.subscribe("control_cmd",500, kusvcmdCallback);
+        ros::Subscriber Input_cmd_sub = nn2.subscribe("control_cmd",500, inputcmdCallback);
+        ros::Subscriber Object_cmd_sub = nh.subscribe("/object_cmd", 500, objectcmdCallback);
 
-	ros::AsyncSpinner spinner(4);				// use 3 threads 1. can tx, 2. can rx, 3. Keyboard_Interface  // can rx2
-	
-	ros::Rate loop_rate(50);		//Looping 50Hz
-	spinner.start();
+        ros::AsyncSpinner spinner(4);				// use 3 threads 1. can tx, 2. can rx, 3. Keyboard_Interface  // can rx2
 
-	// value initialization
-	mo_val.Str.Accel_Dec_Cmd = (uint16_t)((Acc_value + 10.23) * 100);		// -3m^2 
-	mo_val.Str.Steer_Cmd = 0;
-	mo_conf.Str.EPS_Slvel = 250;
-	mo_conf.Str.EPS_IGNORE = 0;			// EPS Override mode
+        ros::Rate loop_rate(50);		//Looping 50Hz
+        spinner.start();
+
+        // value initialization
+        mo_val.Str.Accel_Dec_Cmd = (uint16_t)((Acc_value + 10.23) * 100);		// -3m^2
+        mo_val.Str.Steer_Cmd = 0;
+        mo_conf.Str.EPS_Slvel = 250;
+        mo_conf.Str.EPS_IGNORE = 0;			// EPS Override mode
         mo_conf.Str.ACC_aeb_seq = 0;		// AEB Enable
         mo_val.Str.Aeb_DecCmd = 0;		// value / 100
+        mo_conf.Str.EPS_En = 1;
+        mo_conf.Str.ACC_En = 1;
 
-	while(ros::ok())
-	{
-		//ROS_INFO("Test Message");
-		f_Vspeed = (RL + RR)/2;
-		mo_conf.Str.SetDispSpeed = f_Vspeed;
-		mo_val.Str.Steer_Cmd = Angle * 10;
-		Speed_Control_PID();
-		Print_for_Test();
-		mo_val.Str.Accel_Dec_Cmd = (uint16_t)((PID_speed + 10.23) * 100);
+        while(ros::ok())
+        {
+                //ROS_INFO("Test Message");
+                f_Vspeed = (RL + RR)/2;
+                mo_conf.Str.SetDispSpeed = f_Vspeed;
+                mo_val.Str.Steer_Cmd = Angle * 10;
+                Speed_Control_PID();
+                if(obstacle)
+                    Speed_Control_Distance();
+                Print_for_Test();
+                mo_val.Str.Accel_Dec_Cmd = (uint16_t)((PID_speed + 10.23) * 100);
 
-		mo_conf.Str.Mo_AlvCnt++;
-		CAN_TX_Publish(nh, aggm_pub, CAN_ID_MO_CONF, 8, mo_conf.CAN_MO_CONF_Data);
-		CAN_TX_Publish(nh, aggm_pub, CAN_ID_MO_VAL, 8, mo_val.CAN_MO_VAL_Data);
-		CAN_Control_report_Publish(nh, aggm_CCAN_pub);
-		CAN_Info_Publish(nh2, aggm_pub4);
-		gps_msg.header.stamp = ros::Time::now();
-		aggm_pub5.publish(gps_msg);
-		
-		ros::spinOnce();
-		loop_rate.sleep();
-	}
-	
+                mo_conf.Str.Mo_AlvCnt++;
+                CAN_TX_Publish(nh, aggm_pub, CAN_ID_MO_CONF, 8, mo_conf.CAN_MO_CONF_Data);
+                CAN_TX_Publish(nh, aggm_pub, CAN_ID_MO_VAL, 8, mo_val.CAN_MO_VAL_Data);
+                CAN_Control_report_Publish(nh, aggm_CCAN_pub);
+                CAN_Info_Publish(nh2, aggm_pub4);
+                gps_msg.header.stamp = ros::Time::now();
+                aggm_pub5.publish(gps_msg);
 
-	
+                ros::spinOnce();
+                loop_rate.sleep();
+        }
+
+
+
 }
 
 void Print_for_Test(void)
@@ -462,6 +478,43 @@ void Speed_Control_PID(void)
 		PID_speed = 1.0;
 }
 
+void Speed_Control_Distance(void){          //not finished
+
+    //objectDistance,                    // Distance from object to mid_Rear_Wheel
+                                            //
+//    goalDistance = 10;// + f_Vspeed; // 10m + speed ( ex) 10km/h -> 20m faraway)
+//    distanceError = goalDistance - objectDistance;     //(if)
+//    PID_speed = distanceError * Gain_P_Distance;
+
+//      version 2
+
+//    goalDistance = 10;
+//    distanceError = goalDistance - objectDistance;     //(if)
+//    PID_speed = distanceError * (-3 / 10) - 3;                                  // linear -> distance : 20 -> pidspeed = 0
+//                                                                                //           distance : 10 -> pidspeed = -3
+//    if(PID_speed  < -3.0 )                                                      // at least keep 20m away
+//            PID_speed = -3.0;
+//    else if(PID_speed > 0)
+//            PID_speed = 0;
+
+
+//        version 3
+    double goalSpeed;
+    goalDistance = 10;
+    distanceError = goalDistance - objectDistance;                              // distance : 20 -> goal speed = 10
+    goalSpeed = distanceError * -1;                                             // distance : 10 -> goal speed = 0
+
+    Speed_Error = goalSpeed - f_Vspeed;			// error = goal speed - current speed
+    PID_speed = Speed_Error * Gain_P;
+
+    if(PID_speed  < -3.0 )
+            PID_speed = -3.0;
+    else if(PID_speed > 0.3)                            // acceleration limit
+            PID_speed = 0.3;
+
+
+}
+
 void KBCallback(const local_planning::Keyboard_Interface::ConstPtr& msg)
 {
 //	ROS_INFO("%d",msg->mode);
@@ -479,11 +532,13 @@ void KBCallback(const local_planning::Keyboard_Interface::ConstPtr& msg)
 			break;		
 		case EPS_EN:
 			ROS_INFO("EPS Enable");
+                        mo_conf.Str.ACC_En = 0;
 			mo_conf.Str.EPS_En = 1;
 			break;
 		case ACC_EN:
 			ROS_INFO("ACC Enable");
 			mo_conf.Str.ACC_En = 1;
+                        mo_conf.Str.EPS_En = 0;
 			break;
 		case CONTROL:
 			//KEYBOARD_CONTROL(msg->mode);
@@ -501,13 +556,13 @@ void KBCallback(const local_planning::Keyboard_Interface::ConstPtr& msg)
 			//ROS_INFO("ACC:%f",Acc_value);
 			break;
 		case STRLEFT:
-			Gain_P += 0.01;
-			//Angle += 1;
+//			Gain_P += 0.01;
+                        Angle += 1;
 			//ROS_INFO("st_angle:%f",Angle);
 			break;
 		case STRRIGHT:
-			Gain_P -= 0.01;
-			//Angle -= 1;
+//			Gain_P -= 0.01;
+                        Angle -= 1;
 			//ROS_INFO("st_angle:%f",Angle);
 			break;
 	}
@@ -744,8 +799,12 @@ uint8_t CAN_Info_Publish(ros::NodeHandle n, ros::Publisher pub)
 	pub.publish(msg_CAN);
 }
 
-void kusvcmdCallback(const local_planning::kusv_ControlCmd::ConstPtr& cmdmsg)
-{
-	Dest_Speed = cmdmsg->kusv_linear_x;
-	Angle = cmdmsg->kusv_angular_z;
+void inputcmdCallback(const local_planning::kusv_ControlCmd::ConstPtr& cmdmsg){
+    Dest_Speed = cmdmsg->kusv_linear_x;
+    Angle = cmdmsg->kusv_angular_z;
+}
+
+void objectcmdCallback(const local_planning::kusv_ObjectCmd::ConstPtr& cmdmsg){
+    objectDistance = cmdmsg->distance;
+    obstacle = cmdmsg->isObstacle;
 }

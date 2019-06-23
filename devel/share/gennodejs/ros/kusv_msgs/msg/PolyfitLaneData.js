@@ -18,12 +18,19 @@ class PolyfitLaneData {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
+      this.id = null;
       this.a = null;
       this.b = null;
       this.c = null;
       this.d = null;
     }
     else {
+      if (initObj.hasOwnProperty('id')) {
+        this.id = initObj.id
+      }
+      else {
+        this.id = '';
+      }
       if (initObj.hasOwnProperty('a')) {
         this.a = initObj.a
       }
@@ -53,6 +60,8 @@ class PolyfitLaneData {
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type PolyfitLaneData
+    // Serialize message field [id]
+    bufferOffset = _serializer.string(obj.id, buffer, bufferOffset);
     // Serialize message field [a]
     bufferOffset = _serializer.float64(obj.a, buffer, bufferOffset);
     // Serialize message field [b]
@@ -68,6 +77,8 @@ class PolyfitLaneData {
     //deserializes a message object of type PolyfitLaneData
     let len;
     let data = new PolyfitLaneData(null);
+    // Deserialize message field [id]
+    data.id = _deserializer.string(buffer, bufferOffset);
     // Deserialize message field [a]
     data.a = _deserializer.float64(buffer, bufferOffset);
     // Deserialize message field [b]
@@ -80,7 +91,9 @@ class PolyfitLaneData {
   }
 
   static getMessageSize(object) {
-    return 32;
+    let length = 0;
+    length += object.id.length;
+    return length + 36;
   }
 
   static datatype() {
@@ -90,12 +103,13 @@ class PolyfitLaneData {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'b5c1b8d0c23e6e29f5d8d9fbdb957dac';
+    return '47b0d2040cd914e7cb8c724f2341ef90';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
+    string id
     float64 a
     float64 b
     float64 c
@@ -110,6 +124,13 @@ class PolyfitLaneData {
       msg = {};
     }
     const resolved = new PolyfitLaneData(null);
+    if (msg.id !== undefined) {
+      resolved.id = msg.id;
+    }
+    else {
+      resolved.id = ''
+    }
+
     if (msg.a !== undefined) {
       resolved.a = msg.a;
     }

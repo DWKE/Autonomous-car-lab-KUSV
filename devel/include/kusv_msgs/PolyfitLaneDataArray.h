@@ -25,14 +25,19 @@ struct PolyfitLaneDataArray_
   typedef PolyfitLaneDataArray_<ContainerAllocator> Type;
 
   PolyfitLaneDataArray_()
-    : polyfitLanes()  {
+    : id()
+    , polyfitLanes()  {
     }
   PolyfitLaneDataArray_(const ContainerAllocator& _alloc)
-    : polyfitLanes(_alloc)  {
+    : id(_alloc)
+    , polyfitLanes(_alloc)  {
   (void)_alloc;
     }
 
 
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _id_type;
+  _id_type id;
 
    typedef std::vector< ::kusv_msgs::PolyfitLaneData_<ContainerAllocator> , typename ContainerAllocator::template rebind< ::kusv_msgs::PolyfitLaneData_<ContainerAllocator> >::other >  _polyfitLanes_type;
   _polyfitLanes_type polyfitLanes;
@@ -72,7 +77,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': False}
-// {'kusv_msgs': ['/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg'], 'sensor_msgs': ['/opt/ros/kinetic/share/sensor_msgs/cmake/../msg'], 'pcl_msgs': ['/opt/ros/kinetic/share/pcl_msgs/cmake/../msg'], 'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'jsk_footstep_msgs': ['/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg'], 'jsk_recognition_msgs': ['/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg'], 'actionlib_msgs': ['/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg']}
+// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'sensor_msgs': ['/opt/ros/kinetic/share/sensor_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg'], 'kusv_msgs': ['/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -115,12 +120,12 @@ struct MD5Sum< ::kusv_msgs::PolyfitLaneDataArray_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "f73b0014879f8495deb3d40eb300c75a";
+    return "e6657e1a3517283001699177de2585d0";
   }
 
   static const char* value(const ::kusv_msgs::PolyfitLaneDataArray_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xf73b0014879f8495ULL;
-  static const uint64_t static_value2 = 0xdeb3d40eb300c75aULL;
+  static const uint64_t static_value1 = 0xe6657e1a35172830ULL;
+  static const uint64_t static_value2 = 0x01699177de2585d0ULL;
 };
 
 template<class ContainerAllocator>
@@ -139,10 +144,12 @@ struct Definition< ::kusv_msgs::PolyfitLaneDataArray_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "PolyfitLaneData[] polyfitLanes\n\
+    return "string id\n\
+PolyfitLaneData[] polyfitLanes\n\
 \n\
 ================================================================================\n\
 MSG: kusv_msgs/PolyfitLaneData\n\
+string id\n\
 float64 a\n\
 float64 b\n\
 float64 c\n\
@@ -165,6 +172,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
+      stream.next(m.id);
       stream.next(m.polyfitLanes);
     }
 
@@ -184,6 +192,8 @@ struct Printer< ::kusv_msgs::PolyfitLaneDataArray_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::kusv_msgs::PolyfitLaneDataArray_<ContainerAllocator>& v)
   {
+    s << indent << "id: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.id);
     s << indent << "polyfitLanes[]" << std::endl;
     for (size_t i = 0; i < v.polyfitLanes.size(); ++i)
     {

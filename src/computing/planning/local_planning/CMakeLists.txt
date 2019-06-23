@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(local_planning)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -13,6 +13,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   message_generation
+  nav_msgs
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -49,11 +51,13 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
+
  add_message_files(
    FILES
    kusv_Control_CanInfo.msg
    Keyboard_Interface.msg
    kusv_ControlCmd.msg
+   kusv_ObjectCmd.msg
  )
 
 ## Generate services in the 'srv' folder
@@ -136,6 +140,10 @@ target_link_libraries(can_tx ${catkin_LIBRARIES})
 add_executable(keyboard_interface src/Keyboard_interface.cpp)
 add_dependencies(keyboard_interface ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(keyboard_interface ${catkin_LIBRARIES})
+
+add_executable(test_node src/test_node.cpp)
+add_dependencies(test_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(test_node ${catkin_LIBRARIES})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}

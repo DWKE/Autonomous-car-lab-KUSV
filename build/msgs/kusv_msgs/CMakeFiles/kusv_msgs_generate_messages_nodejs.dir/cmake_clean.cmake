@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/WaypointArray.js"
   "/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/kusv_CanInfo.js"
   "/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/LanePointData.js"
+  "/home/lke/ACL_KUSV/devel/share/gennodejs/ros/kusv_msgs/msg/LanePointDataArray.js"
 )
 
 # Per-language clean rules from dependency scanning.

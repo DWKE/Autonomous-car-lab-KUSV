@@ -1,5 +1,6 @@
 #include "obstacle_tracking.hpp"
 
+
 ObstacleTracking::ObstacleTracking()
 {
 	m_MAX_ASSOCIATION_DISTANCE = 2.0;
@@ -15,6 +16,7 @@ void ObstacleTracking::associate (const std::vector<clusterPtr>& objList)
 	m_DetectedObjects = objList;
 
 	matchWithDistanceOnly();
+	m_DetectedObjects.clear();
 }
 
 
@@ -35,16 +37,16 @@ void ObstacleTracking::matchWithDistanceOnly()
 		unsigned int objectNum = 0;
 		for (const auto& pDetectedObject : m_DetectedObjects)
 		{
-//			double object_size = sqrt (pow(pDetectedObject->m_width, 2.0) + 
-//					pow(pDetectedObject->m_length, 2.0) + pow(pDetectedObject->m_height, 2.0));
+			//			double object_size = sqrt (pow(pDetectedObject->m_width, 2.0) + 
+			//					pow(pDetectedObject->m_length, 2.0) + pow(pDetectedObject->m_height, 2.0));
 
 
 			// foreach the tracking objects
 			unsigned int trackNum = 0;
 			for (const auto& pTrackingObject : m_TrackingObjects)
 			{
-//				double old_size = sqrt (pow(pTrackingObject->m_width, 2.0) + 
-//						pow(pTrackingObject->m_height, 2.0) + pow(pTrackingObject->m_length, 2.0));
+				//				double old_size = sqrt (pow(pTrackingObject->m_width, 2.0) + 
+				//						pow(pTrackingObject->m_height, 2.0) + pow(pTrackingObject->m_length, 2.0));
 
 				d_y = pDetectedObject->m_center.position.y - pTrackingObject->m_center.position.y;
 				d_x = pDetectedObject->m_center.position.x - pTrackingObject->m_center.position.x;
@@ -64,16 +66,23 @@ void ObstacleTracking::matchWithDistanceOnly()
 			objectNum++;
 		}
 
+		// if a detected object mathcing with a tracking object is more than one
 		if(iClosest_obj != -1 && iClosest_track != -1 && dClosest < m_MAX_ASSOCIATION_DISTANCE)
 		{
+			// replace the new detected-object's id to the old detected-object's id
+			// and insert the new detected-object to the old detected-object =>
+			// change all information except id about old detected-object
 			m_DetectedObjects.at(iClosest_obj)->m_id = m_TrackingObjects.at(iClosest_track)->m_id;
 			MergeObjectAndTrack(m_TrackingObjects.at(iClosest_track), m_DetectedObjects.at(iClosest_obj));
 
+			// push old detected-object that changed all information except id
 			m_TmpTrackingObjects.push_back(m_TrackingObjects.at(iClosest_track));
 
+			// erase pair of matching object
 			m_TrackingObjects.erase(m_TrackingObjects.begin()+iClosest_track);
 			m_DetectedObjects.erase(m_DetectedObjects.begin()+iClosest_obj);
 		}
+		// detected object matching with a tracking object is zero 
 		else
 		{
 			iTracksNumber += 1;

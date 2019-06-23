@@ -12,6 +12,8 @@
     (:file "_package_DetectedObjectArray" :depends-on ("_package"))
     (:file "LanePointData" :depends-on ("_package_LanePointData"))
     (:file "_package_LanePointData" :depends-on ("_package"))
+    (:file "LanePointDataArray" :depends-on ("_package_LanePointDataArray"))
+    (:file "_package_LanePointDataArray" :depends-on ("_package"))
     (:file "PolyfitLaneData" :depends-on ("_package_PolyfitLaneData"))
     (:file "_package_PolyfitLaneData" :depends-on ("_package"))
     (:file "PolyfitLaneDataArray" :depends-on ("_package_PolyfitLaneDataArray"))

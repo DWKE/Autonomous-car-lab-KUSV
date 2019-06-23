@@ -1,8 +1,8 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "kusv_msgs: 9 messages, 0 services")
+message(STATUS "kusv_msgs: 10 messages, 0 services")
 
-set(MSG_I_FLAGS "-Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg;-Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg;-Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg;-Ijsk_recognition_msgs:/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg;-Ipcl_msgs:/opt/ros/kinetic/share/pcl_msgs/cmake/../msg;-Ijsk_footstep_msgs:/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Ikusv_msgs:/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg;-Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg;-Isensor_msgs:/opt/ros/kinetic/share/sensor_msgs/cmake/../msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -60,6 +60,11 @@ add_custom_target(_kusv_msgs_generate_messages_check_deps_${_filename}
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" NAME_WE)
 add_custom_target(_kusv_msgs_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "kusv_msgs" "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" "geometry_msgs/Point"
+)
+
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointDataArray.msg" NAME_WE)
+add_custom_target(_kusv_msgs_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "kusv_msgs" "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointDataArray.msg" "kusv_msgs/LanePointData:geometry_msgs/Point"
 )
 
 #
@@ -122,6 +127,12 @@ _generate_msg_cpp(kusv_msgs
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/kusv_msgs
 )
+_generate_msg_cpp(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointDataArray.msg"
+  "${MSG_I_FLAGS}"
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/kusv_msgs
+)
 
 ### Generating Services
 
@@ -154,6 +165,8 @@ add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_ch
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointDataArray.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_cpp _kusv_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -219,6 +232,12 @@ _generate_msg_eus(kusv_msgs
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/kusv_msgs
 )
+_generate_msg_eus(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointDataArray.msg"
+  "${MSG_I_FLAGS}"
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/kusv_msgs
+)
 
 ### Generating Services
 
@@ -251,6 +270,8 @@ add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_ch
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointDataArray.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_eus _kusv_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -316,6 +337,12 @@ _generate_msg_lisp(kusv_msgs
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/kusv_msgs
 )
+_generate_msg_lisp(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointDataArray.msg"
+  "${MSG_I_FLAGS}"
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/kusv_msgs
+)
 
 ### Generating Services
 
@@ -348,6 +375,8 @@ add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_c
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointDataArray.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_lisp _kusv_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -413,6 +442,12 @@ _generate_msg_nodejs(kusv_msgs
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/kusv_msgs
 )
+_generate_msg_nodejs(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointDataArray.msg"
+  "${MSG_I_FLAGS}"
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/kusv_msgs
+)
 
 ### Generating Services
 
@@ -445,6 +480,8 @@ add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointDataArray.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_nodejs _kusv_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -510,6 +547,12 @@ _generate_msg_py(kusv_msgs
   "/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/kusv_msgs
 )
+_generate_msg_py(kusv_msgs
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointDataArray.msg"
+  "${MSG_I_FLAGS}"
+  "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg;/opt/ros/kinetic/share/geometry_msgs/cmake/../msg/Point.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/kusv_msgs
+)
 
 ### Generating Services
 
@@ -543,6 +586,8 @@ get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv
 add_dependencies(kusv_msgs_generate_messages_py _kusv_msgs_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg" NAME_WE)
 add_dependencies(kusv_msgs_generate_messages_py _kusv_msgs_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointDataArray.msg" NAME_WE)
+add_dependencies(kusv_msgs_generate_messages_py _kusv_msgs_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
 add_custom_target(kusv_msgs_genpy)
@@ -569,9 +614,6 @@ endif()
 if(TARGET std_msgs_generate_messages_cpp)
   add_dependencies(kusv_msgs_generate_messages_cpp std_msgs_generate_messages_cpp)
 endif()
-if(TARGET jsk_recognition_msgs_generate_messages_cpp)
-  add_dependencies(kusv_msgs_generate_messages_cpp jsk_recognition_msgs_generate_messages_cpp)
-endif()
 
 if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/kusv_msgs)
   # install generated code
@@ -588,9 +630,6 @@ if(TARGET sensor_msgs_generate_messages_eus)
 endif()
 if(TARGET std_msgs_generate_messages_eus)
   add_dependencies(kusv_msgs_generate_messages_eus std_msgs_generate_messages_eus)
-endif()
-if(TARGET jsk_recognition_msgs_generate_messages_eus)
-  add_dependencies(kusv_msgs_generate_messages_eus jsk_recognition_msgs_generate_messages_eus)
 endif()
 
 if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/kusv_msgs)
@@ -609,9 +648,6 @@ endif()
 if(TARGET std_msgs_generate_messages_lisp)
   add_dependencies(kusv_msgs_generate_messages_lisp std_msgs_generate_messages_lisp)
 endif()
-if(TARGET jsk_recognition_msgs_generate_messages_lisp)
-  add_dependencies(kusv_msgs_generate_messages_lisp jsk_recognition_msgs_generate_messages_lisp)
-endif()
 
 if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/kusv_msgs)
   # install generated code
@@ -628,9 +664,6 @@ if(TARGET sensor_msgs_generate_messages_nodejs)
 endif()
 if(TARGET std_msgs_generate_messages_nodejs)
   add_dependencies(kusv_msgs_generate_messages_nodejs std_msgs_generate_messages_nodejs)
-endif()
-if(TARGET jsk_recognition_msgs_generate_messages_nodejs)
-  add_dependencies(kusv_msgs_generate_messages_nodejs jsk_recognition_msgs_generate_messages_nodejs)
 endif()
 
 if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/kusv_msgs)
@@ -649,7 +682,4 @@ if(TARGET sensor_msgs_generate_messages_py)
 endif()
 if(TARGET std_msgs_generate_messages_py)
   add_dependencies(kusv_msgs_generate_messages_py std_msgs_generate_messages_py)
-endif()
-if(TARGET jsk_recognition_msgs_generate_messages_py)
-  add_dependencies(kusv_msgs_generate_messages_py jsk_recognition_msgs_generate_messages_py)
 endif()

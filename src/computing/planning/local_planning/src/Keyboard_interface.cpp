@@ -52,36 +52,36 @@ int main(int argc, char *argv[])
     while (ros::ok())
     {
 
-		if(atoi(argv[1]) == 1)
-		{
-			msg.stamp = ros::Time::now();
-			msg.mode = 1;
-			KBIF_pub.publish(msg);
-		}
-		else if(atoi(argv[1]) == 0)
-		{
-			msg.stamp = ros::Time::now();
-			msg.mode = 0;
-			KBIF_pub.publish(msg);
-		}
-		else if(atoi(argv[1]) == 2)
-		{
-			msg.stamp = ros::Time::now();
-			msg.mode = 2;
-			KBIF_pub.publish(msg);
-		}
-		else if(atoi(argv[1]) == 3)
-		{
-			msg.stamp = ros::Time::now();
-			msg.mode = 3;
-			KBIF_pub.publish(msg);
-		}
+//		if(atoi(argv[1]) == 1)
+//		{
+//			msg.stamp = ros::Time::now();
+//			msg.mode = 1;
+//			KBIF_pub.publish(msg);
+//		}
+//		else if(atoi(argv[1]) == 0)
+//		{
+//			msg.stamp = ros::Time::now();
+//			msg.mode = 0;
+//			KBIF_pub.publish(msg);
+//		}
+//		else if(atoi(argv[1]) == 2)
+//		{
+//			msg.stamp = ros::Time::now();
+//			msg.mode = 2;
+//			KBIF_pub.publish(msg);
+//		}
+//		else if(atoi(argv[1]) == 3)
+//		{
+//			msg.stamp = ros::Time::now();
+//			msg.mode = 3;
+//			KBIF_pub.publish(msg);
+//		}
 		
-        //int c = 0;
-        //c = getch();
-		//print_Menu(c, KBIF_pub);
-		//if(c != NULL)
-			//ROS_INFO("%c", c);
+        int c = 0;
+        c = getch();
+                print_Menu(c, KBIF_pub);
+                if(c != NULL)
+                        ROS_INFO("%c", c);
  
         ros::spinOnce();
  

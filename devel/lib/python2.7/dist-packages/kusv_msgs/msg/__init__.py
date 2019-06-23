@@ -1,6 +1,7 @@
 from ._DetectedObject import *
 from ._DetectedObjectArray import *
 from ._LanePointData import *
+from ._LanePointDataArray import *
 from ._PolyfitLaneData import *
 from ._PolyfitLaneDataArray import *
 from ._Waypoint import *

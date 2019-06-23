@@ -24,13 +24,15 @@ struct PolyfitLaneData_
   typedef PolyfitLaneData_<ContainerAllocator> Type;
 
   PolyfitLaneData_()
-    : a(0.0)
+    : id()
+    , a(0.0)
     , b(0.0)
     , c(0.0)
     , d(0.0)  {
     }
   PolyfitLaneData_(const ContainerAllocator& _alloc)
-    : a(0.0)
+    : id(_alloc)
+    , a(0.0)
     , b(0.0)
     , c(0.0)
     , d(0.0)  {
@@ -38,6 +40,9 @@ struct PolyfitLaneData_
     }
 
 
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _id_type;
+  _id_type id;
 
    typedef double _a_type;
   _a_type a;
@@ -85,8 +90,8 @@ namespace message_traits
 
 
 
-// BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'kusv_msgs': ['/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg'], 'sensor_msgs': ['/opt/ros/kinetic/share/sensor_msgs/cmake/../msg'], 'pcl_msgs': ['/opt/ros/kinetic/share/pcl_msgs/cmake/../msg'], 'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'jsk_footstep_msgs': ['/opt/ros/kinetic/share/jsk_footstep_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg'], 'jsk_recognition_msgs': ['/opt/ros/kinetic/share/jsk_recognition_msgs/cmake/../msg'], 'actionlib_msgs': ['/opt/ros/kinetic/share/actionlib_msgs/cmake/../msg']}
+// BOOLTRAITS {'IsFixedSize': False, 'IsMessage': True, 'HasHeader': False}
+// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'sensor_msgs': ['/opt/ros/kinetic/share/sensor_msgs/cmake/../msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg'], 'kusv_msgs': ['/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -95,12 +100,12 @@ namespace message_traits
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::kusv_msgs::PolyfitLaneData_<ContainerAllocator> >
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
 struct IsFixedSize< ::kusv_msgs::PolyfitLaneData_<ContainerAllocator> const>
-  : TrueType
+  : FalseType
   { };
 
 template <class ContainerAllocator>
@@ -129,12 +134,12 @@ struct MD5Sum< ::kusv_msgs::PolyfitLaneData_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "b5c1b8d0c23e6e29f5d8d9fbdb957dac";
+    return "47b0d2040cd914e7cb8c724f2341ef90";
   }
 
   static const char* value(const ::kusv_msgs::PolyfitLaneData_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xb5c1b8d0c23e6e29ULL;
-  static const uint64_t static_value2 = 0xf5d8d9fbdb957dacULL;
+  static const uint64_t static_value1 = 0x47b0d2040cd914e7ULL;
+  static const uint64_t static_value2 = 0xcb8c724f2341ef90ULL;
 };
 
 template<class ContainerAllocator>
@@ -153,7 +158,8 @@ struct Definition< ::kusv_msgs::PolyfitLaneData_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float64 a\n\
+    return "string id\n\
+float64 a\n\
 float64 b\n\
 float64 c\n\
 float64 d\n\
@@ -175,6 +181,7 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
+      stream.next(m.id);
       stream.next(m.a);
       stream.next(m.b);
       stream.next(m.c);
@@ -197,6 +204,8 @@ struct Printer< ::kusv_msgs::PolyfitLaneData_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::kusv_msgs::PolyfitLaneData_<ContainerAllocator>& v)
   {
+    s << indent << "id: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.id);
     s << indent << "a: ";
     Printer<double>::stream(s, indent + "  ", v.a);
     s << indent << "b: ";

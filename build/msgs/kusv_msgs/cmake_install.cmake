@@ -42,6 +42,7 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/WaypointArray.msg"
     "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_CanInfo.msg"
     "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointData.msg"
+    "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/LanePointDataArray.msg"
     "/home/lke/ACL_KUSV/src/msgs/kusv_msgs/msg/kusv_GlobalPose.msg"
     )
 endif()

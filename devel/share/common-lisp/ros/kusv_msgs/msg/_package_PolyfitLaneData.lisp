@@ -1,5 +1,7 @@
 (cl:in-package kusv_msgs-msg)
-(cl:export '(A-VAL
+(cl:export '(ID-VAL
+          ID
+          A-VAL
           A
           B-VAL
           B

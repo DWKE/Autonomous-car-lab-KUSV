@@ -58,6 +58,7 @@ class Tracker
 	ros::Publisher pub_shape;  
 	ros::Publisher pub_result;	
 	ros::Publisher pub_detectedObject;
+	ros::Publisher pub_Origin;
 
 	// Declare subscriber
 	ros::Subscriber sub_velodyne;
@@ -75,7 +76,6 @@ class Tracker
 
 	// transformation
 	Eigen::Matrix4f m_tf_Base2Local, m_tf_Local2Base;
-
 	double m_tf_x = 80.0;
 	double m_tf_y = -45.0;
 	double m_tf_z = 23.0; 
@@ -87,6 +87,7 @@ class Tracker
 	ObstacleTracking m_ObstacleTracking;
 	RayGroundRemove m_RayGroundRemove;
 
+	visualization_msgs::Marker m_Origin;
 	visualization_msgs::MarkerArray m_arrShapes;
         kusv_msgs::DetectedObjectArray m_arrObjects;
 
@@ -103,6 +104,7 @@ class Tracker
 	void setCluster (const std::vector<pcl::PointIndices> vecClusterIndices, std::vector<clusterPtr>& pOriginalClusters, const PointCloudXYZI::Ptr pInputCloud);
 	void generateColor(size_t indexNumber);
 	void displayShape (const std::vector<clusterPtr> pVecClusters);
+	void setDetectedObject (const std::vector<clusterPtr>& pVecClusters);
 	void publish ();
 };
 

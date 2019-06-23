@@ -13,7 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   sensor_msgs
   std_msgs
-  jsk_recognition_msgs
+  #jsk_recognition_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -61,6 +61,7 @@ find_package(catkin REQUIRED COMPONENTS
        WaypointArray.msg
        kusv_CanInfo.msg
        LanePointData.msg
+       LanePointDataArray.msg
        kusv_GlobalPose.msg
  )
 
@@ -84,7 +85,7 @@ find_package(catkin REQUIRED COMPONENTS
    geometry_msgs#
    sensor_msgs#
    std_msgs
-   jsk_recognition_msgs
+   #jsk_recognition_msgs
  )
 
 ################################################
@@ -122,7 +123,7 @@ catkin_package(
     std_msgs
     geometry_msgs
     sensor_msgs
-    jsk_recognition_msgs
+    #jsk_recognition_msgs
 )
 
 ###########

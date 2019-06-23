@@ -19,9 +19,16 @@ class PolyfitLaneDataArray {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
+      this.id = null;
       this.polyfitLanes = null;
     }
     else {
+      if (initObj.hasOwnProperty('id')) {
+        this.id = initObj.id
+      }
+      else {
+        this.id = '';
+      }
       if (initObj.hasOwnProperty('polyfitLanes')) {
         this.polyfitLanes = initObj.polyfitLanes
       }
@@ -33,6 +40,8 @@ class PolyfitLaneDataArray {
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type PolyfitLaneDataArray
+    // Serialize message field [id]
+    bufferOffset = _serializer.string(obj.id, buffer, bufferOffset);
     // Serialize message field [polyfitLanes]
     // Serialize the length for message field [polyfitLanes]
     bufferOffset = _serializer.uint32(obj.polyfitLanes.length, buffer, bufferOffset);
@@ -46,6 +55,8 @@ class PolyfitLaneDataArray {
     //deserializes a message object of type PolyfitLaneDataArray
     let len;
     let data = new PolyfitLaneDataArray(null);
+    // Deserialize message field [id]
+    data.id = _deserializer.string(buffer, bufferOffset);
     // Deserialize message field [polyfitLanes]
     // Deserialize array length for message field [polyfitLanes]
     len = _deserializer.uint32(buffer, bufferOffset);
@@ -58,8 +69,11 @@ class PolyfitLaneDataArray {
 
   static getMessageSize(object) {
     let length = 0;
-    length += 32 * object.polyfitLanes.length;
-    return length + 4;
+    length += object.id.length;
+    object.polyfitLanes.forEach((val) => {
+      length += PolyfitLaneData.getMessageSize(val);
+    });
+    return length + 8;
   }
 
   static datatype() {
@@ -69,16 +83,18 @@ class PolyfitLaneDataArray {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'f73b0014879f8495deb3d40eb300c75a';
+    return 'e6657e1a3517283001699177de2585d0';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
+    string id
     PolyfitLaneData[] polyfitLanes
     
     ================================================================================
     MSG: kusv_msgs/PolyfitLaneData
+    string id
     float64 a
     float64 b
     float64 c
@@ -93,6 +109,13 @@ class PolyfitLaneDataArray {
       msg = {};
     }
     const resolved = new PolyfitLaneDataArray(null);
+    if (msg.id !== undefined) {
+      resolved.id = msg.id;
+    }
+    else {
+      resolved.id = ''
+    }
+
     if (msg.polyfitLanes !== undefined) {
       resolved.polyfitLanes = new Array(msg.polyfitLanes.length);
       for (let i = 0; i < resolved.polyfitLanes.length; ++i) {

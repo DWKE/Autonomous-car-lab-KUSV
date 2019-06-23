@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_WaypointArray.py"
   "/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_kusv_CanInfo.py"
   "/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_LanePointData.py"
+  "/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/_LanePointDataArray.py"
   "/home/lke/ACL_KUSV/devel/lib/python2.7/dist-packages/kusv_msgs/msg/__init__.py"
 )
 
