@@ -1,0 +1,6 @@
+[submodule "src/sensing/ublox"]
+	path = src/sensing/ublox
+	url = https://github.com/KumarRobotics/ublox.git
+[submodule "src/sensing/velodyne"]
+	path = src/sensing/velodyne
+	url = https://github.com/ros-drivers/velodyne.git
