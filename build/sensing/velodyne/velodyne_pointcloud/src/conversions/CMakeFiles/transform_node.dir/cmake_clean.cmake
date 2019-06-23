@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/transform_node.dir/transform_node.cc.o"
   "CMakeFiles/transform_node.dir/transform.cc.o"
   "CMakeFiles/transform_node.dir/pointcloudXYZIR.cc.o"
+  "CMakeFiles/transform_node.dir/organized_cloudXYZIR.cc.o"
   "/home/lke/ACL_KUSV/devel/lib/velodyne_pointcloud/transform_node.pdb"
   "/home/lke/ACL_KUSV/devel/lib/velodyne_pointcloud/transform_node"
 )

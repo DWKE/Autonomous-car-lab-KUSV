@@ -78,6 +78,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
+
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -121,17 +132,6 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -241,6 +241,21 @@ diagnostic_msgs_generate_messages_lisp/fast:
 .PHONY : diagnostic_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
+sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/rule:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f CMakeFiles/Makefile2 sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/rule
+.PHONY : sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/rule
+
+# Convenience name for target.
+ublox_logger_node: sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/rule
+
+.PHONY : ublox_logger_node
+
+# fast build rule for target.
+ublox_logger_node/fast:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/build.make sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/build
+.PHONY : ublox_logger_node/fast
+
+# Convenience name for target.
 sensing/ublox/ublox_gps/CMakeFiles/ublox_gps.dir/rule:
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f CMakeFiles/Makefile2 sensing/ublox/ublox_gps/CMakeFiles/ublox_gps.dir/rule
 .PHONY : sensing/ublox/ublox_gps/CMakeFiles/ublox_gps.dir/rule
@@ -297,6 +312,33 @@ src/gps.cpp.s:
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/ublox/ublox_gps/CMakeFiles/ublox_gps.dir/build.make sensing/ublox/ublox_gps/CMakeFiles/ublox_gps.dir/src/gps.cpp.s
 .PHONY : src/gps.cpp.s
 
+src/logger_node_pa.o: src/logger_node_pa.cpp.o
+
+.PHONY : src/logger_node_pa.o
+
+# target to build an object file
+src/logger_node_pa.cpp.o:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/build.make sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/src/logger_node_pa.cpp.o
+.PHONY : src/logger_node_pa.cpp.o
+
+src/logger_node_pa.i: src/logger_node_pa.cpp.i
+
+.PHONY : src/logger_node_pa.i
+
+# target to preprocess a source file
+src/logger_node_pa.cpp.i:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/build.make sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/src/logger_node_pa.cpp.i
+.PHONY : src/logger_node_pa.cpp.i
+
+src/logger_node_pa.s: src/logger_node_pa.cpp.s
+
+.PHONY : src/logger_node_pa.s
+
+# target to generate assembly for a file
+src/logger_node_pa.cpp.s:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/build.make sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/src/logger_node_pa.cpp.s
+.PHONY : src/logger_node_pa.cpp.s
+
 src/mkgmtime.o: src/mkgmtime.c.o
 
 .PHONY : src/mkgmtime.o
@@ -351,6 +393,36 @@ src/node.cpp.s:
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/ublox/ublox_gps/CMakeFiles/ublox_gps_node.dir/build.make sensing/ublox/ublox_gps/CMakeFiles/ublox_gps_node.dir/src/node.cpp.s
 .PHONY : src/node.cpp.s
 
+src/raw_data_pa.o: src/raw_data_pa.cpp.o
+
+.PHONY : src/raw_data_pa.o
+
+# target to build an object file
+src/raw_data_pa.cpp.o:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/build.make sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/src/raw_data_pa.cpp.o
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/ublox/ublox_gps/CMakeFiles/ublox_gps_node.dir/build.make sensing/ublox/ublox_gps/CMakeFiles/ublox_gps_node.dir/src/raw_data_pa.cpp.o
+.PHONY : src/raw_data_pa.cpp.o
+
+src/raw_data_pa.i: src/raw_data_pa.cpp.i
+
+.PHONY : src/raw_data_pa.i
+
+# target to preprocess a source file
+src/raw_data_pa.cpp.i:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/build.make sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/src/raw_data_pa.cpp.i
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/ublox/ublox_gps/CMakeFiles/ublox_gps_node.dir/build.make sensing/ublox/ublox_gps/CMakeFiles/ublox_gps_node.dir/src/raw_data_pa.cpp.i
+.PHONY : src/raw_data_pa.cpp.i
+
+src/raw_data_pa.s: src/raw_data_pa.cpp.s
+
+.PHONY : src/raw_data_pa.s
+
+# target to generate assembly for a file
+src/raw_data_pa.cpp.s:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/build.make sensing/ublox/ublox_gps/CMakeFiles/ublox_logger_node.dir/src/raw_data_pa.cpp.s
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/ublox/ublox_gps/CMakeFiles/ublox_gps_node.dir/build.make sensing/ublox/ublox_gps/CMakeFiles/ublox_gps_node.dir/src/raw_data_pa.cpp.s
+.PHONY : src/raw_data_pa.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -359,6 +431,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... diagnostic_msgs_generate_messages_nodejs"
 	@echo "... diagnostic_msgs_generate_messages_eus"
 	@echo "... install"
@@ -366,20 +439,26 @@ help:
 	@echo "... diagnostic_msgs_generate_messages_py"
 	@echo "... list_install_components"
 	@echo "... diagnostic_msgs_generate_messages_lisp"
+	@echo "... ublox_logger_node"
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... ublox_gps"
 	@echo "... ublox_gps_node"
-	@echo "... test"
 	@echo "... src/gps.o"
 	@echo "... src/gps.i"
 	@echo "... src/gps.s"
+	@echo "... src/logger_node_pa.o"
+	@echo "... src/logger_node_pa.i"
+	@echo "... src/logger_node_pa.s"
 	@echo "... src/mkgmtime.o"
 	@echo "... src/mkgmtime.i"
 	@echo "... src/mkgmtime.s"
 	@echo "... src/node.o"
 	@echo "... src/node.i"
 	@echo "... src/node.s"
+	@echo "... src/raw_data_pa.o"
+	@echo "... src/raw_data_pa.i"
+	@echo "... src/raw_data_pa.s"
 .PHONY : help
 
 

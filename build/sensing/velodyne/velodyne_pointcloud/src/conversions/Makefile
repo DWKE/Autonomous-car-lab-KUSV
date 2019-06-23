@@ -56,28 +56,6 @@ CMAKE_BINARY_DIR = /home/lke/ACL_KUSV/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -89,6 +67,17 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -133,6 +122,17 @@ test/fast: test
 
 .PHONY : test/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # The main all target
 all: cmake_check_build_system
 	cd /home/lke/ACL_KUSV/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/lke/ACL_KUSV/build/CMakeFiles /home/lke/ACL_KUSV/build/sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/progress.marks
@@ -166,64 +166,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/rule:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f CMakeFiles/Makefile2 sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/rule
-.PHONY : sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/rule
+sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/rule:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f CMakeFiles/Makefile2 sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/rule
+.PHONY : sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/rule
 
 # Convenience name for target.
-ringcolors_nodelet: sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/rule
+transform_nodelet: sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/rule
 
-.PHONY : ringcolors_nodelet
+.PHONY : transform_nodelet
 
 # fast build rule for target.
-ringcolors_nodelet/fast:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/build
-.PHONY : ringcolors_nodelet/fast
-
-# Convenience name for target.
-sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/rule:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f CMakeFiles/Makefile2 sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/rule
-.PHONY : sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/rule
-
-# Convenience name for target.
-cloud_nodelet: sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/rule
-
-.PHONY : cloud_nodelet
-
-# fast build rule for target.
-cloud_nodelet/fast:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/build
-.PHONY : cloud_nodelet/fast
-
-# Convenience name for target.
-sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/rule:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f CMakeFiles/Makefile2 sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/rule
-.PHONY : sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/rule
-
-# Convenience name for target.
-ringcolors_node: sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/rule
-
-.PHONY : ringcolors_node
-
-# fast build rule for target.
-ringcolors_node/fast:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/build
-.PHONY : ringcolors_node/fast
-
-# Convenience name for target.
-sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/rule:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f CMakeFiles/Makefile2 sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/rule
-.PHONY : sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/rule
-
-# Convenience name for target.
-cloud_node: sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/rule
-
-.PHONY : cloud_node
-
-# fast build rule for target.
-cloud_node/fast:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/build
-.PHONY : cloud_node/fast
+transform_nodelet/fast:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build
+.PHONY : transform_nodelet/fast
 
 # Convenience name for target.
 sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/rule:
@@ -241,19 +196,34 @@ transform_node/fast:
 .PHONY : transform_node/fast
 
 # Convenience name for target.
-sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/rule:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f CMakeFiles/Makefile2 sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/rule
-.PHONY : sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/rule
+sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/rule:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f CMakeFiles/Makefile2 sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/rule
+.PHONY : sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/rule
 
 # Convenience name for target.
-transform_nodelet: sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/rule
+cloud_nodelet: sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/rule
 
-.PHONY : transform_nodelet
+.PHONY : cloud_nodelet
 
 # fast build rule for target.
-transform_nodelet/fast:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build
-.PHONY : transform_nodelet/fast
+cloud_nodelet/fast:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/build
+.PHONY : cloud_nodelet/fast
+
+# Convenience name for target.
+sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/rule:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f CMakeFiles/Makefile2 sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/rule
+.PHONY : sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/rule
+
+# Convenience name for target.
+cloud_node: sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/rule
+
+.PHONY : cloud_node
+
+# fast build rule for target.
+cloud_node/fast:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/build
+.PHONY : cloud_node/fast
 
 cloud_node.o: cloud_node.cc.o
 
@@ -309,36 +279,6 @@ cloud_nodelet.cc.s:
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/cloud_nodelet.cc.s
 .PHONY : cloud_nodelet.cc.s
 
-colors.o: colors.cc.o
-
-.PHONY : colors.o
-
-# target to build an object file
-colors.cc.o:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/colors.cc.o
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/colors.cc.o
-.PHONY : colors.cc.o
-
-colors.i: colors.cc.i
-
-.PHONY : colors.i
-
-# target to preprocess a source file
-colors.cc.i:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/colors.cc.i
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/colors.cc.i
-.PHONY : colors.cc.i
-
-colors.s: colors.cc.s
-
-.PHONY : colors.s
-
-# target to generate assembly for a file
-colors.cc.s:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/colors.cc.s
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/colors.cc.s
-.PHONY : colors.cc.s
-
 convert.o: convert.cc.o
 
 .PHONY : convert.o
@@ -369,16 +309,52 @@ convert.cc.s:
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/convert.cc.s
 .PHONY : convert.cc.s
 
+organized_cloudXYZIR.o: organized_cloudXYZIR.cc.o
+
+.PHONY : organized_cloudXYZIR.o
+
+# target to build an object file
+organized_cloudXYZIR.cc.o:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/organized_cloudXYZIR.cc.o
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/organized_cloudXYZIR.cc.o
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/organized_cloudXYZIR.cc.o
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/organized_cloudXYZIR.cc.o
+.PHONY : organized_cloudXYZIR.cc.o
+
+organized_cloudXYZIR.i: organized_cloudXYZIR.cc.i
+
+.PHONY : organized_cloudXYZIR.i
+
+# target to preprocess a source file
+organized_cloudXYZIR.cc.i:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/organized_cloudXYZIR.cc.i
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/organized_cloudXYZIR.cc.i
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/organized_cloudXYZIR.cc.i
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/organized_cloudXYZIR.cc.i
+.PHONY : organized_cloudXYZIR.cc.i
+
+organized_cloudXYZIR.s: organized_cloudXYZIR.cc.s
+
+.PHONY : organized_cloudXYZIR.s
+
+# target to generate assembly for a file
+organized_cloudXYZIR.cc.s:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/organized_cloudXYZIR.cc.s
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/organized_cloudXYZIR.cc.s
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/organized_cloudXYZIR.cc.s
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/organized_cloudXYZIR.cc.s
+.PHONY : organized_cloudXYZIR.cc.s
+
 pointcloudXYZIR.o: pointcloudXYZIR.cc.o
 
 .PHONY : pointcloudXYZIR.o
 
 # target to build an object file
 pointcloudXYZIR.cc.o:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/pointcloudXYZIR.cc.o
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/pointcloudXYZIR.cc.o
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/pointcloudXYZIR.cc.o
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/pointcloudXYZIR.cc.o
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/pointcloudXYZIR.cc.o
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/pointcloudXYZIR.cc.o
 .PHONY : pointcloudXYZIR.cc.o
 
 pointcloudXYZIR.i: pointcloudXYZIR.cc.i
@@ -387,10 +363,10 @@ pointcloudXYZIR.i: pointcloudXYZIR.cc.i
 
 # target to preprocess a source file
 pointcloudXYZIR.cc.i:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/pointcloudXYZIR.cc.i
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/pointcloudXYZIR.cc.i
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/pointcloudXYZIR.cc.i
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/pointcloudXYZIR.cc.i
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/pointcloudXYZIR.cc.i
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/pointcloudXYZIR.cc.i
 .PHONY : pointcloudXYZIR.cc.i
 
 pointcloudXYZIR.s: pointcloudXYZIR.cc.s
@@ -399,65 +375,11 @@ pointcloudXYZIR.s: pointcloudXYZIR.cc.s
 
 # target to generate assembly for a file
 pointcloudXYZIR.cc.s:
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/pointcloudXYZIR.cc.s
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/pointcloudXYZIR.cc.s
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_nodelet.dir/pointcloudXYZIR.cc.s
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/cloud_node.dir/pointcloudXYZIR.cc.s
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/pointcloudXYZIR.cc.s
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/pointcloudXYZIR.cc.s
 .PHONY : pointcloudXYZIR.cc.s
-
-ringcolors_node.o: ringcolors_node.cc.o
-
-.PHONY : ringcolors_node.o
-
-# target to build an object file
-ringcolors_node.cc.o:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/ringcolors_node.cc.o
-.PHONY : ringcolors_node.cc.o
-
-ringcolors_node.i: ringcolors_node.cc.i
-
-.PHONY : ringcolors_node.i
-
-# target to preprocess a source file
-ringcolors_node.cc.i:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/ringcolors_node.cc.i
-.PHONY : ringcolors_node.cc.i
-
-ringcolors_node.s: ringcolors_node.cc.s
-
-.PHONY : ringcolors_node.s
-
-# target to generate assembly for a file
-ringcolors_node.cc.s:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_node.dir/ringcolors_node.cc.s
-.PHONY : ringcolors_node.cc.s
-
-ringcolors_nodelet.o: ringcolors_nodelet.cc.o
-
-.PHONY : ringcolors_nodelet.o
-
-# target to build an object file
-ringcolors_nodelet.cc.o:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/ringcolors_nodelet.cc.o
-.PHONY : ringcolors_nodelet.cc.o
-
-ringcolors_nodelet.i: ringcolors_nodelet.cc.i
-
-.PHONY : ringcolors_nodelet.i
-
-# target to preprocess a source file
-ringcolors_nodelet.cc.i:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/ringcolors_nodelet.cc.i
-.PHONY : ringcolors_nodelet.cc.i
-
-ringcolors_nodelet.s: ringcolors_nodelet.cc.s
-
-.PHONY : ringcolors_nodelet.s
-
-# target to generate assembly for a file
-ringcolors_nodelet.cc.s:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/ringcolors_nodelet.dir/ringcolors_nodelet.cc.s
-.PHONY : ringcolors_nodelet.cc.s
 
 transform.o: transform.cc.o
 
@@ -465,8 +387,8 @@ transform.o: transform.cc.o
 
 # target to build an object file
 transform.cc.o:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/transform.cc.o
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/transform.cc.o
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/transform.cc.o
 .PHONY : transform.cc.o
 
 transform.i: transform.cc.i
@@ -475,8 +397,8 @@ transform.i: transform.cc.i
 
 # target to preprocess a source file
 transform.cc.i:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/transform.cc.i
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/transform.cc.i
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/transform.cc.i
 .PHONY : transform.cc.i
 
 transform.s: transform.cc.s
@@ -485,8 +407,8 @@ transform.s: transform.cc.s
 
 # target to generate assembly for a file
 transform.cc.s:
-	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/transform.cc.s
 	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_nodelet.dir/transform.cc.s
+	cd /home/lke/ACL_KUSV/build && $(MAKE) -f sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/build.make sensing/velodyne/velodyne_pointcloud/src/conversions/CMakeFiles/transform_node.dir/transform.cc.s
 .PHONY : transform.cc.s
 
 transform_node.o: transform_node.cc.o
@@ -549,40 +471,32 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
-	@echo "... ringcolors_nodelet"
+	@echo "... transform_nodelet"
+	@echo "... install"
+	@echo "... transform_node"
 	@echo "... cloud_nodelet"
 	@echo "... edit_cache"
-	@echo "... ringcolors_node"
 	@echo "... cloud_node"
-	@echo "... transform_node"
-	@echo "... install"
-	@echo "... transform_nodelet"
 	@echo "... list_install_components"
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... test"
+	@echo "... rebuild_cache"
 	@echo "... cloud_node.o"
 	@echo "... cloud_node.i"
 	@echo "... cloud_node.s"
 	@echo "... cloud_nodelet.o"
 	@echo "... cloud_nodelet.i"
 	@echo "... cloud_nodelet.s"
-	@echo "... colors.o"
-	@echo "... colors.i"
-	@echo "... colors.s"
 	@echo "... convert.o"
 	@echo "... convert.i"
 	@echo "... convert.s"
+	@echo "... organized_cloudXYZIR.o"
+	@echo "... organized_cloudXYZIR.i"
+	@echo "... organized_cloudXYZIR.s"
 	@echo "... pointcloudXYZIR.o"
 	@echo "... pointcloudXYZIR.i"
 	@echo "... pointcloudXYZIR.s"
-	@echo "... ringcolors_node.o"
-	@echo "... ringcolors_node.i"
-	@echo "... ringcolors_node.s"
-	@echo "... ringcolors_nodelet.o"
-	@echo "... ringcolors_nodelet.i"
-	@echo "... ringcolors_nodelet.s"
 	@echo "... transform.o"
 	@echo "... transform.i"
 	@echo "... transform.s"
