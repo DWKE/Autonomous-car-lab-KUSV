@@ -1,11 +1,21 @@
 <launch>
-	<arg name="Marker_duration" default="0.1" />
-	<arg name="Voxel_leafsize" default="0.3" />
-	<arg name="threshold_range" default="10.0" />
+        <arg name="Marker_duration" default="0.1" />
+        <arg name="Voxel_leafsize" default="0.1" />
+        <arg name="threshold_range" default="27.0" />
+        <arg name="general_max_slope" default="5.0" />
+        <arg name="clipping_height" default="0.2" />
+        <arg name="cluster_err_range" default="0.5" />
+        <arg name="cluster_min_size" default="5.0" />
+        <arg name="cluster_max_size" default="10000.0" />
 
-	<node pkg="perception" type="perception" name="lidar_detection" args="input:=/velodyne_points" output="screen">
-		<param name="Marker_duration" value="$(arg Marker_duration)"/>
-		<param name="Voxel_leafsize" value="$(arg Voxel_leafsize)"/>
-		<param name="threshold_range" value="$(arg threshold_range)"/>
-	</node>
+        <node pkg="perception" type="perception" name="lidar_detection" args="input:=/velodyne_points" output="screen">
+                <param name="Marker_duration" value="$(arg Marker_duration)"/>
+                <param name="Voxel_leafsize" value="$(arg Voxel_leafsize)"/>
+                <param name="threshold_range" value="$(arg threshold_range)"/>
+                <param name="cluster_min_size" value="$(arg cluster_min_size)"/>
+                <param name="cluster_err_range" value="$(arg cluster_err_range)"/>
+                <param name="general_max_slope" value="$(arg general_max_slope)"/>
+                <param name="clipping_height" value="$(arg clipping_height)"/>
+                <param name="cluster_max_size" value="$(arg cluster_max_size)"/>
+        </node>
 </launch>
