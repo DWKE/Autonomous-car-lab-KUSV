@@ -117,7 +117,7 @@ void Cluster::SetCloud(const pcl::PointCloud<pcl::PointXYZI>::Ptr pInputCloud,
 			rz = box.angle * 3.14 / 180;
 			m_center.position.x = box.center.x;
 			m_center.position.y = box.center.y;
-			m_dDistanceToCenter = hypot (m_center.position.y, m_center.position.x);
+                        //m_dDistanceToCenter = hypot (m_center.position.y, m_center.position.x);
 			m_dimensions.x = box.size.width;
 			m_dimensions.y = box.size.height;
 		}
