@@ -129,7 +129,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/kusvcom2/Autonomous-car-lab-KUSV/devel/lib;/home/kusvcom2/ws_perception/devel/lib;/home/kusvcom2/loc_ws/devel/lib;/home/kusvcom2/control_ws/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/kusvcom2/Autonomous-car-lab-KUSV/devel/lib;/home/kusvcom2/Autonomous-car-lab-KUSV/devel/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

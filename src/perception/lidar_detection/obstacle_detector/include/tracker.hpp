@@ -94,7 +94,7 @@ class Tracker
 
 	visualization_msgs::Marker m_Origin;
 	visualization_msgs::MarkerArray m_arrShapes;
-        kusv_msgs::DetectedObjectArray m_arrObjects;
+	kusv_msgs::DetectedObjectArray m_arrObjects;
 
 	public:
 	Tracker();

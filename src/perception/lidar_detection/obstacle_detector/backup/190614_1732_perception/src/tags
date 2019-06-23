@@ -1,0 +1,127 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+associate	obstacle_tracking.cpp	/^void ObstacleTracking::associate (const std::vector<clusterPtr>& objList)$/;"	f	class:ObstacleTracking
+base2Local	tracker.cpp	/^void Tracker::base2Local (double abs_)$/;"	f	class:Tracker
+blue	ray_ground_filter.hpp	/^	size_t blue;        \/\/Blue component [0-255]$/;"	m	struct:PointXYZRTColor
+ClassifyPointCloud	ray_ground_filter.cpp	/^void RayGroundRemove::ClassifyPointCloud(std::vector<PointCloudXYZRTColor>& in_radial_ordered_clouds,$/;"	f	class:RayGroundRemove
+ClipCloud	ray_ground_filter.cpp	/^void RayGroundRemove::ClipCloud(const PointCloudXYZI::Ptr in_cloud_ptr, $/;"	f	class:RayGroundRemove
+clipping_height_	ray_ground_filter.hpp	/^	double clipping_height_ = 0.2; \/\/the points higher than this will be removed from the input cloud.$/;"	m	class:RayGroundRemove
+Cluster	cluster.cpp	/^Cluster::Cluster()$/;"	f	class:Cluster
+Cluster	cluster.hpp	/^class Cluster$/;"	c
+clusterPtr	cluster.hpp	/^typedef boost::shared_ptr<Cluster> clusterPtr;$/;"	t
+colors_	ray_ground_filter.hpp	/^	std::vector<cv::Scalar> colors_;$/;"	m	class:RayGroundRemove
+color_num_	ray_ground_filter.hpp	/^	const size_t color_num_ = 60;\/\/different number of color to generate$/;"	m	class:RayGroundRemove
+concentric_div	ray_ground_filter.hpp	/^	size_t concentric_div;\/\/index of the concentric division to which this points belongs to$/;"	m	struct:PointXYZRTColor
+concentric_dividers_num_	ray_ground_filter.hpp	/^	size_t concentric_dividers_num_;$/;"	m	class:RayGroundRemove
+concentric_divider_distance_	ray_ground_filter.hpp	/^	double concentric_divider_distance_ = 0.01;\/\/distance in meters between concentric divisions$/;"	m	class:RayGroundRemove
+ConvertXYZToRTZColor	ray_ground_filter.cpp	/^void RayGroundRemove::ConvertXYZToRTZColor(const pcl::PointCloud<pcl::PointXYZI>::Ptr in_cloud,$/;"	f	class:RayGroundRemove
+dbscan	tracker.cpp	/^void Tracker::dbscan(const PointCloudXYZI::ConstPtr& pInputCloud, std::vector<pcl::PointIndices>& vecClusterIndices)$/;"	f	class:Tracker
+displayShape	tracker.cpp	/^void Tracker::displayShape (const std::vector<clusterPtr> pVecClusters)$/;"	f	class:Tracker
+downsample	tracker.cpp	/^void Tracker::downsample (const PointCloudXYZI::ConstPtr& pInputCloud, PointCloudXYZI::Ptr& pDownsampledCloud, float f_paramLeafSize_m)$/;"	f	class:Tracker
+ExtractPointsIndices	ray_ground_filter.cpp	/^void RayGroundRemove::ExtractPointsIndices(const PointCloudXYZI::Ptr in_cloud_ptr,$/;"	f	class:RayGroundRemove
+general_max_slope_	ray_ground_filter.hpp	/^	double general_max_slope_ = 3.0;\/\/degrees$/;"	m	class:RayGroundRemove
+generateColor	tracker.cpp	/^void Tracker::generateColor(size_t indexNumber)$/;"	f	class:Tracker
+GetCloud	cluster.cpp	/^pcl::PointCloud <pcl::PointXYZRGB>::Ptr Cluster::GetCloud()$/;"	f	class:Cluster
+getHeader	tracker.cpp	/^std_msgs::Header Tracker::getHeader()$/;"	f	class:Tracker
+getParameter	tracker.cpp	/^void Tracker::getParameter()$/;"	f	class:Tracker
+green	ray_ground_filter.hpp	/^	size_t green;       \/\/Green Component[0-255]$/;"	m	struct:PointXYZRTColor
+groundRemove	ray_ground_filter.cpp	/^void RayGroundRemove::groundRemove(const PointCloudXYZI::ConstPtr& pInputCloud, PointCloudXYZI::Ptr& pRemovedGroundCloud)$/;"	f	class:RayGroundRemove
+iTracksNumber	obstacle_tracking.hpp	/^	unsigned int iTracksNumber;$/;"	m	class:ObstacleTracking
+local_max_slope_	ray_ground_filter.hpp	/^	double local_max_slope_ = 5.0;\/\/degrees$/;"	m	class:RayGroundRemove
+main	main.cpp	/^int main(int argc, char **argv)$/;"	f
+mainLoop	tracker.cpp	/^void Tracker::mainLoop()$/;"	f	class:Tracker
+matchWithDistanceOnly	obstacle_tracking.cpp	/^void ObstacleTracking::matchWithDistanceOnly()$/;"	f	class:ObstacleTracking
+MergeObjectAndTrack	obstacle_tracking.cpp	/^void ObstacleTracking::MergeObjectAndTrack (clusterPtr& track, clusterPtr& obj)$/;"	f	class:ObstacleTracking
+min_height_threshold_	ray_ground_filter.hpp	/^	double min_height_threshold_ = 0.05;;\/\/minimum height threshold regardless the slope, useful for close points$/;"	m	class:RayGroundRemove
+min_point_distance_	ray_ground_filter.hpp	/^	double min_point_distance_ = 1.85;\/\/minimum distance from the origin to consider a point as valid$/;"	m	class:RayGroundRemove
+m_arrObjects	tracker.hpp	/^	lidar_track_msgs::DetectedObjectArray m_arrObjects;$/;"	m	class:Tracker
+m_arrShapes	tracker.hpp	/^	visualization_msgs::MarkerArray m_arrShapes;$/;"	m	class:Tracker
+m_b	cluster.hpp	/^	int m_r, m_g, m_b;$/;"	m	class:Cluster
+m_b	tracker.hpp	/^	uint8_t m_b;$/;"	m	struct:_rgb
+m_center	cluster.hpp	/^	geometry_msgs::Pose m_center;$/;"	m	class:Cluster
+m_DetectedObjects	obstacle_tracking.hpp	/^	std::vector<clusterPtr> m_DetectedObjects;$/;"	m	class:ObstacleTracking
+m_dimensions	cluster.hpp	/^	geometry_msgs::Vector3 m_dimensions;$/;"	m	class:Cluster
+m_dRange_m	tracker.hpp	/^	double m_dRange_m;$/;"	m	class:Tracker
+m_eigen_values	cluster.hpp	/^	Eigen::Vector3f m_eigen_values;$/;"	m	class:Cluster
+m_eigen_vectors	cluster.hpp	/^	Eigen::Matrix3f m_eigen_vectors;$/;"	m	class:Cluster
+m_fLeafSize	tracker.hpp	/^	float m_fLeafSize;$/;"	m	class:Tracker
+m_fMarkerDuration	tracker.hpp	/^	float m_fMarkerDuration;$/;"	m	class:Tracker
+m_g	cluster.hpp	/^	int m_r, m_g, m_b;$/;"	m	class:Cluster
+m_g	tracker.hpp	/^	uint8_t m_g;$/;"	m	struct:_rgb
+m_globalRGB	tracker.hpp	/^	std::vector<RGB> m_globalRGB;$/;"	m	class:Tracker
+m_height	cluster.hpp	/^	float m_length, m_width, m_height;$/;"	m	class:Cluster
+m_id	cluster.hpp	/^	int m_id;$/;"	m	class:Cluster
+m_label	cluster.hpp	/^	std::string m_label;$/;"	m	class:Cluster
+m_length	cluster.hpp	/^	float m_length, m_width, m_height;$/;"	m	class:Cluster
+m_maxIndexNumber	tracker.hpp	/^	int m_maxIndexNumber = 0;$/;"	m	class:Tracker
+m_MAX_ASSOCIATION_DISTANCE	obstacle_tracking.hpp	/^	double m_MAX_ASSOCIATION_DISTANCE;$/;"	m	class:ObstacleTracking
+m_max_point	cluster.hpp	/^	pcl::PointXYZI m_max_point;$/;"	m	class:Cluster
+m_min_point	cluster.hpp	/^	pcl::PointXYZI m_min_point;$/;"	m	class:Cluster
+m_ObstacleTracking	tracker.hpp	/^	ObstacleTracking m_ObstacleTracking;$/;"	m	class:Tracker
+m_OriginalClusters	tracker.hpp	/^	std::vector<clusterPtr> m_OriginalClusters;$/;"	m	class:Tracker
+m_originalID	cluster.hpp	/^	int m_originalID;$/;"	m	class:Cluster
+m_pointCloud	cluster.hpp	/^	pcl::PointCloud <pcl::PointXYZRGB>::Ptr m_pointCloud;$/;"	m	class:Cluster
+m_polygon	cluster.hpp	/^	geometry_msgs::PolygonStamped m_polygon;$/;"	m	class:Cluster
+m_r	cluster.hpp	/^	int m_r, m_g, m_b;$/;"	m	class:Cluster
+m_r	tracker.hpp	/^	uint8_t m_r;$/;"	m	struct:_rgb
+m_RayGroundRemove	tracker.hpp	/^	RayGroundRemove m_RayGroundRemove;$/;"	m	class:Tracker
+m_tf_Base2Local	tracker.hpp	/^	Eigen::Matrix4f m_tf_Base2Local, m_tf_Local2Base;$/;"	m	class:Tracker
+m_tf_Local2Base	tracker.hpp	/^	Eigen::Matrix4f m_tf_Base2Local, m_tf_Local2Base;$/;"	m	class:Tracker
+m_tf_pitch	tracker.hpp	/^	double m_tf_pitch = 0.0;$/;"	m	class:Tracker
+m_tf_roll	tracker.hpp	/^	double m_tf_roll = 0.0; $/;"	m	class:Tracker
+m_tf_x	tracker.hpp	/^	double m_tf_x = 74.0;$/;"	m	class:Tracker
+m_tf_y	tracker.hpp	/^	double m_tf_y = 52.0;$/;"	m	class:Tracker
+m_tf_yaw	tracker.hpp	/^	double m_tf_yaw = M_PI\/2;$/;"	m	class:Tracker
+m_tf_z	tracker.hpp	/^	double m_tf_z = 24.0; $/;"	m	class:Tracker
+m_TmpTrackingObjects	obstacle_tracking.hpp	/^	std::vector<clusterPtr> m_TmpTrackingObjects;$/;"	m	class:ObstacleTracking
+m_TrackingObjects	obstacle_tracking.hpp	/^	std::vector<clusterPtr> m_TrackingObjects;$/;"	m	class:ObstacleTracking
+m_valid_cluster	cluster.hpp	/^	bool m_valid_cluster;$/;"	m	class:Cluster
+m_velodyne_header	tracker.hpp	/^	std_msgs::Header m_velodyne_header;$/;"	m	class:Tracker
+m_width	cluster.hpp	/^	float m_length, m_width, m_height;$/;"	m	class:Cluster
+nh	tracker.hpp	/^	ros::NodeHandle nh;$/;"	m	class:Tracker
+ObstacleTracking	obstacle_tracking.cpp	/^ObstacleTracking::ObstacleTracking()$/;"	f	class:ObstacleTracking
+ObstacleTracking	obstacle_tracking.hpp	/^class ObstacleTracking$/;"	c
+original_index	ray_ground_filter.hpp	/^	size_t original_index; \/\/index of this point in the source pointcloud$/;"	m	struct:PointXYZRTColor
+point	ray_ground_filter.hpp	/^	pcl::PointXYZI point;$/;"	m	struct:PointXYZRTColor
+PointCloudXYZI	ray_ground_filter.cpp	/^typedef pcl::PointCloud<pcl::PointXYZI> PointCloudXYZI;$/;"	t	file:
+PointCloudXYZI	ray_ground_filter.hpp	/^typedef pcl::PointCloud<pcl::PointXYZI> PointCloudXYZI;$/;"	t
+PointCloudXYZI	tracker.cpp	/^typedef pcl::PointCloud<pcl::PointXYZI> PointCloudXYZI;$/;"	t	file:
+PointCloudXYZI	tracker.hpp	/^typedef pcl::PointCloud<pcl::PointXYZI> PointCloudXYZI;$/;"	t
+PointCloudXYZRTColor	ray_ground_filter.hpp	/^typedef std::vector<PointXYZRTColor> PointCloudXYZRTColor;$/;"	t
+PointXYZRTColor	ray_ground_filter.hpp	/^struct PointXYZRTColor$/;"	s
+pub_detectedObject	tracker.hpp	/^	ros::Publisher pub_detectedObject;$/;"	m	class:Tracker
+pub_result	tracker.hpp	/^	ros::Publisher pub_result;	$/;"	m	class:Tracker
+pub_shape	tracker.hpp	/^	ros::Publisher pub_shape;  $/;"	m	class:Tracker
+radial_div	ray_ground_filter.hpp	/^	size_t radial_div;  \/\/index of the radial divsion to which this point belongs to$/;"	m	struct:PointXYZRTColor
+radial_dividers_num_	ray_ground_filter.hpp	/^	size_t radial_dividers_num_;$/;"	m	class:RayGroundRemove
+radial_divider_angle_	ray_ground_filter.hpp	/^	double radial_divider_angle_ = 0.1;\/\/distance in rads between dividers$/;"	m	class:RayGroundRemove
+radius	ray_ground_filter.hpp	/^	float radius;       \/\/cylindric coords on XY Plane$/;"	m	struct:PointXYZRTColor
+RayGroundRemove	ray_ground_filter.cpp	/^RayGroundRemove::RayGroundRemove() { }$/;"	f	class:RayGroundRemove
+RayGroundRemove	ray_ground_filter.hpp	/^class RayGroundRemove$/;"	c
+reclass_distance_threshold_	ray_ground_filter.hpp	/^	double reclass_distance_threshold_ = 0.2;\/\/distance between points at which re classification will occur$/;"	m	class:RayGroundRemove
+red	ray_ground_filter.hpp	/^	size_t red;         \/\/Red component  [0-255]$/;"	m	struct:PointXYZRTColor
+RGB	tracker.hpp	/^typedef struct _rgb RGB;$/;"	t	typeref:struct:_rgb
+sensor_height_	ray_ground_filter.hpp	/^	double sensor_height_ = 1.7;\/\/meters$/;"	m	class:RayGroundRemove
+SetCloud	cluster.cpp	/^void Cluster::SetCloud(const pcl::PointCloud<pcl::PointXYZI>::Ptr pInputCloud,$/;"	f	class:Cluster
+setCluster	tracker.cpp	/^void Tracker::setCluster (const std::vector<pcl::PointIndices> vecClusterIndices, std::vector<clusterPtr>& pOriginalClusters, const PointCloudXYZI::Ptr pInputCloud)$/;"	f	class:Tracker
+sub_velodyne	tracker.hpp	/^	ros::Subscriber sub_velodyne;$/;"	m	class:Tracker
+theta	ray_ground_filter.hpp	/^	float theta;        \/\/angle deg on XY plane$/;"	m	struct:PointXYZRTColor
+thresholding	tracker.cpp	/^void Tracker::thresholding (const PointCloudXYZI::ConstPtr& pInputCloud, PointCloudXYZI::Ptr& pCloudThresholded)$/;"	f	class:Tracker
+Tracker	tracker.cpp	/^Tracker::Tracker()$/;"	f	class:Tracker
+Tracker	tracker.hpp	/^class Tracker$/;"	c
+velodyne_callback	tracker.cpp	/^void Tracker::velodyne_callback (const sensor_msgs::PointCloud2ConstPtr &pInput)$/;"	f	class:Tracker
+_rgb	tracker.hpp	/^	_rgb () $/;"	f	struct:_rgb
+_rgb	tracker.hpp	/^	_rgb (uint8_t r, uint8_t g, uint8_t b)$/;"	f	struct:_rgb
+_rgb	tracker.hpp	/^struct _rgb$/;"	s
+__CLUSTER_H__	cluster.hpp	2;"	d
+__OBSTACLE_TRACKING_H__	obstacle_tracking.hpp	2;"	d
+__RAY_GROUND_FILTER_HPP__	ray_ground_filter.hpp	2;"	d
+__TRACKER_H__	tracker.hpp	2;"	d
+~Cluster	cluster.cpp	/^Cluster::~Cluster()$/;"	f	class:Cluster
+~ObstacleTracking	obstacle_tracking.cpp	/^ObstacleTracking::~ObstacleTracking() {}$/;"	f	class:ObstacleTracking
+~RayGroundRemove	ray_ground_filter.cpp	/^RayGroundRemove::~RayGroundRemove() { }$/;"	f	class:RayGroundRemove
+~Tracker	tracker.cpp	/^Tracker::~Tracker() { }$/;"	f	class:Tracker

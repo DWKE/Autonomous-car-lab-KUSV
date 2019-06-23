@@ -479,6 +479,12 @@ lane_detector_SOURCE_DIR:STATIC=/home/kusvcom2/Autonomous-car-lab-KUSV/src/perce
 lib:FILEPATH=/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so
 
 //Value Computed by CMake
+lidar_detection_BINARY_DIR:STATIC=/home/kusvcom2/Autonomous-car-lab-KUSV/build/perception/lidar_detection/obstacle_detector
+
+//Value Computed by CMake
+lidar_detection_SOURCE_DIR:STATIC=/home/kusvcom2/Autonomous-car-lab-KUSV/src/perception/lidar_detection/obstacle_detector
+
+//Value Computed by CMake
 local_planning_BINARY_DIR:STATIC=/home/kusvcom2/Autonomous-car-lab-KUSV/build/computing/planning/local_planning
 
 //Value Computed by CMake

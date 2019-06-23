@@ -105,6 +105,7 @@ void Tracker::thresholding (const PointCloudXYZI::ConstPtr& pInputCloud, PointCl
                     p.intensity = point.intensity;
 
                     double distance = sqrt(pow(p.x,2) + pow(p.y,2));
+                    //if ((distance < m_dRange_m) && (distance > 2.0) && (fabs(p.y) < 5.0) && p.z < 0)
                     if ((distance < m_dRange_m) && (distance > 2.0) && (fabs(p.y) < 5.0))
                             pCloudThresholded->push_back (p);
             }
@@ -277,9 +278,9 @@ void Tracker::displayShape (const std::vector<clusterPtr> pVecClusters)
 //
 //			m_arrShapes.markers.push_back(shape);
 
-			shape.scale.x = 0.5;
-			shape.scale.y = 0.5;
-			shape.scale.z = 0.5;
+			shape.scale.x = 1.0;
+			shape.scale.y = 1.0;
+			shape.scale.z = 1.0;
 			shape.points.clear();
 			shape.pose.position = pCluster->m_center.position;
 			shape.pose.orientation = pCluster->m_center.orientation;
@@ -287,9 +288,9 @@ void Tracker::displayShape (const std::vector<clusterPtr> pVecClusters)
 			shape.color.a = 1.0;
 			shape.type = visualization_msgs::Marker::TEXT_VIEW_FACING;
 			shape.ns = "/Text";
-//			double distance = sqrt(pow(shape.pose.position.x, 2.0) + pow (shape.pose.position.y, 2.0));
-//			shape.text = std::to_string(distance);
-			shape.text = std::to_string(pCluster->m_id);
+			double distance = sqrt(pow(shape.pose.position.x, 2.0) + pow (shape.pose.position.y, 2.0));
+			shape.text = std::to_string(distance);
+			//shape.text = std::to_string(pCluster->m_id);
 
 			object.pose = shape.pose;
 			object.id = pCluster->m_id;

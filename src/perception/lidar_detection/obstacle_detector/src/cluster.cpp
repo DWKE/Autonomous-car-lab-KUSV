@@ -40,8 +40,8 @@ void Cluster::SetCloud(const pcl::PointCloud<pcl::PointXYZI>::Ptr pInputCloud,
 		pcl::PointXYZRGB tmpPoint;
 		tmpPoint.x = pInputCloud->points[indice].x;
 		tmpPoint.y = pInputCloud->points[indice].y;
-		//tmpPoint.z = pInputCloud->points[indice].z;
-		tmpPoint.z = 0;
+		tmpPoint.z = pInputCloud->points[indice].z;
+		//tmpPoint.z = -0.1;
 		tmpPoint.r = r;
 		tmpPoint.g = g;
 		tmpPoint.b = b;
@@ -117,7 +117,7 @@ void Cluster::SetCloud(const pcl::PointCloud<pcl::PointXYZI>::Ptr pInputCloud,
 			rz = box.angle * 3.14 / 180;
 			m_center.position.x = box.center.x;
 			m_center.position.y = box.center.y;
-                        //m_dDistanceToCenter = hypot (m_center.position.y, m_center.position.x);
+			m_dDistanceToCenter = hypot (m_center.position.y, m_center.position.x);
 			m_dimensions.x = box.size.width;
 			m_dimensions.y = box.size.height;
 		}
