@@ -1,0 +1,12 @@
+<launch>
+
+  <arg name="path" default="$(find local_route_from_map)/csv" />
+  <arg name="ns1" default="localization" />
+
+  <group ns="$(arg ns1)">
+    <node pkg="local_route_from_map" type="local_route_from_map" name="local_route_from_map" output="screen">
+      <param name="ns" value="$(arg ns1)"/>
+      <param name="path" value="$(arg path)"/>
+    </node>
+  </group>
+</launch>

@@ -1,8 +1,0 @@
-prefix=/home/lke/ACL_KUSV/devel
-
-Name: velodyne_laserscan
-Description: Description of velodyne_laserscan
-Version: 1.5.2
-Cflags: -I/home/lke/ACL_KUSV/devel/include
-Libs: -L/home/lke/ACL_KUSV/devel/lib 
-Requires: sensor_msgs

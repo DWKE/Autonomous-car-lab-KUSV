@@ -9,9 +9,9 @@ Tracker::Tracker()
 {
 	// define publisher
 	pub_result = nh.advertise<PointCloudXYZI> ("output", 1);
-	pub_shape = nh.advertise<visualization_msgs::MarkerArray>("Shape", 1);
-	pub_detectedObject = nh.advertise<lidar_track_msgs::DetectedObjectArray>("DetectedObject", 1000);
-	pub_Origin = nh.advertise<visualization_msgs::Marker> ("Origin", 1);
+        pub_shape = nh.advertise<visualization_msgs::MarkerArray>("Shape", 1);
+        pub_detectedObject = nh.advertise<kusv_msgs::DetectedObjectArray>("DetectedObject", 1000);
+        pub_Origin = nh.advertise<visualization_msgs::Marker> ("Origin", 1);
 
 	// define subsciber
 	sub_velodyne = nh.subscribe ("input", 1, &Tracker::velodyne_callback, this);
@@ -235,7 +235,7 @@ void Tracker::displayShape (const std::vector<clusterPtr> pVecClusters)
 		if (isClusterValid)
 		{
 			visualization_msgs::Marker shape;
-			lidar_track_msgs::DetectedObject object;
+                        kusv_msgs::DetectedObject object;
 
 			shape.lifetime = ros::Duration(m_fMarkerDuration);
 			shape.header.frame_id = m_velodyne_header.frame_id;

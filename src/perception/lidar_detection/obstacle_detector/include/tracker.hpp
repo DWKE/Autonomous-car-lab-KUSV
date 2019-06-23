@@ -18,7 +18,7 @@
 #include <sensor_msgs/PointCloud2.h>
 #include "visualization_msgs/Marker.h"
 #include "visualization_msgs/MarkerArray.h"
-#include "lidar_track_msgs/DetectedObjectArray.h"
+#include "kusv_msgs/DetectedObjectArray.h"
 
 #include <Eigen/Dense>
 #include <tf/tf.h>
@@ -94,7 +94,7 @@ class Tracker
 
 	visualization_msgs::Marker m_Origin;
 	visualization_msgs::MarkerArray m_arrShapes;
-	lidar_track_msgs::DetectedObjectArray m_arrObjects;
+        kusv_msgs::DetectedObjectArray m_arrObjects;
 
 	public:
 	Tracker();

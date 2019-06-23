@@ -1,5 +1,5 @@
 #include <ros/ros.h>
-#include <geometry_msgs/Pose.h>
+#include <geometry_msgs/PoseStamped.h>
 #include "kusv_msgs/PolyfitLaneData.h"
 #include "kusv_msgs/Waypoint.h"
 #include "nav_msgs/Odometry.h"
@@ -8,11 +8,11 @@
 #define LANE_KEEPING_MODE 0
 #define WAYPOINTS_FOLLOWING_MODE 1
 
-// input : camera_abcd, pose, waypoints_abcd
-// output : final_abcd
-// todo : range_cp tuning
+// input : camera_driving_way, pose, waypoints_driving_way
+// output : final_driving_way
+// todo : enu converting, range_cp tuning
 
-class WaypointsManager {
+class LocalRoutesManager {
 private:
     ros::NodeHandle nh;
     ros::Subscriber lane_sub;
@@ -29,12 +29,11 @@ private:
     geometry_msgs::Pose range_cp;
     float range_rad;
 
-
 public:
-    WaypointsManager()
-        :lane_sub(nh.subscribe("/driving_way", 1000, &WaypointsManager::laneCallback, this)),
-          pose_sub(nh.subscribe("/current_pose", 1000, &WaypointsManager::poseCallback, this)),
-          wp_sub(nh.subscribe("/wp_driving_way", 1000, &WaypointsManager::wpCallback, this)),
+    LocalRoutesManager()
+        :lane_sub(nh.subscribe("/driving_way", 1000, &LocalRoutesManager::laneCallback, this)),
+          pose_sub(nh.subscribe("/current_pose", 1000, &LocalRoutesManager::poseCallback, this)),
+          wp_sub(nh.subscribe("/wp_driving_way", 1000, &LocalRoutesManager::wpCallback, this)),
           driving_way_pub(nh.advertise<kusv_msgs::PolyfitLaneData>("/final_driving_way", 1000))
     {
         driving_mode=LANE_KEEPING_MODE;
@@ -48,17 +47,17 @@ public:
         range_rad = 100;
     }
 
-    void laneCallback(kusv_msgs::PolyfitLaneDataConstPtr lane) {
+    void laneCallback(const kusv_msgs::PolyfitLaneData::ConstPtr& lane) {
         if(driving_mode==WAYPOINTS_FOLLOWING_MODE) return;
         final_driving_way=*lane;
     }
 
-    void wpCallback(kusv_msgs::PolyfitLaneDataConstPtr lane) {
+    void wpCallback(const kusv_msgs::PolyfitLaneData::ConstPtr& lane) {
         if(driving_mode==LANE_KEEPING_MODE) return;
         final_driving_way=*lane;
     }
 
-    void poseCallback(geometry_msgs::PoseStampedConstPtr pose) {
+    void poseCallback(const geometry_msgs::PoseStamped::ConstPtr& pose) {
         curr_pose = *pose;
     }
 
@@ -81,12 +80,12 @@ public:
 
 int main(int argc, char** argv)
 {
-    ros::init(argc, argv, "local_routes_manager");
+    ros::init(argc, argv, "LocalRoutesManager");
     ros::Time::init();
 
     ros::Rate loop_rate(100);
 
-    WaypointsManager wm;
+    LocalRoutesManager wm;
 
     while(ros::ok())
     {
