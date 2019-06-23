@@ -781,14 +781,15 @@ public:
             }
             else {
                 average(amplified);
-                ROS_WARN_STREAM(m_dMovingAverage);
-                if ((m_dMovingAverage > param_abcd_average) || (m_dMovingAverage < (-1 * param_abcd_average))) {
+                //ROS_WARN_STREAM(m_dMovingAverage);
+                if ((amplified > m_dMovingAverage) || (amplified < (-1 * m_dMovingAverage))) {
                     middle[0] = prev_d;
-                    middle[1] = prev_c;
+                    middle[1] = (0.01*(m_dMovingAverage/10.0) + 0.99*prev_c);
                     middle[2] = prev_b;
                     middle[3] = prev_a;
+                    //ROS_WARN_STREAM(prev_a << ", " << prev_b << ", " << prev_c << ", " << prev_d);
                     ROS_INFO_STREAM("!!!!!LANE IS WRONG!!!!!");
-                    ROS_INFO_STREAM("(noise: " << m_dMovingAverage << ")");
+                    ROS_WARN_STREAM("(noise: " << m_dMovingAverage << ")");
                 }
             }
             break;

@@ -3,18 +3,22 @@
   <arg name="calibration_file" default="$(find lane_detector)/test_materials/calibration.yaml" />
 
   <arg name="input_stream_topic" default="/videofile/image_raw" />
-  <arg name="h_low" default="0" />
-  <arg name="h_high" default="180"/>
-  <arg name="l_low" default="0"/>
-  <arg name="s_low" default="102"/>
+  <arg name="h_low" default="15" />
+  <arg name="h_high" default="25"/>
+  <arg name="l_low" default="70"/>
+  <arg name="s_low" default="40"/>
+  <arg name="color_merge" default="1"/>
+
   <arg name="division" default="6"/>
-  <arg name="window_halfWidth" default="30"/>
+  <arg name="window_halfWidth" default="50"/>
   <arg name="useFakeLane" default="true"/>
+
   <arg name="a_thresh" default="1.0"/>
   <arg name="b_thresh" default="1.0"/>
   <arg name="c_thresh" default="1.0"/>
   <arg name="d_thresh" default="1.0"/>
-  <arg name="color_merge" default="1"/>
+
+  <arg name="abcd_selection" default="1"/>
 
   <node pkg="lane_detector" type="lane_detector" name="lane_detector" args="$(arg calibration_file) stream:=$(arg input_stream_topic)" output="screen">
     <param name="input_stream_topic" value="$(arg input_stream_topic)"/>
@@ -30,6 +34,8 @@
     <param name="c_thresh" value="$(arg c_thresh)"/>
     <param name="d_thresh" value="$(arg d_thresh)"/>
     <param name="color_merge" value="$(arg color_merge)"/>
+    <param name="abcd_selection" value="$(arg abcd_selection)"/>
+    <param name="abcd_average" value="$(arg abcd_average)"/>
   </node>
 
   <node pkg="lane_detector" type="display" name="display" />

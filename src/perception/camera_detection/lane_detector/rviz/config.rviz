@@ -1,15 +1,14 @@
 Panels:
   - Class: rviz/Displays
-    Help Height: 75
+    Help Height: 0
     Name: Displays
     Property Tree Widget:
       Expanded:
         - /Global Options1
         - /Vehicle1/Namespaces1
         - /lanePoints1/Namespaces1
-        - /polyLanes1
       Splitter Ratio: 0.5
-    Tree Height: 75
+    Tree Height: 150
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -28,7 +27,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: Image
 Visualization Manager:
   Class: ""
   Displays:
@@ -82,7 +81,7 @@ Visualization Manager:
       Marker Topic: /driving_way_marker
       Name: VisionLane
       Namespaces:
-        "": true
+        vision_lane: true
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -90,23 +89,7 @@ Visualization Manager:
       Marker Topic: /lanePoints_marker
       Name: lanePoints
       Namespaces:
-        {}
-      Queue Size: 100
-      Value: true
-    - Class: rviz/MarkerArray
-      Enabled: true
-      Marker Topic: /pointsLeft_marker
-      Name: LeftPoint
-      Namespaces:
-        {}
-      Queue Size: 100
-      Value: true
-    - Class: rviz/MarkerArray
-      Enabled: true
-      Marker Topic: /pointsRight_marker
-      Name: RightPoint
-      Namespaces:
-        {}
+        "": true
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
