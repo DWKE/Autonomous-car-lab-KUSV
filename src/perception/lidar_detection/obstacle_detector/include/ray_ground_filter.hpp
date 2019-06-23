@@ -50,18 +50,18 @@ typedef std::vector<PointXYZRTColor> PointCloudXYZRTColor;
 
 class RayGroundRemove
 {
-	private:
-	double sensor_height_ = 1.7;//meters
-	double general_max_slope_ = 3.0;//degrees
-	double local_max_slope_ = 5.0;//degrees
+        public:
+        double sensor_height_ = 1.6;//meters
+        double general_max_slope_ = 7.0;//degrees
+        double local_max_slope_ = 10.0;//degrees
 	double radial_divider_angle_ = 0.1;//distance in rads between dividers
-	double concentric_divider_distance_ = 0.01;//distance in meters between concentric divisions
-	double min_height_threshold_ = 0.05;;//minimum height threshold regardless the slope, useful for close points
+        double concentric_divider_distance_ = 0.01;//distance in meters between concentric divisions
+        double min_height_threshold_ = 0.05;//minimum height threshold regardless the slope, useful for close points
 	double clipping_height_ = 0.2; //the points higher than this will be removed from the input cloud.
-	double min_point_distance_ = 1.85;//minimum distance from the origin to consider a point as valid
-	double reclass_distance_threshold_ = 0.2;//distance between points at which re classification will occur
+        double min_point_distance_ = 2.0;//minimum distance from the origin to consider a point as valid
+        double reclass_distance_threshold_ = 0.2;//distance between points at which re classification will occur
 
-	size_t radial_dividers_num_;
+        size_t radial_dividers_num_;
 	size_t concentric_dividers_num_;
 
 	std::vector<cv::Scalar> colors_;
@@ -88,6 +88,9 @@ class RayGroundRemove
 	void ClipCloud(const PointCloudXYZI::Ptr in_cloud_ptr, 
 			double in_clip_height, 
 			PointCloudXYZI::Ptr out_clipped_cloud_ptr);
+        void RemovePointsUpTo(const PointCloudXYZI::Ptr in_cloud_ptr,
+            double in_min_distance,
+            PointCloudXYZI::Ptr out_filtered_cloud_ptr);
 };
 
 #endif //__RAY_GROUND_FILTER_HPP__
