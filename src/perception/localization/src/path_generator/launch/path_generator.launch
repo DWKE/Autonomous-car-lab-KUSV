@@ -1,0 +1,6 @@
+<launch>
+
+    <node pkg="path_generator" type="path_generator" name="path_generator"/>
+    <node pkg="path_generator" type="find_drivingway" name="find_drivingway"/>
+    <node pkg="path_generator" type="display_marker" name="display_marker"/>
+</launch>

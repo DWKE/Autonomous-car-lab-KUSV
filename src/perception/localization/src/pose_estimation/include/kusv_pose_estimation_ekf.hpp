@@ -19,7 +19,7 @@
 #include "atom_task.h"  //** Modify Path!
 #include "kusv_pose_interface.h"
 #include "pose_estimation_ekf.hpp"
-#include "pose_estimation/DR_data.h"
+#include "ros_can/DR_data.h"
 
 /*---------------------------------------------------------------------------
 ** Defines and Macros
@@ -117,7 +117,7 @@ private:
 	
 	// callback
 private:
-                void callback_motion(const pose_estimation::DR_data::ConstPtr& msg);
+		void callback_motion(const ros_can::DR_data::ConstPtr& msg);
         //void callback_motion(const aggm::kusv_CanInfo::ConstPtr& msg);
         void callback_gnss(const ublox_msgs::NavPVT::ConstPtr& msg);
         void callback_lidar_odom(const geometry_msgs::PoseStamped::ConstPtr& msg);
