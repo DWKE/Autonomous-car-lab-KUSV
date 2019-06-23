@@ -67,14 +67,14 @@ set(ros_can_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(ros_can_SOURCE_PREFIX /home/skros/Autonomous-car-lab-KUSV/src/sensing/ros_can)
-  set(ros_can_DEVEL_PREFIX /home/skros/Autonomous-car-lab-KUSV/devel)
+  set(ros_can_SOURCE_PREFIX /home/lke/ACL_KUSV/src/sensing/ros_can)
+  set(ros_can_DEVEL_PREFIX /home/lke/ACL_KUSV/devel)
   set(ros_can_INSTALL_PREFIX "")
   set(ros_can_PREFIX ${ros_can_DEVEL_PREFIX})
 else()
   set(ros_can_SOURCE_PREFIX "")
   set(ros_can_DEVEL_PREFIX "")
-  set(ros_can_INSTALL_PREFIX /home/skros/Autonomous-car-lab-KUSV/install)
+  set(ros_can_INSTALL_PREFIX /home/lke/ACL_KUSV/install)
   set(ros_can_PREFIX ${ros_can_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(ros_can_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/skros/Autonomous-car-lab-KUSV/src/sensing/ros_can/include " STREQUAL " ")
+if(NOT "/home/lke/ACL_KUSV/src/sensing/ros_can/include " STREQUAL " ")
   set(ros_can_INCLUDE_DIRS "")
-  set(_include_dirs "/home/skros/Autonomous-car-lab-KUSV/src/sensing/ros_can/include")
+  set(_include_dirs "/home/lke/ACL_KUSV/src/sensing/ros_can/include")
   if(NOT " " STREQUAL " ")
     set(_report "Check the issue tracker '' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT " " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/skros/Autonomous-car-lab-KUSV/src/sensing/ros_can/include " STREQU
         message(FATAL_ERROR "Project 'ros_can' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'ros_can' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/skros/Autonomous-car-lab-KUSV/src/sensing/ros_can/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'ros_can' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/lke/ACL_KUSV/src/sensing/ros_can/${idir}'.  ${_report}")
     endif()
     _list_append_unique(ros_can_INCLUDE_DIRS ${include})
   endforeach()
@@ -129,7 +129,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/skros/Autonomous-car-lab-KUSV/devel/lib;/home/skros/loc_ws/devel/lib;/home/skros/ws_vision/devel/lib;/home/skros/ws_gps/devel/lib;/home/skros/ws_yeongsoo/devel/lib;/home/skros/catkin_ws/devel/lib;/home/skros/ws_ros_can_sangkwon/devel/lib;/opt/ros/kinetic/lib)
+    foreach(path /home/lke/ACL_KUSV/devel/lib;/home/lke/catkin_ws/devel/lib;/opt/ros/kinetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
