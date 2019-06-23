@@ -7,4 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export PWD="/home/user/ws_KUSV/Autonomous-car-lab-KUSV/build"
+export CMAKE_PREFIX_PATH="/home/skros/Autonomous-car-lab-KUSV/devel:$CMAKE_PREFIX_PATH"
+export PWD="/home/skros/Autonomous-car-lab-KUSV/build"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/skros/Autonomous-car-lab-KUSV/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
+export ROS_PACKAGE_PATH="/home/skros/Autonomous-car-lab-KUSV/src:$ROS_PACKAGE_PATH"
