@@ -7,7 +7,9 @@ typedef pcl::PointCloud<pcl::PointXYZI> PointCloudXYZI;
 
 Tracker::Tracker()
 {
-        // define publisher
+            // define publisher
+            pub_result = nh.advertise<PointCloudXYZI> ("output", 1);
+	// define publisher
         pub_result = nh.advertise<PointCloudXYZI> ("output", 1);
         pub_shape = nh.advertise<visualization_msgs::MarkerArray>("Shape", 1);
         pub_detectedObject = nh.advertise<kusv_msgs::DetectedObjectArray>("DetectedObject", 1000);
@@ -16,14 +18,14 @@ Tracker::Tracker()
         // define subsciber
         sub_velodyne = nh.subscribe ("input", 1, &Tracker::velodyne_callback, this);
 
-        // set parameter
-        setParameter ();
+                // set parameter
+                setParameter ();
 
-        // Coordinate
-        double abs = sqrt(pow(m_tf_x, 2.0) + pow(m_tf_y, 2.0) + pow(m_tf_z, 2.0));
-        m_tf_x /= abs;
-        m_tf_y /= abs;
-        m_tf_z /= abs;
+                // Coordinate
+                double abs = sqrt(pow(m_tf_x, 2.0) + pow(m_tf_y, 2.0) + pow(m_tf_z, 2.0));
+                m_tf_x /= abs;
+                m_tf_y /= abs;
+                m_tf_z /= abs;
 }
 
 Tracker::~Tracker() { }
@@ -79,33 +81,33 @@ void Tracker::velodyne_callback (const sensor_msgs::PointCloud2ConstPtr &pInput)
 
 void Tracker::setParameter()
 {
-        // set parameter
-        nh.param ("lidar_detection/Marker_duration", m_fMarkerDuration, 0.1);
-        nh.param ("lidar_detection/Voxel_leafsize", m_fLeafSize, 0.2);
-        nh.param ("lidar_detection/threshold_range", m_dRange_m, 15.0);
-        nh.param ("lidar_detection/cluster_err_range", m_dClusterErrRadius, 0.5);
-        nh.param ("lidar_detection/general_max_slope", m_RayGroundRemove.general_max_slope_, 7.0);
-        nh.param ("lidar_detection/clipping_height", m_RayGroundRemove.clipping_height_, 0.2);
-        nh.param ("lidar_detection/cluster_min_size", m_dClusterMinSize, 15.0);
-        nh.param ("lidar_detection/cluster_max_size", m_dClusterMaxSize, 50.0);
+            // set parameter
+            nh.param ("lidar_detection/Marker_duration", m_fMarkerDuration, 0.1);
+            nh.param ("lidar_detection/Voxel_leafsize", m_fLeafSize, 0.2);
+            nh.param ("lidar_detection/threshold_range", m_dRange_m, 15.0);
+            nh.param ("lidar_detection/cluster_err_range", m_dClusterErrRadius, 0.5);
+            nh.param ("lidar_detection/general_max_slope", m_RayGroundRemove.general_max_slope_, 7.0);
+            nh.param ("lidar_detection/clipping_height", m_RayGroundRemove.clipping_height_, 0.2);
+            nh.param ("lidar_detection/cluster_min_size", m_dClusterMinSize, 15.0);
+            nh.param ("lidar_detection/cluster_max_size", m_dClusterMaxSize, 50.0);
 }
 
 
 void Tracker::thresholding (const PointCloudXYZI::ConstPtr& pInputCloud, PointCloudXYZI::Ptr& pCloudThresholded)
 {
-        // set a pointer cloud thresholded
-        for (const auto& point : pInputCloud->points)
-        {
-                pcl::PointXYZI p;
-                p.x = (double)point.x;
-                p.y = (double)point.y;
-                p.z = (double)point.z;
-                p.intensity = point.intensity;
+            // set a pointer cloud thresholded
+            for (const auto& point : pInputCloud->points)
+            {
+                    pcl::PointXYZI p;
+                    p.x = (double)point.x;
+                    p.y = (double)point.y;
+                    p.z = (double)point.z;
+                    p.intensity = point.intensity;
 
-                double distance = sqrt(pow(p.x,2) + pow(p.y,2));
-                if ((distance < m_dRange_m) && (distance > 2.0) && (fabs(p.y) < 3.0))
-                        pCloudThresholded->push_back (p);
-        }
+                    double distance = sqrt(pow(p.x,2) + pow(p.y,2));
+                    if ((distance < m_dRange_m) && (distance > 2.0) && (fabs(p.y) < 5.0))
+                            pCloudThresholded->push_back (p);
+            }
 }
 
 
@@ -275,56 +277,56 @@ void Tracker::displayShape (const std::vector<clusterPtr> pVecClusters)
 //
 //			m_arrShapes.markers.push_back(shape);
 
-                        shape.scale.x = 0.5;
-                        shape.scale.y = 0.5;
-                        shape.scale.z = 0.5;
-                        shape.points.clear();
-                        shape.pose.position = pCluster->m_center.position;
-                        shape.pose.orientation = pCluster->m_center.orientation;
-                        shape.color.r = shape.color.g = shape.color.b = 1.0;
-                        shape.color.a = 1.0;
-                        shape.type = visualization_msgs::Marker::TEXT_VIEW_FACING;
-                        shape.ns = "/Text";
+			shape.scale.x = 0.5;
+			shape.scale.y = 0.5;
+			shape.scale.z = 0.5;
+			shape.points.clear();
+			shape.pose.position = pCluster->m_center.position;
+			shape.pose.orientation = pCluster->m_center.orientation;
+			shape.color.r = shape.color.g = shape.color.b = 1.0;
+			shape.color.a = 1.0;
+			shape.type = visualization_msgs::Marker::TEXT_VIEW_FACING;
+			shape.ns = "/Text";
 //			double distance = sqrt(pow(shape.pose.position.x, 2.0) + pow (shape.pose.position.y, 2.0));
 //			shape.text = std::to_string(distance);
-                        shape.text = std::to_string(pCluster->m_id);
+			shape.text = std::to_string(pCluster->m_id);
 
-                        object.pose = shape.pose;
-                        object.id = pCluster->m_id;
-                        object.label = shape.text;
+			object.pose = shape.pose;
+			object.id = pCluster->m_id;
+			object.label = shape.text;
 
-                        m_arrShapes.markers.push_back (shape);
-                        m_arrObjects.objects.push_back (object);
-                }
-                objectNumber++;
+			m_arrShapes.markers.push_back (shape);
+			m_arrObjects.objects.push_back (object);
+		}
+		objectNumber++;
         }
 }
 
 
 void Tracker::publish ()
 {
-        // Accumulate all cluster to pAccumulationCloud
-        pcl::PointCloud<pcl::PointXYZRGB>::Ptr pAccumulationCloud (new pcl::PointCloud<pcl::PointXYZRGB>);
-        pAccumulationCloud->header.frame_id = m_velodyne_header.frame_id;
+	// Accumulate all cluster to pAccumulationCloud
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr pAccumulationCloud (new pcl::PointCloud<pcl::PointXYZRGB>);
+	pAccumulationCloud->header.frame_id = m_velodyne_header.frame_id;
 
-        // accumulation for publish
-        for (const auto& pCluster : m_OriginalClusters)
-                *pAccumulationCloud += *(pCluster->GetCloud());
+	// accumulation for publish
+	for (const auto& pCluster : m_OriginalClusters)
+		*pAccumulationCloud += *(pCluster->GetCloud());
 
-        // broadcast tf
-        static tf::TransformBroadcaster br;
-        tf::Transform transform;
+	// broadcast tf
+	static tf::TransformBroadcaster br;
+	tf::Transform transform;
 
-        transform.setOrigin( tf::Vector3(m_tf_x, m_tf_y, m_tf_z) );
-        tf::Quaternion q;
-        q.setRPY(0.0, 0.0, 0.0);
-        transform.setRotation(q);
+	transform.setOrigin( tf::Vector3(m_tf_x, m_tf_y, m_tf_z) );
+	tf::Quaternion q;
+	q.setRPY(0.0, 0.0, 0.0);
+	transform.setRotation(q);
 
-        br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "car", "velodyne"));
+	br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "car", "velodyne"));
 
-        // publish
-        pub_result.publish (*pAccumulationCloud);
-        pub_shape.publish (m_arrShapes);
-        pub_detectedObject.publish (m_arrObjects);
+	// publish
+	pub_result.publish (*pAccumulationCloud);
+	pub_shape.publish (m_arrShapes);
+	pub_detectedObject.publish (m_arrObjects);
         pub_Origin.publish(m_Origin);
 }
