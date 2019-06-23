@@ -3,8 +3,8 @@
 #include <math.h>
 #include <ros/ros.h>
 #include <string>
-#include "path_generator/PolyfitLaneDataArray.h"
-#include "path_generator/PolyfitLaneData.h"
+#include "kusv_msgs/PolyfitLaneDataArray.h"
+#include "kusv_msgs/PolyfitLaneData.h"
 
 class find_drivingway {
 protected:
@@ -22,23 +22,23 @@ protected:
 public:
   find_drivingway() {
     m_rosSubPolyLanes = m_rosNodeHandler.subscribe(
-          "waypoint_lane", 1000, &find_drivingway::polyLanesCallback, this);
+          "waypoint_polylanearr", 1000, &find_drivingway::polyLanesCallback, this);
 
     m_rosPubDrivingWay =
-        m_rosNodeHandler.advertise<path_generator::PolyfitLaneData>(
-          "driving_way", 1000);
+        m_rosNodeHandler.advertise<kusv_msgs::PolyfitLaneData>(
+          "waypoint_lane", 1000);
   }
 
   ~find_drivingway() {}
 
 protected:
-  path_generator::PolyfitLaneDataArray m_polyLanes;
-  path_generator::PolyfitLaneData m_midPolyLane;
+  kusv_msgs::PolyfitLaneDataArray m_polyLanes;
+  kusv_msgs::PolyfitLaneData m_midPolyLane;
   int count = 0;
   int lanecount = 0;
 
 public:
-  void polyLanesCallback(const path_generator::PolyfitLaneDataArray::ConstPtr &msg) {
+  void polyLanesCallback(const kusv_msgs::PolyfitLaneDataArray::ConstPtr &msg) {
     m_polyLanes = *msg;
   }
 
@@ -46,23 +46,23 @@ public:
     auto lanesize = m_polyLanes.polyfitLanes.size();
     //printf("%ld\n", lanesize);
     if (lanesize == 0) {
-      m_midPolyLane.a0 = m_midPolyLane.a0;
-      m_midPolyLane.a1 = m_midPolyLane.a1;
-      m_midPolyLane.a2 = m_midPolyLane.a2;
-      m_midPolyLane.a3 = m_midPolyLane.a3;
+      m_midPolyLane.d = m_midPolyLane.d;
+      m_midPolyLane.c = m_midPolyLane.c;
+      m_midPolyLane.b = m_midPolyLane.b;
+      m_midPolyLane.a = m_midPolyLane.a;
     }
     else if (lanesize >= 1) {
       float a[4*lanesize];
       for(int i = 0; i < lanesize; i++) {
-        a[4*i]  = m_polyLanes.polyfitLanes[i].a0;
-        a[4*i+1]= m_polyLanes.polyfitLanes[i].a1;
-        a[4*i+2]= m_polyLanes.polyfitLanes[i].a2;
-        a[4*i+3]= m_polyLanes.polyfitLanes[i].a3;
+        a[4*i]  = m_polyLanes.polyfitLanes[i].d;
+        a[4*i+1]= m_polyLanes.polyfitLanes[i].c;
+        a[4*i+2]= m_polyLanes.polyfitLanes[i].b;
+        a[4*i+3]= m_polyLanes.polyfitLanes[i].a;
       }
-      m_midPolyLane.a0 = a[0];
-      m_midPolyLane.a1 = a[1];
-      m_midPolyLane.a2 = a[2];
-      m_midPolyLane.a3 = a[3];
+      m_midPolyLane.d = a[0];
+      m_midPolyLane.c = a[1];
+      m_midPolyLane.b = a[2];
+      m_midPolyLane.a = a[3];
     }
     m_midPolyLane.frame_id = "/body";
     m_rosPubDrivingWay.publish(m_midPolyLane);
@@ -71,7 +71,7 @@ public:
 
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "find_drivingway");
+  ros::init(argc, argv, "waypoint_find_drivingway");
 
   find_drivingway find_drivingway;
   // The approximate control time is 100 Hz

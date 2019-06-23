@@ -474,10 +474,17 @@ lane_detector_SOURCE_DIR:STATIC=/home/jaeseong/Autonomous-car-lab-KUSV/src/perce
 lib:FILEPATH=/opt/ros/kinetic/lib/libdynamic_reconfigure_config_init_mutex.so
 
 //Value Computed by CMake
+<<<<<<< HEAD
 local_planning_BINARY_DIR:STATIC=/home/jaeseong/Autonomous-car-lab-KUSV/build/computing/planning/src/local_planning
 
 //Value Computed by CMake
 local_planning_SOURCE_DIR:STATIC=/home/jaeseong/Autonomous-car-lab-KUSV/src/computing/planning/src/local_planning
+=======
+local_planning_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/computing/planning/local_planning
+
+//Value Computed by CMake
+local_planning_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/computing/planning/local_planning
+>>>>>>> e9cfda342e10bdcf87bbcb29952b05656a11ef16
 
 //Value Computed by CMake
 local_route_from_map_BINARY_DIR:STATIC=/home/jaeseong/Autonomous-car-lab-KUSV/build/perception/localization/src/local_route_from_map
@@ -516,10 +523,17 @@ path_generator_BINARY_DIR:STATIC=/home/jaeseong/Autonomous-car-lab-KUSV/build/pe
 path_generator_SOURCE_DIR:STATIC=/home/jaeseong/Autonomous-car-lab-KUSV/src/perception/localization/src/path_generator
 
 //Value Computed by CMake
+<<<<<<< HEAD
 pathplan_BINARY_DIR:STATIC=/home/jaeseong/Autonomous-car-lab-KUSV/build/computing/planning/src/pathplan
 
 //Value Computed by CMake
 pathplan_SOURCE_DIR:STATIC=/home/jaeseong/Autonomous-car-lab-KUSV/src/computing/planning/src/pathplan
+=======
+pathplan_BINARY_DIR:STATIC=/home/lke/ACL_KUSV/build/computing/planning/pathplan
+
+//Value Computed by CMake
+pathplan_SOURCE_DIR:STATIC=/home/lke/ACL_KUSV/src/computing/planning/pathplan
+>>>>>>> e9cfda342e10bdcf87bbcb29952b05656a11ef16
 
 //The directory containing a CMake configuration file for pcl_conversions.
 pcl_conversions_DIR:PATH=/opt/ros/kinetic/share/pcl_conversions/cmake

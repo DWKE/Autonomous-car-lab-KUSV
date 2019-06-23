@@ -116,6 +116,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
+<<<<<<< HEAD
   include("/home/jaeseong/Autonomous-car-lab-KUSV/build/gtest/cmake_install.cmake")
   include("/home/jaeseong/Autonomous-car-lab-KUSV/build/perception/localization/src/autonomous_msg/cmake_install.cmake")
   include("/home/jaeseong/Autonomous-car-lab-KUSV/build/sensing/ublox-master/ublox/cmake_install.cmake")
@@ -138,6 +139,30 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/jaeseong/Autonomous-car-lab-KUSV/build/sensing/velodyne-master/velodyne_driver/cmake_install.cmake")
   include("/home/jaeseong/Autonomous-car-lab-KUSV/build/sensing/velodyne-master/velodyne_laserscan/cmake_install.cmake")
   include("/home/jaeseong/Autonomous-car-lab-KUSV/build/sensing/velodyne-master/velodyne_pointcloud/cmake_install.cmake")
+=======
+  include("/home/lke/ACL_KUSV/build/gtest/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/perception/localization/src/autonomous_msg/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/sensing/ublox-master/ublox/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/sensing/velodyne-master/velodyne/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/sensing/velodyne-master/velodyne_msgs/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/perception/localization/src/rosbag_to_csv-master/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/msgs/kusv_msgs/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/perception/camera_detection/lane_detector/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/sensing/ros_can/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/computing/planning/local_planning/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/computing/decision/local_routes_manager/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/perception/localization/src/path_generator/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/computing/planning/pathplan/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/perception/lidar_detection/obstacle_detector/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/sensing/ublox-master/ublox_serialization/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/sensing/ublox-master/ublox_msgs/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/sensing/ublox-master/ublox_gps/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/perception/localization/src/local_route_from_map/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/perception/localization/src/pose_estimation/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/sensing/velodyne-master/velodyne_driver/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/sensing/velodyne-master/velodyne_laserscan/cmake_install.cmake")
+  include("/home/lke/ACL_KUSV/build/sensing/velodyne-master/velodyne_pointcloud/cmake_install.cmake")
+>>>>>>> e9cfda342e10bdcf87bbcb29952b05656a11ef16
 
 endif()
 

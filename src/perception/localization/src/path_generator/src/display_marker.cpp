@@ -1,4 +1,4 @@
-#include "path_generator/PolyfitLaneDataArray.h"
+#include "kusv_msgs/PolyfitLaneDataArray.h"
 #include "visualization_msgs/Marker.h"
 #include "visualization_msgs/MarkerArray.h"
 #include <math.h>
@@ -17,29 +17,29 @@ public:
   Display() {
     m_rosPubDrivingWay =
         m_rosNodeHandler.advertise<visualization_msgs::MarkerArray>(
-            "driving_way_marker", 1000);
+            "waypoint_lane_marker", 1000);
     m_rosSubDrivingWay = m_rosNodeHandler.subscribe(
-        "driving_way", 1000, &Display::drivingWayCallback, this);
+        "waypoint_lane", 1000, &Display::drivingWayCallback, this);
   }
 
   ~Display() {}
 
 
 protected:
-  path_generator::PolyfitLaneData m_drivingWay;
+  kusv_msgs::PolyfitLaneData m_drivingWay;
 
 public:
   void
-  drivingWayCallback(const path_generator::PolyfitLaneData::ConstPtr &msg) {
+  drivingWayCallback(const kusv_msgs::PolyfitLaneData::ConstPtr &msg) {
     m_drivingWay = *msg;
   }
 
   void mark_drivingWay(double interval = 0.1, double ROILength = 5.0) {
 
-    double a0 = m_drivingWay.a0;
-    double a1 = m_drivingWay.a1;
-    double a2 = m_drivingWay.a2;
-    double a3 = m_drivingWay.a3;
+    double a0 = m_drivingWay.d;
+    double a1 = m_drivingWay.c;
+    double a2 = m_drivingWay.b;
+    double a3 = m_drivingWay.a;
 
     double x = 0.0;
     double y = a0;
@@ -88,7 +88,7 @@ public:
 };
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "display");
+  ros::init(argc, argv, "waypoint_display");
   // Vehicle vehicle;
   Display display;
 
