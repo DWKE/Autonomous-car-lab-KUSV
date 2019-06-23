@@ -16,7 +16,6 @@ Tracker::Tracker()
 	// define subsciber
 	sub_velodyne = nh.subscribe ("input", 1, &Tracker::velodyne_callback, this);
 
-
 	// set parameter
 	setParameter ();
 
@@ -81,9 +80,14 @@ void Tracker::velodyne_callback (const sensor_msgs::PointCloud2ConstPtr &pInput)
 void Tracker::setParameter()
 {
 	// set parameter
-	nh.param ("Marker_duration", m_fMarkerDuration, 0.1);
-	nh.param ("Voxel_leafsize", m_fLeafSize, 0.3);
-	nh.param ("threshold_range", m_dRange_m, 10.0);
+	nh.param ("lidar_detection/Marker_duration", m_fMarkerDuration, 0.1);
+	nh.param ("lidar_detection/Voxel_leafsize", m_fLeafSize, 0.2);
+	nh.param ("lidar_detection/threshold_range", m_dRange_m, 15.0);
+	nh.param ("lidar_detection/cluster_err_range", m_dClusterErrRadius, 0.5);
+	nh.param ("lidar_detection/general_max_slope", m_RayGroundRemove.general_max_slope_, 7.0);
+	nh.param ("lidar_detection/clipping_height", m_RayGroundRemove.clipping_height_, 0.2);
+	nh.param ("lidar_detection/cluster_min_size", m_dClusterMinSize, 15.0);
+	nh.param ("lidar_detection/cluster_max_size", m_dClusterMaxSize, 50.0);
 }
 
 
@@ -99,7 +103,7 @@ void Tracker::thresholding (const PointCloudXYZI::ConstPtr& pInputCloud, PointCl
 		p.intensity = point.intensity;
 
 		double distance = sqrt(pow(p.x,2) + pow(p.y,2));
-		if ((distance < m_dRange_m) && (distance > 1.0))
+		if ((distance < m_dRange_m) && (distance > 2.0) && (fabs(p.y) < 5.0))
 			pCloudThresholded->push_back (p);
 	}
 }
@@ -132,9 +136,9 @@ void Tracker::dbscan(const PointCloudXYZI::ConstPtr& pInputCloud, std::vector<pc
 	// Max cluster size is the maximum number of points in the circle with the tolerance as radius 
 	// extract the index of each cluster to vecClusterIndices
 	pcl::EuclideanClusterExtraction<pcl::PointXYZI> euclideanCluster;
-	euclideanCluster.setClusterTolerance (0.40);
-	euclideanCluster.setMinClusterSize (20);
-	euclideanCluster.setMaxClusterSize (10000);
+	euclideanCluster.setClusterTolerance (m_dClusterErrRadius);
+	euclideanCluster.setMinClusterSize (m_dClusterMinSize);
+	euclideanCluster.setMaxClusterSize (m_dClusterMaxSize);
 	euclideanCluster.setSearchMethod (pKdtreeDownsampledCloud);
 	euclideanCluster.setInputCloud (pInputCloud);
 	euclideanCluster.extract (vecClusterIndices);
@@ -224,7 +228,6 @@ void Tracker::displayShape (const std::vector<clusterPtr> pVecClusters)
 	m_arrObjects.objects.clear();
 
 	uint32_t objectNumber = 0;
-	//for (auto cluster_it = pVecClusters.begin(); cluster_it != pVecClusters.end(); ++cluster_it)
 	for (auto pCluster : pVecClusters)
 	{
 		bool isClusterValid = pCluster->m_valid_cluster;
@@ -272,7 +275,9 @@ void Tracker::displayShape (const std::vector<clusterPtr> pVecClusters)
 //
 //			m_arrShapes.markers.push_back(shape);
 
-			shape.scale = pCluster->m_dimensions;
+			shape.scale.x = 0.5;
+			shape.scale.y = 0.5;
+			shape.scale.z = 0.5;
 			shape.points.clear();
 			shape.pose.position = pCluster->m_center.position;
 			shape.pose.orientation = pCluster->m_center.orientation;
@@ -280,6 +285,8 @@ void Tracker::displayShape (const std::vector<clusterPtr> pVecClusters)
 			shape.color.a = 1.0;
 			shape.type = visualization_msgs::Marker::TEXT_VIEW_FACING;
 			shape.ns = "/Text";
+//			double distance = sqrt(pow(shape.pose.position.x, 2.0) + pow (shape.pose.position.y, 2.0));
+//			shape.text = std::to_string(distance);
 			shape.text = std::to_string(pCluster->m_id);
 
 			object.pose = shape.pose;
@@ -317,7 +324,7 @@ void Tracker::publish ()
 
 	// publish
 	pub_result.publish (*pAccumulationCloud);
-	//pub_shape.publish (m_arrShapes);
+	pub_shape.publish (m_arrShapes);
 	pub_detectedObject.publish (m_arrObjects);
 	pub_Origin.publish(m_Origin);
 }

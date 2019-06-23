@@ -23,6 +23,7 @@
 #include <Eigen/Dense>
 #include <tf/tf.h>
 #include <tf/transform_broadcaster.h>
+#include <tf/transform_listener.h>
 
 #include "cluster.hpp"
 #include "obstacle_tracking.hpp"
@@ -73,8 +74,12 @@ class Tracker
 	double m_fMarkerDuration;
 	double m_fLeafSize;
 	double m_dRange_m;
+	double m_dClusterMinSize;
+	double m_dClusterErrRadius;
+	double m_dClusterMaxSize;
 
 	// transformation
+	tf::TransformListener *m_pListener;
 	Eigen::Matrix4f m_tf_Base2Local, m_tf_Local2Base;
 	double m_tf_x = 80.0;
 	double m_tf_y = -45.0;
