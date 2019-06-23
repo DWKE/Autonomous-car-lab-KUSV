@@ -21,7 +21,7 @@ list(APPEND CATKIN_ORDERED_PACKAGE_PATHS "sensing/velodyne-master/velodyne_msgs"
 list(APPEND CATKIN_ORDERED_PACKAGES_IS_META "False")
 list(APPEND CATKIN_ORDERED_PACKAGES_BUILD_TYPE "catkin")
 list(APPEND CATKIN_ORDERED_PACKAGES "rosbag_to_csv")
-list(APPEND CATKIN_ORDERED_PACKAGE_PATHS "perception/localization/src/rosbag_to_csv")
+list(APPEND CATKIN_ORDERED_PACKAGE_PATHS "perception/localization/src/rosbag_to_csv-master")
 list(APPEND CATKIN_ORDERED_PACKAGES_IS_META "False")
 list(APPEND CATKIN_ORDERED_PACKAGES_BUILD_TYPE "catkin")
 list(APPEND CATKIN_ORDERED_PACKAGES "kusv_msgs")
