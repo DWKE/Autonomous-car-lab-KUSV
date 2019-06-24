@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+	<node pkg="aggm" type="aggm_can_tx" name="CAN_Tx_Test" output="screen" />
+</launch>

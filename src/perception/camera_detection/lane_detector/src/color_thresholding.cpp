@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
     ros::init(argc, argv, "color_threshold");
     ros::NodeHandle nh;
 //    VideoCapture cap(ros::package::getPath("final_lane_detector") + "/src/test_materials/test_video.avi");
-    VideoCapture cap("test_video.avi");
+    VideoCapture cap("output.avi");
     if (!cap.isOpened())
     {
         std::cout << "Cannot open the video file!\n" << std::endl;

@@ -24,6 +24,7 @@ class Cluster
 	geometry_msgs::PolygonStamped m_polygon;
 	geometry_msgs::Pose m_center;
 	geometry_msgs::Vector3 m_dimensions;
+	double m_dDistanceToCenter;
 
 	std::string m_label;
 	int m_id;

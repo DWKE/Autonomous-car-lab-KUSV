@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="aggm" type="ku_mission_controller" name="ku_mission_controller" output="screen">
+  </node>
+</launch>

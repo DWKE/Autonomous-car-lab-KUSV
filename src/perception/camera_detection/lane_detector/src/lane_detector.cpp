@@ -25,6 +25,7 @@
 #include "kusv_msgs/PolyfitLaneData.h"
 #include "kusv_msgs/PolyfitLaneDataArray.h"
 
+#define BUFFER 30
 
 
 static std::string RESULT_WINDOW = "result_video";
@@ -90,6 +91,23 @@ private:
     int param_window_halfWidth;
     bool param_useFakeLane;
 
+private:
+    float ROAD_WIDTH = 3.035;
+
+private:
+    double param_a_thresh;
+    double param_b_thresh;
+    double param_c_thresh;
+    double param_d_thresh;
+    double param_abcd_average;
+
+private:
+    int param_color_merge;
+    int param_abcd_selection;
+
+private:
+    double m_dBuffer[BUFFER];
+    double m_dMovingAverage;
 
 public:
     LaneDetector() : m_it(m_nh) {
@@ -127,7 +145,16 @@ public:
         m_nh.param("lane_detector/division", param_division, 0);
         m_nh.param("lane_detector/window_halfWidth", param_window_halfWidth, 0);
         m_nh.param("lane_detector/useFakeLane", param_useFakeLane, true);
+        m_nh.param("lane_detector/a_thresh", param_a_thresh, 1.0);
+        m_nh.param("lane_detector/b_thresh", param_b_thresh, 1.0);
+        m_nh.param("lane_detector/c_thresh", param_c_thresh, 1.0);
+        m_nh.param("lane_detector/d_thresh", param_d_thresh, 1.0);
+        m_nh.param("lane_detector/color_merge", param_color_merge, 1);
+        m_nh.param("lane_detector/abcd_selection", param_abcd_selection, 1);
+        m_nh.param("lane_detector/abcd_average", param_abcd_average, 15.0);
 
+        for (uint32_t i = 0; i < BUFFER; i++)
+            m_dBuffer[i] = 0.0;
     }
 
     ~LaneDetector() {
@@ -242,17 +269,36 @@ public:
         // Filter yellow pixels
         cv::cvtColor(img_bgr, img_hls, cv::COLOR_BGR2HLS);
         split(img_hls, hls);
-        cv::threshold(hls[0], hls[0],  param_h_high, 255, cv::THRESH_BINARY_INV);
-        cv::threshold(hls[0], hls[0],  param_h_low, 255, cv::THRESH_BINARY);
-        cv::threshold(hls[1], hls[1],  param_l_low, 255, cv::THRESH_BINARY);
-        cv::threshold(hls[2], hls[2],  param_s_low, 255, cv::THRESH_BINARY);
-        cv::bitwise_and(  hls[0],    hls[2],  _combined);
-        cv::bitwise_and(  hls[1],    hls[2],   combined);
-        cv::bitwise_or(_combined,  combined,  _combined);
-        cv::bitwise_and(  hls[2], _combined,   combined);
-        //cv::bitwise_and(img_bgr, img_bgr, yellow, combined);
-        cv::bitwise_and(img_bgr, img_bgr, img_filtered, combined);
-        //cv::bitwise_and(img_bgr, img_bgr, img_filtered, hls[2]);
+        switch (param_color_merge) {
+        case 0:
+            cv::threshold(hls[2], hls[2],  param_s_low, 255, cv::THRESH_BINARY);
+            cv::bitwise_and(img_bgr, img_bgr, img_filtered, hls[2]);
+            break;
+
+        case 1:
+            cv::threshold(hls[0], hls[0],  param_h_high, 255, cv::THRESH_BINARY_INV);
+            cv::threshold(hls[0], hls[0],  param_h_low, 255, cv::THRESH_BINARY);
+            cv::threshold(hls[1], hls[1],  param_l_low, 255, cv::THRESH_BINARY);
+            cv::threshold(hls[2], hls[2],  param_s_low, 255, cv::THRESH_BINARY);
+            cv::bitwise_and(  hls[0],    hls[2],  _combined);
+            cv::bitwise_and(  hls[1],    hls[2],   combined);
+            cv::bitwise_or(_combined,  combined,  _combined);
+            cv::bitwise_and(  hls[2], _combined,   combined);
+            cv::bitwise_and(img_bgr, img_bgr, img_filtered, combined);
+            break;
+
+        case 2:
+            cv::threshold(hls[0], hls[0],  param_h_high, 255, cv::THRESH_BINARY_INV);
+            cv::threshold(hls[0], hls[0],  param_h_low, 255, cv::THRESH_BINARY);
+            cv::threshold(hls[1], hls[1],  param_l_low, 255, cv::THRESH_BINARY);
+            cv::threshold(hls[2], hls[2],  param_s_low, 255, cv::THRESH_BINARY);
+            cv::bitwise_or(hls[0],  hls[2],  _combined);
+            cv::bitwise_or(hls[1],  hls[2],  combined);
+            cv::bitwise_and(_combined,  combined,  combined);
+            cv::bitwise_and(  hls[2], combined,   combined);
+            cv::bitwise_and(img_bgr, img_bgr, img_filtered, combined);
+            break;
+        }
 
         // White + Yellow
         //Combine the two above images
@@ -382,94 +428,94 @@ public:
     }
 
     bool findingPeak(const cv::Mat img, int& peaks, int top, int bottom, int left, int right) {
-            sortWindow(img.size(), top, bottom, left, right);
-            cv::Mat img_hist = img(cv::Range(top, bottom), cv::Range(left, right));
+        sortWindow(img.size(), top, bottom, left, right);
+        cv::Mat img_hist = img(cv::Range(top, bottom), cv::Range(left, right));
 
-            cv::Mat colSum;
-            cv::reduce(img_hist, colSum, 0, CV_REDUCE_SUM, CV_64F);
-            cv::normalize(colSum, colSum, 0, img_hist.rows, cv::NORM_MINMAX, CV_8U);
+        cv::Mat colSum;
+        cv::reduce(img_hist, colSum, 0, CV_REDUCE_SUM, CV_64F);
+        cv::normalize(colSum, colSum, 0, img_hist.rows, cv::NORM_MINMAX, CV_8U);
 
-            // For Visualizating a histogram
-            //for(int i = 1; i < colSum.cols; i++) {
-            //    cv::line(img_hist, cv::Point(i-1, (int)(*colSum.col(i-1).data)), cv::Point(i, (int)(*colSum.col(i).data)), cv::Scalar(255, 255, 255), 1, 8);
-            //}
-            //cv::imshow("img_hist", img_hist);
+        // For Visualizating a histogram
+        //for(int i = 1; i < colSum.cols; i++) {
+        //    cv::line(img_hist, cv::Point(i-1, (int)(*colSum.col(i-1).data)), cv::Point(i, (int)(*colSum.col(i).data)), cv::Scalar(255, 255, 255), 1, 8);
+        //}
+        //cv::imshow("img_hist", img_hist);
 
-            cv::Scalar sum = cv::sum(colSum);
-            if (sum == cv::Scalar(0)) {
-                peaks = (left + right)/2;
-                //peaks = 0;
-                return false;
-            }
-
-            double minVal, maxVal;
-            cv::Point minLoc, maxLoc;
-            cv::minMaxLoc(colSum, &minVal, &maxVal, &minLoc, &maxLoc);
-            peaks = left + maxLoc.x;
-            return true;
+        cv::Scalar sum = cv::sum(colSum);
+        if (sum == cv::Scalar(0)) {
+            peaks = (left + right)/2;
+            //peaks = 0;
+            return false;
         }
+
+        double minVal, maxVal;
+        cv::Point minLoc, maxLoc;
+        cv::minMaxLoc(colSum, &minVal, &maxVal, &minLoc, &maxLoc);
+        peaks = left + maxLoc.x;
+        return true;
+    }
 
     cv::Mat getSlidingWindow(const cv::Mat img, int division, int win_half_width, std::vector<cv::Point2f>& points, bool isLeft, int* arr_peaks=nullptr, bool useFakeLane=false) {
-            cv::Mat slidingMask = cv::Mat::zeros(img.rows, img.cols, CV_8UC1);
-            cv::Mat mask(slidingMask);
+        cv::Mat slidingMask = cv::Mat::zeros(img.rows, img.cols, CV_8UC1);
+        cv::Mat mask(slidingMask);
 
-            int peak, last_peak;
-            peak = arr_peaks[isLeft? 0: 1];
-            for (int i = 0; i < division; i++) {
-                last_peak = peak;
-                int top    = img.rows - ((img.rows/division)*(i+1));
-                int bottom = img.rows - ((img.rows/division)*(i));
-                int left   = last_peak - win_half_width;
-                int right  = last_peak + win_half_width;
-                sortWindow(img.size(), top, bottom, left, right);   // sortWindow(cv::Size(img.cols, img.rows), top, bottom, left, right);
+        int peak, last_peak;
+        peak = arr_peaks[isLeft? 0: 1];
+        for (int i = 0; i < division; i++) {
+            last_peak = peak;
+            int top    = img.rows - ((img.rows/division)*(i+1));
+            int bottom = img.rows - ((img.rows/division)*(i));
+            int left   = last_peak - win_half_width;
+            int right  = last_peak + win_half_width;
+            sortWindow(img.size(), top, bottom, left, right);   // sortWindow(cv::Size(img.cols, img.rows), top, bottom, left, right);
 
-                mask(cv::Rect(cv::Point(left, top), cv::Point(right, bottom))) = 255;
-                cv::bitwise_or(mask, slidingMask, slidingMask);
+            mask(cv::Rect(cv::Point(left, top), cv::Point(right, bottom))) = 255;
+            cv::bitwise_or(mask, slidingMask, slidingMask);
 
-                bool hasPeak = findingPeak(img, peak, top, bottom, left, right);
+            bool hasPeak = findingPeak(img, peak, top, bottom, left, right);
 
-                if (hasPeak == true) {
-                    cv::Point point;
-                    point.x = (left + right)/2;
-                    point.y = bottom;
-                    points.push_back(point);
-                }
-                else if (useFakeLane == true) {
-                    cv::Point point;
-                    point.x = (left + right)/2;
-                    point.y = bottom;
-                    points.push_back(point);
-                }
+            if (hasPeak == true) {
+                cv::Point point;
+                point.x = (left + right)/2;
+                point.y = bottom;
+                points.push_back(point);
             }
-            return slidingMask;
+            else if (useFakeLane == true) {
+                cv::Point point;
+                point.x = (left + right)/2;
+                point.y = bottom;
+                points.push_back(point);
+            }
         }
+        return slidingMask;
+    }
 
     std::vector<cv::Point2f> findingLanePixels(const cv::Mat img_lane, cv::Mat& img_unwarp, const cv::Mat lamda_inv, bool isLeft, const std::vector<cv::Point2f> points) {
-            int w_t = 0;
-            int w_b = img_lane.rows;
-            int w_l, w_r;
-            cv::Mat img_lane_;
-            img_lane_ = img_lane.clone();
+        int w_t = 0;
+        int w_b = img_lane.rows;
+        int w_l, w_r;
+        cv::Mat img_lane_;
+        img_lane_ = img_lane.clone();
 
-            if (isLeft == true) {
-                w_l = 0;
-                w_r = img_lane.cols/2;
-                sortWindow(img_lane.size(), w_t, w_b, w_l, w_r);
-                img_lane_(cv::Range(w_t, w_b), cv::Range(w_r, img_lane_.cols)) = 0;
-            }
-            else {
-                w_l = img_lane.cols/2;
-                w_r = img_lane.cols;
-                sortWindow(img_lane.size(), w_t, w_b, w_l, w_r);
-                img_lane_(cv::Range(w_t, w_b), cv::Range(0, w_l)) = 0;
-            }
-            cv::warpPerspective(img_lane_, img_unwarp, lamda_inv, img_unwarp.size());
-            std::vector<cv::Point2f> points_2d;
-            if (!points.empty()) {
-                cv::perspectiveTransform(points, points_2d, lamda_inv);
-            }
-            return points_2d;
+        if (isLeft == true) {
+            w_l = 0;
+            w_r = img_lane.cols/2;
+            sortWindow(img_lane.size(), w_t, w_b, w_l, w_r);
+            img_lane_(cv::Range(w_t, w_b), cv::Range(w_r, img_lane_.cols)) = 0;
         }
+        else {
+            w_l = img_lane.cols/2;
+            w_r = img_lane.cols;
+            sortWindow(img_lane.size(), w_t, w_b, w_l, w_r);
+            img_lane_(cv::Range(w_t, w_b), cv::Range(0, w_l)) = 0;
+        }
+        cv::warpPerspective(img_lane_, img_unwarp, lamda_inv, img_unwarp.size());
+        std::vector<cv::Point2f> points_2d;
+        if (!points.empty()) {
+            cv::perspectiveTransform(points, points_2d, lamda_inv);
+        }
+        return points_2d;
+    }
 
 public:
     std::vector<cv::Point3f> twoDim2threeDim(const std::vector<cv::Point2f> points_2d) {
@@ -631,81 +677,131 @@ public:
     }
 
 public:
+    void average(double data) {
+        for (uint32_t i = BUFFER - 1; i > 0; i--)
+            m_dBuffer[i] = m_dBuffer[i-1];
+
+        m_dBuffer[0] = data;
+
+        m_dMovingAverage = 0.0;
+        for (uint32_t i = 0; i < BUFFER; i++)
+            m_dMovingAverage += m_dBuffer[i];
+
+        m_dMovingAverage /= BUFFER;
+    }
+
     std::vector<double> findDrivingWay(const std::vector<double> left_line, const std::vector<double> right_line) {
-            double prev_a, prev_b, prev_c, prev_d;
+        double prev_a, prev_b, prev_c, prev_d;
 
-            bool l_lane_exist = false;
-            bool r_lane_exist = false;
-            std::vector<double> middle(4);
-
-
-            if(std::isnan(left_line[0])){
-                l_lane_exist = false;
-            }
-            else{
-                l_lane_exist = true;
-            }
-
-            if(std::isnan(right_line[0])){
-                r_lane_exist = false;
-            }
-            else{
-                r_lane_exist = true;
-            }
+        bool l_lane_exist = false;
+        bool r_lane_exist = false;
+        std::vector<double> middle(4);
 
 
-            if(l_lane_exist && r_lane_exist){
-                middle[0] = (left_line[0] + right_line[0])/2; //d
-                middle[1] = (left_line[1] + right_line[1])/2; //c
-                middle[2] = (left_line[2] + right_line[2])/2; //b
-                middle[3] = (left_line[3] + right_line[3])/2; //a
+        if (std::isnan(left_line[0])) {
+            l_lane_exist = false;
+        }
+        else {
+            l_lane_exist = true;
+        }
 
-                prev_d = middle[0];
-                prev_c = middle[1];
-                prev_b = middle[2];
-                prev_a = middle[3];
-                ROS_INFO_STREAM("BOTH");
-            }
+        if (std::isnan(right_line[0])) {
+            r_lane_exist = false;
+        }
+        else {
+            r_lane_exist = true;
+        }
 
-            if(l_lane_exist && !r_lane_exist){
-                middle[0] = left_line[0] - (3.3/2); //d
-                middle[1] = left_line[1]; //c
-                middle[2] = left_line[2]; //b
-                middle[3] = left_line[3]; //a
 
-                prev_d = middle[0];
-                prev_c = middle[1];
-                prev_b = middle[2];
-                prev_a = middle[3];
-                ROS_INFO_STREAM("ONLY LEFT");
-            }
+        if (l_lane_exist && r_lane_exist) {
+            middle[0] = (left_line[0] + right_line[0])/2; //d
+            middle[1] = (left_line[1] + right_line[1])/2; //c
+            middle[2] = (left_line[2] + right_line[2])/2; //b
+            middle[3] = (left_line[3] + right_line[3])/2; //a
 
-            if(!l_lane_exist && r_lane_exist){
-                middle[0] = right_line[0] + (3.3/2); //d
-                middle[1] = right_line[1]; //c
-                middle[2] = right_line[2]; //b
-                middle[3] = right_line[3]; //a
+            prev_d = middle[0];
+            prev_c = middle[1];
+            prev_b = middle[2];
+            prev_a = middle[3];
+            ROS_INFO_STREAM("BOTH");
+        }
 
-                prev_d = middle[0];
-                prev_c = middle[1];
-                prev_b = middle[2];
-                prev_a = middle[3];
-                ROS_INFO_STREAM("ONLY RIGHT");
-            }
-            if(!l_lane_exist && !r_lane_exist){
+        if (l_lane_exist && !r_lane_exist) {
+            middle[0] = left_line[0] - (ROAD_WIDTH/2); //d
+            middle[1] = left_line[1]; //c
+            middle[2] = left_line[2]; //b
+            middle[3] = left_line[3]; //a
+
+            prev_d = middle[0];
+            prev_c = middle[1];
+            prev_b = middle[2];
+            prev_a = middle[3];
+            ROS_INFO_STREAM("ONLY LEFT");
+        }
+
+        if (!l_lane_exist && r_lane_exist) {
+            middle[0] = right_line[0] + (ROAD_WIDTH/2); //d
+            middle[1] = right_line[1]; //c
+            middle[2] = right_line[2]; //b
+            middle[3] = right_line[3]; //a
+
+            prev_d = middle[0];
+            prev_c = middle[1];
+            prev_b = middle[2];
+            prev_a = middle[3];
+            ROS_INFO_STREAM("ONLY RIGHT");
+        }
+
+        if (!l_lane_exist && !r_lane_exist) {
+            middle[0] = prev_d;
+            middle[1] = prev_c;
+            middle[2] = prev_b;
+            middle[3] = prev_a;
+            ROS_INFO_STREAM("NONE");
+        }
+
+        switch (param_abcd_selection) {
+        case 0:
+            if((std::abs(middle[3]) > param_a_thresh) || (std::abs(middle[2]) > param_b_thresh) || (std::abs(middle[1]) > param_c_thresh)|| (std::abs(middle[0]) > param_d_thresh)) {
                 middle[0] = prev_d;
                 middle[1] = prev_c;
                 middle[2] = prev_b;
                 middle[3] = prev_a;
-                ROS_INFO_STREAM("NONE");
+                ROS_INFO_STREAM("!!!!!LANE IS WRONG!!!!!");
             }
+            break;
 
-            ROS_INFO_STREAM("left    "<<left_line[0] << "   " << left_line[1] <<"   " << left_line[2] << "   " <<left_line[3]);
-            ROS_INFO_STREAM("right   "<<right_line[0] <<"   " << right_line[1] <<"   " << right_line[2] << "   " <<right_line[3]);
-            ROS_INFO_STREAM("middle  "<<middle[0] << "   " <<middle[1] << "   " <<middle[2] <<"   " << middle[3]);
+        case 1:
+            double amplified = 10 * middle[1];
 
-            return middle;
+            static unsigned int COUNT = 0;
+            if (COUNT < BUFFER) {
+                average(amplified);
+                COUNT++;
+            }
+            else {
+                average(amplified);
+                //ROS_WARN_STREAM(m_dMovingAverage);
+                if ((amplified > m_dMovingAverage) || (amplified < (-1 * m_dMovingAverage))) {
+                    middle[0] = prev_d;
+                    middle[1] = (0.01*(m_dMovingAverage/10.0) + 0.99*prev_c);
+                    middle[2] = prev_b;
+                    middle[3] = prev_a;
+                    //ROS_WARN_STREAM(prev_a << ", " << prev_b << ", " << prev_c << ", " << prev_d);
+                    ROS_INFO_STREAM("!!!!!LANE IS WRONG!!!!!");
+                    ROS_WARN_STREAM("(noise: " << m_dMovingAverage << ")");
+                }
+            }
+            break;
         }
+
+
+        //ROS_INFO_STREAM("left(abcd):    " << left_line[3] << "   " << left_line[2] <<"   " << left_line[1] << "   " << left_line[0]);
+        //ROS_INFO_STREAM("right(abcd):   " << right_line[3] << "   " << right_line[2] <<"   " << right_line[1] << "   " << right_line[0]);
+        ROS_INFO_STREAM("middle(abcd):  " << middle[3] << "   " << middle[2] << "   " << middle[1] << "   " << middle[0]);
+
+        return middle;
+    }
 
 public:
     std::vector<cv::Point3f> getSamplingPoint(std::vector<double> coeff, std::vector<cv::Point3f> points_3d_prev){
@@ -744,7 +840,7 @@ public:
             cv::Point point_2d;
             point_2d.x = P_c(0);
             point_2d.y = P_c(1);
-            ROS_WARN_STREAM(P_c(2));
+            //ROS_WARN_STREAM(P_c(2));
             points_2d.push_back(point_2d);
         }
         return points_2d;
@@ -809,10 +905,10 @@ public:
         points[1] = cv::Point(225, 338);
         points[2] = cv::Point(460, 338);
         points[3] = cv::Point(660, 418);
-//        points[4] = cv::Point(489, 418);
-//        points[5] = cv::Point(382, 339);
-//        points[6] = cv::Point(303, 339);
-//        points[7] = cv::Point(227, 418);
+        //points[4] = cv::Point(489, 418);
+        //points[5] = cv::Point(382, 339);
+        //points[6] = cv::Point(303, 339);
+        //points[7] = cv::Point(227, 418);
         //***********************************************************************//
         cv::Mat img_roi;
         img_roi = regionOfInterest(img_edges, sizeof(points)/sizeof(cv::Point), points, points);
@@ -954,7 +1050,7 @@ public:
 
         //ROS_WARN_STREAM("2d_middle" << points2d_middle);
         //ROS_WARN_STREAM("3d_middle" << points3d_middle);
-        ROS_WARN_STREAM("3d_middle_test" << testPoints3d_middle);
+        //ROS_WARN_STREAM("3d_middle_test" << testPoints3d_middle);
 
         testPoints2d_left = threeDim2twoDim(testPoints3d_left);
         testPoints2d_right = threeDim2twoDim(testPoints3d_right);

@@ -34,7 +34,7 @@ public:
     m_drivingWay = *msg;
   }
 
-  void mark_drivingWay(double interval = 0.1, double ROILength = 5.0) {
+  void mark_drivingWay(double interval = 0.1, double ROILength = 7.0) {
 
     double a0 = m_drivingWay.d;
     double a1 = m_drivingWay.c;
@@ -73,9 +73,9 @@ public:
       marker.color.g = 0.0f;
       marker.color.b = 0.0f;
       marker.color.a = 1.0;
-      marker.scale.x = 0.1;
-      marker.scale.y = 0.1;
-      marker.scale.z = 0.1;
+      marker.scale.x = 0.2;
+      marker.scale.y = 0.2;
+      marker.scale.z = 0.2;
       marker.lifetime = ros::Duration(0.2);
 
       markerArray.markers.push_back(marker);

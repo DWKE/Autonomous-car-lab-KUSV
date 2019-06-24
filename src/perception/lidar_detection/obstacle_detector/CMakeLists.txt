@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(perception)
+project(lidar_detection)
 add_compile_options (-std=c++11)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
@@ -136,7 +136,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/perception.cpp
+#   src/${PROJECT_NAME}/lidar_detection.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -147,7 +147,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/perception_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/lidar_detection_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -204,7 +204,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_perception.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_lidar_detection.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
@@ -212,15 +212,15 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(perception
+add_executable(lidar_detection
 	src/main.cpp
 	src/tracker.cpp
 	src/obstacle_tracking.cpp
 	src/cluster.cpp
 	src/ray_ground_filter.cpp
 	)
-target_link_libraries(perception
+target_link_libraries(lidar_detection
 	${catkin_LIBRARIES} 
 	${OpenCV_INCLUDE_DIRS}
 	)
-add_dependencies(perception ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(lidar_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

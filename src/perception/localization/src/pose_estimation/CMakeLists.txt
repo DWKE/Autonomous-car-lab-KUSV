@@ -110,7 +110,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-        CATKIN_DEPENDS ublox_msgs ublox_gps message_generation
+        CATKIN_DEPENDS ublox_msgs ublox_gps message_generation message_runtime
   DEPENDS system_lib
 #  INCLUDE_DIRS include
 #  LIBRARIES map_matching_pf

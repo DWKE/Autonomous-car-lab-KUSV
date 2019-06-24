@@ -85,7 +85,7 @@ public:
         double d_line = a0 + a1*x + a2*pow(x,2) + a3*pow(x,3);                                              //js
         //double detect = sqrt(1+d_line);
 
-        if(fabs(d_line-y)<=1.5){
+        if(fabs(d_line-y)<=1){
             inLine = true;
             //ROS_INFO("true");
         } else{
@@ -110,19 +110,24 @@ public:
                         yetpoint.y = point.y;
                         yetpoint.z = point.z;
 
+                        //std::cout<<"lidar"<<std::endl;
+
                         if(yetpoint.z<0 && yetpoint.x>2){
 
+
+
                             if(checkInline(yetpoint.x, yetpoint.y)){
-                               //std::cout<<"A ";
+                               std::cout<<"A ";
                                filteredObjectPoints.push_back(yetpoint);
                             }
                         }
                 }
 
                 if(filteredObjectPoints.size()>0){
-                    //std::cout<<"B "<<std::endl;
+                    std::cout<<"B "<<std::endl;
                     filteredPoints.push_back(filteredObjectPoints);
                     isObstacle = true; //js
+                    //std::cout << "test" << std::endl;
                     //std::cout<<"obstacle in line"<<std::endl;
                     //publish contorolcmd
                     //control_cmd.isObstacle=true;
@@ -152,7 +157,7 @@ public:
 
                 for (const auto& point : objectPoints)
                 {
-                        yetpoint.x = point.x;
+                        yetpoint = point;
 
                         if(lowXpoint>=yetpoint.x){
                             lowXpoint=yetpoint.x;
@@ -213,6 +218,7 @@ public:
 
                         m_pListener->transformPoint(LOCAL_FRAME, laser_point, base_point);
                         objectPoints.push_back (base_point.point);
+
                 }
 
                 objectsPoints.push_back(objectPoints);
@@ -241,16 +247,16 @@ public:
 
         checkpoint.type = visualization_msgs::Marker::SPHERE;
         checkpoint.action = visualization_msgs::Marker::ADD;
-        checkpoint.scale.x = 0.15;
-        checkpoint.scale.y = 0.15;
-        checkpoint.scale.z = 0.15;
+        checkpoint.scale.x = 1.15;
+        checkpoint.scale.y = 1.15;
+        checkpoint.scale.z = 1.15;
 
         checkpoint.color.a = 1.0;
         checkpoint.color.r = 0.0;
         checkpoint.color.g = 1.0;
         checkpoint.color.b = 0.0;
 
-        checkpoint.lifetime = ros::Duration(10);
+        checkpoint.lifetime = ros::Duration(0.1);
 
         if(isObstacle) {visual_pub.publish(checkpoint);}
 
@@ -267,7 +273,7 @@ public:
             {
                     visualization_msgs::Marker shape;
 
-                    shape.lifetime = ros::Duration(0.05);
+                    shape.lifetime = ros::Duration(0.1);
                     shape.header.frame_id = LOCAL_FRAME;
                     shape.ns = LOCAL_FRAME;
                     shape.id = m_iObjectNum;

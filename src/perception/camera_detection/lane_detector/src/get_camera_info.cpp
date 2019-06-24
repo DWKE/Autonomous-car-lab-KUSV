@@ -1,4 +1,4 @@
-#include <ros/ros.h>
+ #include <ros/ros.h>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui.hpp>
 #include <string>
@@ -112,6 +112,9 @@ public:
         ------------------------
       G                       H  I
 
+
+
+
     */
     void SolvePnP() {
         // 2D image points. If you change the image, you need to change vector
@@ -139,6 +142,7 @@ public:
         model_points.push_back( cv::Point3d(  7.607 ,  1.446 ,  0.0 ) );  // G
         model_points.push_back( cv::Point3d(  7.607 ,  -0.48 ,  0.0 ) );  // H
         model_points.push_back( cv::Point3d(  7.607 , -0.634 ,  0.0 ) );  // I
+
         //***********************************************************************//
 
         // Solve for pose
@@ -154,28 +158,86 @@ public:
         // 2D image points. If you change the image, you need to change vector
         //***************************** TUNING HERE *****************************//
         std::vector<cv::Point2f> image_points;
-        image_points.push_back( cv::Point2f( 275, 372 ) );  // A
-        image_points.push_back( cv::Point2f( 304, 372 ) );  // B
-        image_points.push_back( cv::Point2f( 354, 372 ) );  // C
-        image_points.push_back( cv::Point2f( 242, 393 ) );  // D
-        image_points.push_back( cv::Point2f( 254, 393 ) );  // E
-        image_points.push_back( cv::Point2f( 393, 393 ) );  // F
-        image_points.push_back( cv::Point2f( 239, 395 ) );  // G
-        image_points.push_back( cv::Point2f( 395, 395 ) );  // H
-        image_points.push_back( cv::Point2f( 406, 394 ) );  // I
+//        image_points.push_back( cv::Point2f( 275, 372 ) );  // A
+//        image_points.push_back( cv::Point2f( 304, 372 ) );  // B
+//        image_points.push_back( cv::Point2f( 354, 372 ) );  // C
+//        image_points.push_back( cv::Point2f( 242, 393 ) );  // D
+//        image_points.push_back( cv::Point2f( 254, 393 ) );  // E
+//        image_points.push_back( cv::Point2f( 393, 393 ) );  // F
+//        image_points.push_back( cv::Point2f( 239, 395 ) );  // G
+//        image_points.push_back( cv::Point2f( 395, 395 ) );  // H
+//        image_points.push_back( cv::Point2f( 406, 394 ) );  // I
+
+        image_points.push_back( cv::Point2f( 480, 392 ) );  // 1
+        image_points.push_back( cv::Point2f( 240, 391 ) );  // 2
+        image_points.push_back( cv::Point2f( 246, 386 ) );  // 3
+        image_points.push_back( cv::Point2f( 471, 387 ) );  // 4
+
+        image_points.push_back( cv::Point2f( 418, 372 ) );  // 5
+        image_points.push_back( cv::Point2f( 358, 372 ) );  // 6
+        image_points.push_back( cv::Point2f( 338, 371 ) );  // 7
+        image_points.push_back( cv::Point2f( 277, 370 ) );  // 8
+
+        image_points.push_back( cv::Point2f( 248, 360 ) );  // 9
+        image_points.push_back( cv::Point2f( 260, 360 ) );  // 10
+        image_points.push_back( cv::Point2f( 269, 360 ) );  // 11
+        image_points.push_back( cv::Point2f( 272, 361 ) );  // 12
+        image_points.push_back( cv::Point2f( 298, 361 ) );  // 13
+        image_points.push_back( cv::Point2f( 323, 361 ) );  // 14
+        image_points.push_back( cv::Point2f( 348, 361 ) );  // 15
+        image_points.push_back( cv::Point2f( 373, 362 ) );  // 16
+        image_points.push_back( cv::Point2f( 399, 363 ) );  // 17
+
+        image_points.push_back( cv::Point2f( 386, 349 ) );  // 18
+        image_points.push_back( cv::Point2f( 366, 349 ) );  // 19
+        image_points.push_back( cv::Point2f( 345, 348 ) );  // 20
+        image_points.push_back( cv::Point2f( 325, 347 ) );  // 21
+        image_points.push_back( cv::Point2f( 305, 347 ) );  // 22
+        image_points.push_back( cv::Point2f( 285, 348 ) );  // 23
+        image_points.push_back( cv::Point2f( 265, 347 ) );  // 24
 
 
         // 3D model points.
         std::vector<cv::Point2f> model_points;
-        model_points.push_back( cv::Point2f( 12.211f ,  1.285f ) );  // A
-        model_points.push_back( cv::Point2f( 12.211f ,  0.802f ) );  // B
-        model_points.push_back( cv::Point2f( 12.211f , -0.015f ) );  // C
-        model_points.push_back( cv::Point2f(  9.661f ,  1.446f ) );  // D
-        model_points.push_back( cv::Point2f(  9.661f ,  1.285f ) );  // E
-        model_points.push_back( cv::Point2f(  9.661f ,  -0.48f ) );  // F
-        model_points.push_back( cv::Point2f(  7.607f ,  1.446f ) );  // G
-        model_points.push_back( cv::Point2f(  7.607f ,  -0.48f ) );  // H
-        model_points.push_back( cv::Point2f(  7.607f , -0.634f ) );  // I
+//        model_points.push_back( cv::Point2f( 12.211f ,  1.285f ) );  // A
+//        model_points.push_back( cv::Point2f( 12.211f ,  0.802f ) );  // B
+//        model_points.push_back( cv::Point2f( 12.211f , -0.015f ) );  // C
+//        model_points.push_back( cv::Point2f(  9.661f ,  1.446f ) );  // D
+//        model_points.push_back( cv::Point2f(  9.661f ,  1.285f ) );  // E
+//        model_points.push_back( cv::Point2f(  9.661f ,  -0.48f ) );  // F
+//        model_points.push_back( cv::Point2f(  7.607f ,  1.446f ) );  // G
+//        model_points.push_back( cv::Point2f(  7.607f ,  -0.48f ) );  // H
+//        model_points.push_back( cv::Point2f(  7.607f , -0.634f ) );  // I
+
+        model_points.push_back( cv::Point2f(  9.576f , -1.65f ) ); //1
+        model_points.push_back( cv::Point2f(  9.576f , 1.385f ) ); //2
+        model_points.push_back( cv::Point2f(  10.024f , 1.385f ) ); //3
+        model_points.push_back( cv::Point2f(  10.024f , -1.65f ) ); //4
+
+        model_points.push_back( cv::Point2f(  11.932f , -1.17f ) ); //5
+        model_points.push_back( cv::Point2f(  11.932f , -0.15f ) ); //6
+        model_points.push_back( cv::Point2f(  11.932f , 0.14f ) ); //7
+        model_points.push_back( cv::Point2f(  11.932f , 1.15f ) ); //8
+
+        model_points.push_back( cv::Point2f(  13.022f , 1.797f ) ); //9
+        model_points.push_back( cv::Point2f(  13.006f , 1.53f ) ); //10
+        model_points.push_back( cv::Point2f(  13.006f , 1.385f ) ); //11
+        model_points.push_back( cv::Point2f(  13.022f , 1.347f ) ); //12
+        model_points.push_back( cv::Point2f(  13.022f , 0.897f ) ); //13
+        model_points.push_back( cv::Point2f(  13.022f , 0.435f ) ); //14
+        model_points.push_back( cv::Point2f(  13.022f , -0.01f ) ); //15
+        model_points.push_back( cv::Point2f(  13.022f , -0.46f ) ); //16
+        model_points.push_back( cv::Point2f(  13.022f , -0.908f ) ); //17
+
+        model_points.push_back( cv::Point2f(  16.036f , -0.908f ) ); //18
+        model_points.push_back( cv::Point2f(  16.036f , -0.46f ) ); //19
+        model_points.push_back( cv::Point2f(  16.036f , -0.01f ) ); //20
+        model_points.push_back( cv::Point2f(  16.036f , 0.435f ) ); //21
+        model_points.push_back( cv::Point2f(  16.036f , 0.897f ) ); //22
+        model_points.push_back( cv::Point2f(  16.036f , 1.347f ) ); //23
+        model_points.push_back( cv::Point2f(  16.036f , 1.797f ) ); //24
+
+
         //***********************************************************************//
 
         // Solve for pose

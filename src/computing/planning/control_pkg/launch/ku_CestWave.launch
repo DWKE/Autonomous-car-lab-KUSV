@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node pkg="aggm" type="ku_CestWave" name="ku_CestWave" output="screen">
+  </node>
+</launch>
