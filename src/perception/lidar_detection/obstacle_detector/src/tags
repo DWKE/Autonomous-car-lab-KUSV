@@ -1,0 +1,36 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+associate	obstacle_tracking.cpp	/^void ObstacleTracking::associate (const std::vector<clusterPtr>& objList)$/;"	f	class:ObstacleTracking
+ClassifyPointCloud	ray_ground_filter.cpp	/^void RayGroundRemove::ClassifyPointCloud(std::vector<PointCloudXYZRTColor>& in_radial_ordered_clouds,$/;"	f	class:RayGroundRemove
+ClipCloud	ray_ground_filter.cpp	/^void RayGroundRemove::ClipCloud(const PointCloudXYZI::Ptr in_cloud_ptr, $/;"	f	class:RayGroundRemove
+Cluster	cluster.cpp	/^Cluster::Cluster()$/;"	f	class:Cluster
+ConvertXYZToRTZColor	ray_ground_filter.cpp	/^void RayGroundRemove::ConvertXYZToRTZColor(const pcl::PointCloud<pcl::PointXYZI>::Ptr in_cloud,$/;"	f	class:RayGroundRemove
+dbscan	tracker.cpp	/^void Tracker::dbscan(const PointCloudXYZI::ConstPtr& pInputCloud, std::vector<pcl::PointIndices>& vecClusterIndices)$/;"	f	class:Tracker
+displayShape	tracker.cpp	/^void Tracker::displayShape (const std::vector<clusterPtr> pVecClusters)$/;"	f	class:Tracker
+downsample	tracker.cpp	/^void Tracker::downsample (const PointCloudXYZI::ConstPtr& pInputCloud, PointCloudXYZI::Ptr& pDownsampledCloud, float f_paramLeafSize_m)$/;"	f	class:Tracker
+ExtractPointsIndices	ray_ground_filter.cpp	/^void RayGroundRemove::ExtractPointsIndices(const PointCloudXYZI::Ptr in_cloud_ptr,$/;"	f	class:RayGroundRemove
+generateColor	tracker.cpp	/^void Tracker::generateColor(size_t indexNumber)$/;"	f	class:Tracker
+GetCloud	cluster.cpp	/^pcl::PointCloud <pcl::PointXYZRGB>::Ptr Cluster::GetCloud()$/;"	f	class:Cluster
+getParameter	tracker.cpp	/^void Tracker::getParameter()$/;"	f	class:Tracker
+groundRemove	ray_ground_filter.cpp	/^void RayGroundRemove::groundRemove(const PointCloudXYZI::ConstPtr& pInputCloud, PointCloudXYZI::Ptr& pRemovedGroundCloud)$/;"	f	class:RayGroundRemove
+main	main.cpp	/^int main(int argc, char **argv)$/;"	f
+mainLoop	tracker.cpp	/^void Tracker::mainLoop()$/;"	f	class:Tracker
+matchWithDistanceOnly	obstacle_tracking.cpp	/^void ObstacleTracking::matchWithDistanceOnly()$/;"	f	class:ObstacleTracking
+MergeObjectAndTrack	obstacle_tracking.cpp	/^void ObstacleTracking::MergeObjectAndTrack (clusterPtr& track, clusterPtr& obj)$/;"	f	class:ObstacleTracking
+ObstacleTracking	obstacle_tracking.cpp	/^ObstacleTracking::ObstacleTracking()$/;"	f	class:ObstacleTracking
+PointCloudXYZI	ray_ground_filter.cpp	/^typedef pcl::PointCloud<pcl::PointXYZI> PointCloudXYZI;$/;"	t	file:
+PointCloudXYZI	tracker.cpp	/^typedef pcl::PointCloud<pcl::PointXYZI> PointCloudXYZI;$/;"	t	file:
+RayGroundRemove	ray_ground_filter.cpp	/^RayGroundRemove::RayGroundRemove() { }$/;"	f	class:RayGroundRemove
+SetCloud	cluster.cpp	/^void Cluster::SetCloud(const pcl::PointCloud<pcl::PointXYZI>::Ptr pInputCloud,$/;"	f	class:Cluster
+setCluster	tracker.cpp	/^void Tracker::setCluster (const std::vector<pcl::PointIndices> vecClusterIndices, std::vector<clusterPtr>& pOriginalClusters, const PointCloudXYZI::Ptr pInputCloud)$/;"	f	class:Tracker
+thresholding	tracker.cpp	/^void Tracker::thresholding (const PointCloudXYZI::ConstPtr& pInputCloud, PointCloudXYZI::Ptr& pCloudThresholded)$/;"	f	class:Tracker
+Tracker	tracker.cpp	/^Tracker::Tracker()$/;"	f	class:Tracker
+velodyne_callback	tracker.cpp	/^void Tracker::velodyne_callback (const sensor_msgs::PointCloud2ConstPtr &pInput)$/;"	f	class:Tracker
+~Cluster	cluster.cpp	/^Cluster::~Cluster()$/;"	f	class:Cluster
+~ObstacleTracking	obstacle_tracking.cpp	/^ObstacleTracking::~ObstacleTracking() {}$/;"	f	class:ObstacleTracking
+~RayGroundRemove	ray_ground_filter.cpp	/^RayGroundRemove::~RayGroundRemove() { }$/;"	f	class:RayGroundRemove
+~Tracker	tracker.cpp	/^Tracker::~Tracker() { }$/;"	f	class:Tracker
