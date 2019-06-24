@@ -323,7 +323,7 @@ void Tracker::publish ()
 	q.setRPY(0.0, 0.0, 0.0);
 	transform.setRotation(q);
 
-	br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "car", "velodyne"));
+	br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), LOCAL_FRAME, BASE_FRAME));
 
 	// publish
 	pub_result.publish (*pAccumulationCloud);

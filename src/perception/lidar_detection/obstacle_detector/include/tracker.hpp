@@ -29,6 +29,9 @@
 #include "obstacle_tracking.hpp"
 #include "ray_ground_filter.hpp"
 
+#define BASE_FRAME "velodyne"
+#define LOCAL_FRAME "body"
+
 typedef pcl::PointCloud<pcl::PointXYZI> PointCloudXYZI;
 
 typedef struct _rgb RGB;
