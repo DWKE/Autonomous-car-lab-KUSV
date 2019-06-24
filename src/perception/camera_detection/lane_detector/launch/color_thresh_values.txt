@@ -1,0 +1,36 @@
+-------------------------------------------------------------
+  <arg name="h_low" default="0" />
+  <arg name="h_high" default="180"/>
+  <arg name="l_low" default="0"/>
+  <arg name="s_low" default="102"/>
+  <arg name="color_merge" default="0"/>
+-------------------------------------------------------------
+  <arg name="h_low" default="13" />
+  <arg name="h_high" default="28"/>
+  <arg name="l_low" default="53"/>
+  <arg name="s_low" default="79"/>
+  <arg name="color_merge" default="1"/>
+-------------------------------------------------------------
+  <arg name="h_low" default="10" />
+  <arg name="h_high" default="32"/>
+  <arg name="l_low" default="0"/>
+  <arg name="s_low" default="68"/>
+  <arg name="color_merge" default="2"/>
+-------------------------------------------------------------
+  <arg name="h_low" default="0" />
+  <arg name="h_high" default="180"/>
+  <arg name="l_low" default="80"/>
+  <arg name="s_low" default="95"/>
+  <arg name="color_merge" default="2"/>
+-------------------------------------------------------------
+  <arg name="h_low" default="15" />
+  <arg name="h_high" default="25"/>
+  <arg name="l_low" default="70"/>
+  <arg name="s_low" default="40"/>
+  <arg name="color_merge" default="1"/>
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+
+-------------------------------------------------------------
+

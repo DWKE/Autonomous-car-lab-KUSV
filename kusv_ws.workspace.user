@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.7.84, 2019-06-23T16:28:53. -->
+=======
+<!-- Written by QtCreator 4.7.84, 2019-06-23T19:43:17. -->
+>>>>>>> 64b475ac2b16b666fe50e2aee9db1befb7ff2ff3
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -105,6 +109,7 @@
     <value type="int" key="ProjectExplorer.BuildConfiguration.BuildStepListCount">2</value>
     <value type="bool" key="ProjectExplorer.BuildConfiguration.ClearSystemEnvironment">false</value>
     <valuelist type="QVariantList" key="ProjectExplorer.BuildConfiguration.UserEnvironmentChanges">
+<<<<<<< HEAD
      <value type="QString">ARCHDIR=Linux64</value>
      <value type="QString">CMAKE_PREFIX_PATH=/home/lke/ACL_KUSV/devel:/home/lke/catkin_ws/devel:/opt/ros/kinetic</value>
      <value type="QString">EUSDIR=/opt/ros/kinetic/share/euslisp/jskeus/eus/</value>
@@ -119,6 +124,20 @@
      <value type="QString">ROS_ETC_DIR=/opt/ros/kinetic/etc/ros</value>
      <value type="QString">ROS_MASTER_URI=http://localhost:11311</value>
      <value type="QString">ROS_PACKAGE_PATH=/home/lke/ACL_KUSV/src:/home/lke/catkin_ws/src/gazebo_ros_pkgs/gazebo_dev:/home/lke/catkin_ws/src/gazebo_ros_pkgs/gazebo_msgs:/home/lke/catkin_ws/src/gazebo_ros_pkgs/gazebo_plugins:/home/lke/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros:/home/lke/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros_control:/home/lke/catkin_ws/src/gazebo_ros_pkgs/gazebo_ros_pkgs:/home/lke/catkin_ws/src/mavlink:/home/lke/catkin_ws/src/mavros/libmavconn:/home/lke/catkin_ws/src/mavros/mavros_msgs:/home/lke/catkin_ws/src/mavros/mavros:/home/lke/catkin_ws/src/mavros/mavros_extras:/home/lke/catkin_ws/src/modudculab_ros:/home/lke/catkin_ws/src/mavros/test_mavros:/opt/ros/kinetic/share</value>
+=======
+     <value type="QString">CMAKE_PREFIX_PATH=/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel:/home/user/ws_final_lane_detection/devel:/opt/ros/kinetic</value>
+     <value type="QString">LD_LIBRARY_PATH=/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/lib:/home/user/ws_final_lane_detection/devel/lib:/opt/ros/kinetic/lib:/opt/ros/kinetic/lib/x86_64-linux-gnu</value>
+     <value type="QString">PATH=/opt/ros/kinetic/bin:/home/user/bin:/home/user/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin</value>
+     <value type="QString">PKG_CONFIG_PATH=/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/lib/pkgconfig:/home/user/ws_final_lane_detection/devel/lib/pkgconfig:/opt/ros/kinetic/lib/pkgconfig:/opt/ros/kinetic/lib/x86_64-linux-gnu/pkgconfig</value>
+     <value type="QString">PWD=/home/user/ws_KUSV/Autonomous-car-lab-KUSV</value>
+     <value type="QString">PYTHONPATH=/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/lib/python2.7/dist-packages:/home/user/ws_final_lane_detection/devel/lib/python2.7/dist-packages:/opt/ros/kinetic/lib/python2.7/dist-packages</value>
+     <value type="QString">QTDIR</value>
+     <value type="QString">ROSLISP_PACKAGE_DIRECTORIES=/home/user/ws_KUSV/Autonomous-car-lab-KUSV/devel/share/common-lisp:/home/user/ws_final_lane_detection/devel/share/common-lisp</value>
+     <value type="QString">ROS_DISTRO=kinetic</value>
+     <value type="QString">ROS_ETC_DIR=/opt/ros/kinetic/etc/ros</value>
+     <value type="QString">ROS_MASTER_URI=http://localhost:11311</value>
+     <value type="QString">ROS_PACKAGE_PATH=/home/user/ws_KUSV/Autonomous-car-lab-KUSV/src:/home/user/ws_final_lane_detection/src:/opt/ros/kinetic/share</value>
+>>>>>>> 64b475ac2b16b666fe50e2aee9db1befb7ff2ff3
      <value type="QString">ROS_ROOT=/opt/ros/kinetic/share/ros</value>
      <value type="QString">ROS_VERSION=1</value>
      <value type="QString">SHLVL=2</value>
