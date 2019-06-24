@@ -11,7 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   tf
-  autonomous_msg
+  kusv_msgs
   ublox_msgs
   ublox_gps
 )
