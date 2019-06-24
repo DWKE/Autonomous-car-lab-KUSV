@@ -512,12 +512,12 @@ void Speed_Control_Distance(void){          //not finished
     goalSpeed = distanceError * -1;                                             // distance : 10 -> goal speed = 0
 
     Speed_Error = goalSpeed - f_Vspeed;			// error = goal speed - current speed
-    PID_speed = Speed_Error * Gain_P;
+    PID_speed = Speed_Error * 1;
 
     if(PID_speed  < -3.0 )
             PID_speed = -3.0;
-    else if(PID_speed > 0.3)                            // acceleration limit
-            PID_speed = 0.3;
+    else if(PID_speed > 0.1)                            // acceleration limit
+            PID_speed = 0.1;
 
 
 }

@@ -8,7 +8,7 @@
 
 #define PI 3.14159265359
 #define WAYPOINT_MAX_SPEED 20
-#define VISION_MAX_SPEED 10
+#define VISION_MAX_SPEED 20
 #define MIN_SPEED 5
 #define LANE_KEEPING_MODE 0
 #define WAYPOINTS_FOLLOWING_MODE 1
@@ -63,8 +63,8 @@ private:
 public:
 
     LocalPlanner()
-         :driving_way_sub(nh.subscribe("/final_driving_way", 1000, &LocalPlanner::drivingWayCallback, this)),
-         //:driving_way_sub(nh.subscribe("/waypoint_lane", 1000, &LocalPlanner::drivingWayCallback, this)),
+         //:driving_way_sub(nh.subscribe("/final_driving_way", 1000, &LocalPlanner::drivingWayCallback, this)),
+         :driving_way_sub(nh.subscribe("/waypoint_lane", 1000, &LocalPlanner::drivingWayCallback, this)),
        //:driving_way_sub(nh.subscribe("vision_lane", 1000, &LocalPlanner::drivingWayCallback, this)),
          object_sub(nh.subscribe("/objects", 1000, &LocalPlanner::objectCallback, this)),
          can_rx_sub(nh.subscribe("/kusv_CanInfo", 1000, &LocalPlanner::canrxCallback, this)),

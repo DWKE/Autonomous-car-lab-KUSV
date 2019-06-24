@@ -25,7 +25,7 @@
 #include "kusv_msgs/PolyfitLaneData.h"
 #include "kusv_msgs/PolyfitLaneDataArray.h"
 
-#define BUFFER 5
+#define BUFFER 30
 
 
 static std::string RESULT_WINDOW = "result_video";

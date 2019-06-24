@@ -47,9 +47,9 @@ private:
 public:
     PathPlan()
         :object_sub(nh.subscribe("/DetectedObject", 1000, &PathPlan::objectCallback, this)),
-         lane_sub(nh.subscribe("/final_driving_way", 1000, &PathPlan::laneCallback, this)),
+         //lane_sub(nh.subscribe("/final_driving_way", 1000, &PathPlan::laneCallback, this)),
          //lane_sub(nh.subscribe("vision_lane", 1000, &PathPlan::laneCallback, this)),
-         //lane_sub(nh.subscribe("waypoint_lane", 1000, &PathPlan::laneCallback, this)),                 //js
+         lane_sub(nh.subscribe("waypoint_lane", 1000, &PathPlan::laneCallback, this)),                 //js
          visual_pub(nh.advertise<visualization_msgs::Marker>("/check_point", 1)),
          marker_pub(nh.advertise<visualization_msgs::MarkerArray>("/mark_array", 1)),
          object_pub(nh.advertise<pathplan::kusv_ObjectCmd>("/object_cmd", 500))                             //js
@@ -157,7 +157,7 @@ public:
 
                 for (const auto& point : objectPoints)
                 {
-                        yetpoint.x = point.x;
+                        yetpoint = point;
 
                         if(lowXpoint>=yetpoint.x){
                             lowXpoint=yetpoint.x;
@@ -256,7 +256,7 @@ public:
         checkpoint.color.g = 1.0;
         checkpoint.color.b = 0.0;
 
-        checkpoint.lifetime = ros::Duration(10);
+        checkpoint.lifetime = ros::Duration(0.1);
 
         if(isObstacle) {visual_pub.publish(checkpoint);}
 
@@ -273,7 +273,7 @@ public:
             {
                     visualization_msgs::Marker shape;
 
-                    shape.lifetime = ros::Duration(0.05);
+                    shape.lifetime = ros::Duration(0.1);
                     shape.header.frame_id = LOCAL_FRAME;
                     shape.ns = LOCAL_FRAME;
                     shape.id = m_iObjectNum;
