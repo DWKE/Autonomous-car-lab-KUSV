@@ -64,6 +64,7 @@ find_package(catkin REQUIRED COMPONENTS
        LanePointDataArray.msg
        kusv_GlobalPose.msg
        DR_data.msg
+       DrivingMode.msg
  )
 
 ## Generate services in the 'srv' folder

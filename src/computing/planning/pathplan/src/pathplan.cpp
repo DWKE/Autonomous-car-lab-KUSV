@@ -47,9 +47,9 @@ private:
 public:
     PathPlan()
         :object_sub(nh.subscribe("/DetectedObject", 1000, &PathPlan::objectCallback, this)),
-         //lane_sub(nh.subscribe("/final_driving_way", 1000, &PathPlan::laneCallback, this)),
+         lane_sub(nh.subscribe("/final_driving_way", 1000, &PathPlan::laneCallback, this)),
          //lane_sub(nh.subscribe("vision_lane", 1000, &PathPlan::laneCallback, this)),
-         lane_sub(nh.subscribe("waypoint_lane", 1000, &PathPlan::laneCallback, this)),                 //js
+         //lane_sub(nh.subscribe("waypoint_lane", 1000, &PathPlan::laneCallback, this)),                 //js
          visual_pub(nh.advertise<visualization_msgs::Marker>("/check_point", 1)),
          marker_pub(nh.advertise<visualization_msgs::MarkerArray>("/mark_array", 1)),
          object_pub(nh.advertise<pathplan::kusv_ObjectCmd>("/object_cmd", 500))                             //js
