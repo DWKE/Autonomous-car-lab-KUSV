@@ -18,7 +18,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "pose_estimation/DR_data.h"
+#include "kusv_msgs/DR_data.h"
 
 /*---------------------------------------------------------------------------
 ** Defines and Macros
@@ -238,7 +238,7 @@ void TaskNode::Terminate(){
         delete m_pPoseEstimationEKF;
 }
 
-void TaskNode::callback_motion(const pose_estimation::DR_data::ConstPtr& msg){
+void TaskNode::callback_motion(const kusv_msgs::DR_data::ConstPtr& msg){
 
     // ROS_INFO("callback_motion");
 

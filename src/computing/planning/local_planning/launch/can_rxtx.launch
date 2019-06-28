@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="local_planning" type="can_tx" name="can_tx" output="screen" />
+</launch>

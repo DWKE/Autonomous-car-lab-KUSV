@@ -17,7 +17,7 @@
 #include <ros/ros.h>
 #include <can_msgs/Frame.h>
 #include "kusv_msgs/kusv_CanInfo.h"
-#include "pose_estimation/DR_data.h"
+#include "kusv_msgs/DR_data.h"
 #include <string>
 #include <arpa/inet.h>
 #include <math.h>
@@ -133,7 +133,7 @@ CAN_MSG_GWAY5 gway5;
 uint8_t data_msg[8];
 can_msgs::Frame msg;
 kusv_msgs::kusv_CanInfo msg_CAN;
-pose_estimation::DR_data msg_DR_data;
+kusv_msgs::DR_data msg_DR_data;
 
 //************************//
 // VARIABLE & SIGNAL NAME //
@@ -179,7 +179,7 @@ int main(int argc, char** argv)
         ros::NodeHandle nh_2;
         ros::NodeHandle nh_3;
 
-        ros::Publisher ros_can_pub = nh_1.advertise<pose_estimation::DR_data>("ros_can/DR_data", 500);    // can Tx setting (In person side)
+        ros::Publisher ros_can_pub = nh_1.advertise<kusv_msgs::DR_data>("ros_can/DR_data", 500);    // can Tx setting (In person side)
         /*ros::Publisher ros_can_pub_2 = nh_3.advertise<ros_can::kusv_CanInfo>("kusv_CanInfo", 100);*/
         ros::Subscriber ros_can_sub = nh_2.subscribe("can_tx", 500, canmsg_Callback);                  // can Rx setting (In person side)
 
